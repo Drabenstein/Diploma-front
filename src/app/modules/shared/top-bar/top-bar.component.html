@@ -1,1 +1,20 @@
-<p>top-bar works!</p>
+<div class="top-label">
+  <h1 class="top-name">System prac dyplomowych PWr</h1>
+  <div class="top-label">
+    <div class="top-margin">
+      <p-button label="PL/EN" badge="PL" styleClass="p-mr-2"></p-button>
+    </div>
+    <p-tieredMenu #menu [model]="sideItems" [popup]="true"></p-tieredMenu>
+    <button
+      #btn
+      type="button"
+      pButton
+      label = {{name}}
+      icon="pi pi-user"
+      class="p-button-raised p-button-rounded top-margin"
+      (click)="menu.toggle($event)"
+    ></button>
+  </div>
+</div>
+
+<p-menubar [model]="items" class="toolbar"> </p-menubar>
