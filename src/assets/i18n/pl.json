@@ -7,10 +7,13 @@
     "MY_TOPICS": "Moje tematy",
     "MY_CANDIDATES": "Moi dyplomanci",
     "MY_REVIEWS": "Moje recenzje",
-    "REVIEWERS_ASSIGN": "Przydział recenznetów",
+    "REVIEWERS_ASSIGN": "Przydział recenzentów",
     "TOPIC_APPROVAL": "Zatwierdzanie tematów",
     "PASSWORD_CHANGE": "Zmień hasło",
     "USER_DETAILS": "Moje dane",
     "LOGOUT": "Wyloguj"
+  },
+  "404": {
+    "MESSAGE": "Nie znaleziono strony"
   }
 }

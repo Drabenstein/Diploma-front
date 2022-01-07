@@ -12,5 +12,8 @@
     "PASSWORD_CHANGE": "Change password",
     "USER_DETAILS": "My details",
     "LOGOUT": "Logout"
+  },
+  "404": {
+    "MESSAGE": "Page not found"
   }
 }
