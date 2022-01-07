@@ -1,0 +1,16 @@
+{
+  "TOP_BAR": {
+    "NAME": "System prac dyplomowych PWr",
+    "CURRENT_LANG": "PL",
+    "TOPICS_LIST": "Lista tematów",
+    "MY_THESIS": "Moja praca",
+    "MY_TOPICS": "Moje tematy",
+    "MY_CANDIDATES": "Moi dyplomanci",
+    "MY_REVIEWS": "Moje recenzje",
+    "REVIEWERS_ASSIGN": "Przydział recenznetów",
+    "TOPIC_APPROVAL": "Zatwierdzanie tematów",
+    "PASSWORD_CHANGE": "Zmień hasło",
+    "USER_DETAILS": "Moje dane",
+    "LOGOUT": "Wyloguj"
+  }
+}

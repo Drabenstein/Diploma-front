@@ -1,15 +1,20 @@
 <div class="top-label">
-  <h1 class="top-name">System prac dyplomowych PWr</h1>
+  <h1 class="top-name">{{ "TOP_BAR.NAME" | translate }}</h1>
   <div class="top-label">
     <div class="top-margin">
-      <p-button label="PL/EN" badge="PL" styleClass="p-mr-2"></p-button>
+      <p-button
+        label="PL/EN"
+        badge="{{ 'TOP_BAR.CURRENT_LANG' | translate }}"
+        styleClass="p-mr-2 p-button-raised p-button-rounded top-margin"
+        (click)="onSwitchLanguage()"
+      ></p-button>
     </div>
     <p-tieredMenu #menu [model]="sideItems" [popup]="true"></p-tieredMenu>
     <button
       #btn
       type="button"
       pButton
-      label = {{name}}
+      label="{{ name }}"
       icon="pi pi-user"
       class="p-button-raised p-button-rounded top-margin"
       (click)="menu.toggle($event)"

@@ -1,0 +1,16 @@
+{
+  "TOP_BAR": {
+    "NAME": "PWr diploma thesis system",
+    "CURRENT_LANG": "EN",
+    "TOPICS_LIST": "Thesis list",
+    "MY_THESIS": "My thesis",
+    "MY_TOPICS": "My topics",
+    "MY_CANDIDATES": "My candidates",
+    "MY_REVIEWS": "My reviews",
+    "REVIEWERS_ASSIGN": "Assign reviewers",
+    "TOPIC_APPROVAL": "Approve topics",
+    "PASSWORD_CHANGE": "Change password",
+    "USER_DETAILS": "My details",
+    "LOGOUT": "Logout"
+  }
+}

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { ReplaySubject } from 'rxjs';
 
 @Injectable({
@@ -7,11 +8,21 @@ import { ReplaySubject } from 'rxjs';
 export class LanguageService {
   public lang$ = new ReplaySubject<string>(1);
 
-  constructor() {
-    this.lang$.next('pl');
+  constructor(private txService: TranslateService) {
+    let lang = localStorage.getItem('language');
+    if (lang === null || lang === undefined) {
+      localStorage.setItem('language', 'pl');
+      lang = 'pl';
+    }
+    this.lang$.next(lang);
   }
 
   public setLang(lang: string) {
     this.lang$.next(lang);
+    localStorage.setItem('language', lang);
+  }
+
+  public getLang(): string {
+    return this.txService.currentLang;
   }
 }
