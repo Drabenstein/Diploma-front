@@ -1,1 +1,95 @@
-<p>topic-propose works!</p>
+<br />
+<br />
+<form [formGroup]="formGroup">
+  <div class="top-fields">
+    <div>
+      <span class="p-float-label">
+        <p-dropdown
+          formControlName="supervisors"
+          [options]="supervisors"
+          [(ngModel)]="selectedSupervisor"
+          optionLabel="name"
+          [filter]="true"
+          filterBy="name"
+        >
+        </p-dropdown>
+        <label for="supervisors">{{
+          "TOPIC_PROPOSAL.SUPERVISOR" | translate
+        }}</label>
+      </span>
+    </div>
+    <div>
+      <span class="p-float-label">
+        <p-dropdown
+          formControlName="fieldsOfStudy"
+          [options]="fieldsOfStudy"
+          [(ngModel)]="selectedFieldOfStudy"
+          optionLabel="name"
+        ></p-dropdown>
+        <label for="fieldsOfStudy">{{
+          "TOPIC_PROPOSAL.FIELD_OF_STUDY" | translate
+        }}</label>
+      </span>
+    </div>
+    <div>
+      <span class="p-float-label">
+        <p-inputNumber
+          formControlName="maxRealiztions"
+          [(ngModel)]="maxRealiztions"
+          [min]="1"
+          [max]="4"
+        ></p-inputNumber>
+        <label for="maxRealiztions">{{
+          "TOPIC_PROPOSAL.MAX_REALIZATIONS" | translate
+        }}</label>
+      </span>
+    </div>
+  </div>
+  <br />
+  <p-card>
+    <div>
+      <h2>{{ "TOPIC_PROPOSAL.TOPIC_NAME_PL" | translate }}</h2>
+      <p-divider></p-divider>
+      <textarea
+        formControlName="topicNamePl"
+        pInputTextarea
+        rows="2"
+        cols="150"
+      ></textarea>
+    </div>
+    <br /><br />
+    <div>
+      <h2>{{ "TOPIC_PROPOSAL.TOPIC_NAME_EN" | translate }}</h2>
+      <p-divider></p-divider>
+      <textarea
+        formControlName="topicNameEn"
+        pInputTextarea
+        rows="2"
+        cols="150"
+      ></textarea>
+    </div>
+    <br /><br />
+    <div>
+      <h2>{{ "TOPIC_PROPOSAL.MESSAGE" | translate }}</h2>
+      <p-divider></p-divider>
+      <textarea
+        formControlName="message"
+        pInputTextarea
+        rows="2"
+        cols="150"
+      ></textarea>
+    </div>
+    <br />
+    <br />
+    <div class="bottom-buttons">
+      <p-button label="{{ 'TOPIC_PROPOSAL.BUTTON_CONFIRM' | translate }}"></p-button>
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="{{ 'TOPIC_PROPOSAL.BUTTON_CANCEL' | translate }}"
+        class="p-button-outlined"
+      ></button>
+    </div>
+  </p-card>
+</form>

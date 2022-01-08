@@ -1,1 +1,26 @@
-<p>user-details works!</p>
+
+<div class="content-display">
+  <h2>Imie nazwisko</h2>
+  <br />
+  <div *ngIf="true">
+    <h2>kierunek, specjalizacja</h2>
+    <h2>stopien, semestr dzienne</h2>
+  </div>
+  <div *ngIf="true">
+    <h2>Wydział, katedra</h2>
+    <h2>stanowisko</h2>
+    <h2>
+      <div *ngIf="true"> {{ "USER_DETAILS.PENSUM_AGREE" | translate }}</div>
+      <div *ngIf="false"> {{ "USER_DETAILS.PENSUM_DISAGREE" | translate }}</div>
+    </h2>
+    <h3> {{ "USER_DETAILS.AREAS_OF_INTEREST" | translate }}</h3>
+    <p-multiSelect
+      [options]="areas"
+      [(ngModel)]="selectedAreas"
+      display="chip"
+      optionLabel="name"
+      optionValue="code"
+    ></p-multiSelect>
+  </div>
+
+</div>

@@ -5,6 +5,7 @@ import { TopicListRoutingModule } from './topic-list-routing.module';
 import { TopicListComponent } from './topic-list/topic-list.component';
 import { TopicApplicationComponent } from './topic-application/topic-application.component';
 import { TopicProposeComponent } from './topic-propose/topic-propose.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { TopicProposeComponent } from './topic-propose/topic-propose.component';
   ],
   imports: [
     CommonModule,
-    TopicListRoutingModule
+    TopicListRoutingModule,
+    SharedModule,
   ]
 })
 export class TopicListModule { }

@@ -1,6 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +19,9 @@ import { UserModule } from './modules/user/user.module';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    TranslateModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
     SharedModule,
     TopicApprovalModule,
@@ -27,7 +31,6 @@ import { UserModule } from './modules/user/user.module';
     TopicStudentModule,
     TopicSupervisorModule,
     UserModule,
-    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

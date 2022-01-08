@@ -15,5 +15,37 @@
   },
   "404": {
     "MESSAGE": "Nie znaleziono strony"
+  },
+  "PASSWORD_CHANGE": {
+    "OLD_PASSWORD": "Stare hasło",
+    "NEW_PASSWORD": "Nowe hasło",
+    "REPEAT_PASSWORD": "Powtórz nowe hasło",
+    "NOT_MATCH": "Wprowadzone hasła są różne",
+    "CONFIRM": "Zatwierdź zmianę hasła"
+  },
+  "TOPIC_LIST": {
+    "TOPIC_NAME_PL": "Nazwa tematu PL",
+    "TOPIC_NAME_EN": "Nazwa tematu EN",
+    "SUPERVISOR": "Promotor",
+    "REVIEWER": "Recenzent",
+    "STATUS": "Status",
+    "CATHERDA": "Katedra",
+    "ACTION": "Akcje",
+    "ADD_TOPIC": "Zaproponuj temat"
+  },
+  "USER_DETAILS": {
+    "PENSUM_AGREE": "Zgoda na rozszerzenie pensum",
+    "PENSUM_DISAGREE": "Brak zgody na rozszerzenie pensum",
+    "AREAS_OF_INTEREST": "Obszary zainteresowań"
+  },
+  "TOPIC_PROPOSAL":{
+    "SUPERVISOR": "Promotor",
+    "FIELD_OF_STUDY": "Kierunek studiów",
+    "MAX_REALIZATIONS": "Maksymalna liczba realizacji (max. 4)",
+    "TOPIC_NAME_PL": "Nazwa tematu po polsku",
+    "TOPIC_NAME_EN": "Nazwa tematu po angielski",
+    "MESSAGE": "Wiadomość",
+    "BUTTON_CONFIRM": "Zatwierdź",
+    "BUTTON_CANCEL": "Anuluj"
   }
 }

@@ -15,5 +15,38 @@
   },
   "404": {
     "MESSAGE": "Page not found"
+  },
+  "PASSWORD_CHANGE": {
+    "OLD_PASSWORD": "Old password",
+    "NEW_PASSWORD": "New Password",
+    "REPEAT_PASSWORD": "Repeat new password",
+    "NOT_MATCH": "Provided passwords not match",
+    "CONFIRM": "Confirm password change"
+  },
+  "TOPIC_LIST": {
+    "TOPIC_NAME_PL": "Topic name PL",
+    "TOPIC_NAME_EN": "Topic name EN",
+    "SUPERVISOR": "Supervisor",
+    "REVIEWER": "Reviewer",
+    "STATUS": "Status",
+    "CATHERDA": "Cathedra",
+    "ACTION": "Actions",
+    "ADD_TOPIC": "Propose topic"
+  },
+  "USER_DETAILS": {
+    "PENSUM_AGREE": "Consent to extend the working hours",
+    "PENSUM_DISAGREE": "No consent to extend the working hours",
+    "AREAS_OF_INTEREST": "Areas of interest"
+  },
+  "TOPIC_PROPOSAL":{
+    "SUPERVISOR": "Supervisor",
+    "FIELD_OF_STUDY": "Field of study",
+    "MAX_REALIZATIONS": "Maximum realization number (max. 4)",
+    "TOPIC_NAME_PL": "Polish topic name",
+    "TOPIC_NAME_EN": "English topic name",
+    "MESSAGE": "Message",
+    "BUTTON_CONFIRM": "Confirm",
+    "BUTTON_CANCEL": "Cancel"
   }
+
 }

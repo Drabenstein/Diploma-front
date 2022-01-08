@@ -1,0 +1,8 @@
+.content-display {
+  margin-left: 20px;
+}
+
+:host ::ng-deep .p-multiselect {
+  min-width: 15rem;
+  width: 18rem;
+}
