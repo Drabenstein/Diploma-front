@@ -31,7 +31,13 @@
     "STATUS": "Status",
     "CATHERDA": "Cathedra",
     "ACTION": "Actions",
-    "ADD_TOPIC": "Propose topic"
+    "ADD_TOPIC": "Propose topic",
+    "STUDENT": "Student",
+    "MAX_REALIZATIONS": "Max realizations",
+    "CHECK_APPLICATIONS": "Check applications",
+    "CREATE_TOPIC": "Add new topic",
+    "BACK": "Back",
+    "MY_REVIEWS": "My reviews"
   },
   "USER_DETAILS": {
     "PENSUM_AGREE": "Consent to extend the working hours",
@@ -46,7 +52,24 @@
     "TOPIC_NAME_EN": "English topic name",
     "MESSAGE": "Message",
     "BUTTON_CONFIRM": "Confirm",
-    "BUTTON_CANCEL": "Cancel"
+    "BUTTON_CANCEL": "Cancel",
+    "HEADDER": "Add new topic",
+    "BUTTON_ADD": "Add topic",
+    "YEAR_OF_DEFENCE": "Year of defence"
+  },
+  "TOPIC_APPLICATION":{
+    "TOPIC_NAME_PL": "Polish topic name",
+    "TOPIC_NAME_EN": "English topic name",
+    "SUPERVISOR": "Supervisor",
+    "MESSAGE": "Message",
+    "BUTTON_CONFIRM": "Send application",
+    "BUTTON_CANCEL": "Cancel",
+    "BUTTON_APPLY": "Accept application",
+    "BUTTON_DENY": "Deny application",
+    "HEADDER_PROPOSE": "Topic proposal",
+    "HEADDER_REALIZATION": "Application of topic realisation",
+    "MAX_REALIZATIONS": "Max realisations:",
+    "CURRENT_REALIZATIONS": "Current realisations:"
   }
 
 }

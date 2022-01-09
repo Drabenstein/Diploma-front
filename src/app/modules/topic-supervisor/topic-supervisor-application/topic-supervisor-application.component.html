@@ -1,0 +1,62 @@
+<div *ngIf="true">
+  <h2>{{ "TOPIC_APPLICATION.HEADDER_PROPOSE" | translate }}</h2>
+</div>
+<div *ngIf="true">
+  <h2>{{ "TOPIC_APPLICATION.HEADDER_REALIZATION" | translate }}</h2>
+</div>
+<br />
+<b>Jan Kowalski 2222222</b><br />
+<span>Informatyka stosowana</span>
+<br />
+<br />
+{{ "TOPIC_APPLICATION.MAX_REALIZATIONS" | translate }} 3
+<div *ngIf="true">
+  {{ "TOPIC_APPLICATION.CURRENT_REALIZATIONS" | translate }}: 2
+</div>
+<br />
+<p-card>
+  <div>
+    <h2>{{ "TOPIC_APPLICATION.TOPIC_NAME_PL" | translate }}</h2>
+    <p-divider></p-divider>
+    Nazwa po angielsku
+  </div>
+  <br /><br />
+  <div>
+    <h2>{{ "TOPIC_APPLICATION.TOPIC_NAME_EN" | translate }}</h2>
+    <p-divider></p-divider>
+    Nazwa po polsku
+  </div>
+  <br /><br />
+  <div>
+    <h2>{{ "TOPIC_APPLICATION.MESSAGE" | translate }}</h2>
+    <p-divider></p-divider>
+    Wiadomość
+  </div>
+  <br />
+</p-card>
+<br />
+<div class="bottom-buttons">
+  <p-button
+    icon="pi pi-check"
+    iconPos="left"
+    label="{{ 'TOPIC_APPLICATION.BUTTON_APPLY' | translate }}"
+  ></p-button>
+  <button
+    pButton
+    icon="pi pi-times"
+    pRipple
+    iconPos="left"
+    label="{{ 'TOPIC_APPLICATION.BUTTON_DENY' | translate }}"
+    class="p-button-danger"
+  ></button>
+  <button
+    pButton
+    pRipple
+    type="button"
+    icon="pi pi-arrow-left"
+    iconPos="left"
+    label="{{ 'TOPIC_APPLICATION.BUTTON_CANCEL' | translate }}"
+    class="p-button-outlined"
+    (click)="onCancel()"
+  ></button>
+</div>

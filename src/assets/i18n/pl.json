@@ -31,7 +31,13 @@
     "STATUS": "Status",
     "CATHERDA": "Katedra",
     "ACTION": "Akcje",
-    "ADD_TOPIC": "Zaproponuj temat"
+    "ADD_TOPIC": "Zaproponuj temat",
+    "STUDENT": "Student",
+    "MAX_REALIZATIONS": "Max realizacji",
+    "CHECK_APPLICATIONS": "Sprawdź aplikacje",
+    "CREATE_TOPIC": "Zgłoś nowy temat",
+    "BACK": "Wróć",
+    "MY_REVIEWS": "Moje recenzje"
   },
   "USER_DETAILS": {
     "PENSUM_AGREE": "Zgoda na rozszerzenie pensum",
@@ -42,10 +48,27 @@
     "SUPERVISOR": "Promotor",
     "FIELD_OF_STUDY": "Kierunek studiów",
     "MAX_REALIZATIONS": "Maksymalna liczba realizacji (max. 4)",
-    "TOPIC_NAME_PL": "Nazwa tematu po polsku",
-    "TOPIC_NAME_EN": "Nazwa tematu po angielski",
+    "TOPIC_NAME_PL": "Nazwa tematu w języku polskim",
+    "TOPIC_NAME_EN": "Nazwa tematu w języku angielskim",
     "MESSAGE": "Wiadomość",
     "BUTTON_CONFIRM": "Zatwierdź",
-    "BUTTON_CANCEL": "Anuluj"
+    "BUTTON_CANCEL": "Anuluj",
+    "HEADDER": "Zgłaszanie nowego tematu",
+    "BUTTON_ADD": "Dodaj temat",
+    "YEAR_OF_DEFENCE": "Rok obrony"
+  },
+  "TOPIC_APPLICATION":{
+    "TOPIC_NAME_PL": "Nazwa tematu w języku polskim",
+    "TOPIC_NAME_EN": "Nazwa tematu w języku angielskim",
+    "SUPERVISOR": "Opiekun tematu",
+    "MESSAGE": "Wiadomość",
+    "BUTTON_CONFIRM": "Wyślij zgłoszenie",
+    "BUTTON_CANCEL": "Anuluj",
+    "BUTTON_APPLY": "Zaakceptuj zgłoszenie",
+    "BUTTON_DENY": "Odrzuć zgłoszenie",
+    "HEADDER_PROPOSE": "Propozycja tematu",
+    "HEADDER_REALIZATION": "Zgłoszenie realizacji tematu",
+    "MAX_REALIZATIONS": "Maksymalna liczba realizacji:",
+    "CURRENT_REALIZATIONS": "Aktualna liczba realizacji:"
   }
 }

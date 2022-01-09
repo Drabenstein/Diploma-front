@@ -1,14 +1,7 @@
 <br />
-<p-button
-  label="{{ 'TOPIC_LIST.CHECK_APPLICATIONS' | translate }}"
-  icon="pi pi-add"
-  styleClass="p-mr-2 p-button-raised"
-  (click)="onApplicationsCheck()"
-></p-button>
-<br />
 <div *ngFor="let fieldOfStudy of fields">
   <br />
-  <p-panel header="{{ fieldOfStudy }}" [toggleable]="true">
+  <p-panel header="{{ fieldOfStudy }}">
       <div class="card">
         <p-table
           [value]="fieldOfStudy"
@@ -16,7 +9,7 @@
           responsiveLayout="scroll"
           [rowsPerPageOptions]="[10, 25, 50]"
         >
-          <ng-template pTemplate="header">
+          <ng-template pTemplate="header" [toggleable]="true">
             <tr>
               <th pSortableColumn="polishName">
                 {{ "TOPIC_LIST.TOPIC_NAME_PL" | translate }}
@@ -30,7 +23,7 @@
                 {{ "TOPIC_LIST.STUDENT" | translate }}
                 <p-sortIcon field="supervisor"></p-sortIcon>
               </th>
-              <th pSortableColumn="reviever">
+              <th pSortableColumn="type">
                 {{ "TOPIC_LIST.REVIEWER" | translate }}
                 <p-sortIcon field="reviever"></p-sortIcon>
               </th>
@@ -45,7 +38,7 @@
               <td>{{ topic.polishName }}</td>
               <td>{{ topic.englishName }}</td>
               <td>{{ topic.student }}</td>
-              <td>{{ topic.reviever }}</td>
+              <td>{{ topic.type }}</td>
               <td>{{ topic.action }}</td>
             </tr>
           </ng-template>
@@ -53,3 +46,14 @@
       </div>
     </p-panel>
 </div>
+<br />
+<button
+  pButton
+  pRipple
+  type="button"
+  icon="pi pi-times"
+  iconPos="left"
+  label="{{ 'TOPIC_LIST.BACK' | translate }}"
+  class="p-button-outlined"
+  (click)="onCancel()"
+></button>

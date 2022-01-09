@@ -1,1 +1,59 @@
-<p>review-list works!</p>
+<br />
+<h2>{{ "TOPIC_LIST.MY_REVIEWS" | translate }}</h2>
+<div *ngFor="let fieldOfStudy of fields">
+  <br />
+  <p-panel header="{{ fieldOfStudy }}" [toggleable]="true">
+    <div class="card">
+      <p-table
+        [value]="fieldOfStudy"
+        [paginator]="true"
+        responsiveLayout="scroll"
+        [rowsPerPageOptions]="[10, 25, 50]"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="polishName">
+              {{ "TOPIC_LIST.TOPIC_NAME_PL" | translate }}
+              <p-sortIcon field="polishName"></p-sortIcon>
+            </th>
+            <th pSortableColumn="englishName">
+              {{ "TOPIC_LIST.TOPIC_NAME_EN" | translate }}
+              <p-sortIcon field="englishName"></p-sortIcon>
+            </th>
+            <th pSortableColumn="supervisor">
+              {{ "TOPIC_LIST.SUPERVISOR" | translate }}
+              <p-sortIcon field="supervisor"></p-sortIcon>
+            </th>
+            <th pSortableColumn="student">
+              {{ "TOPIC_LIST.REVIEWER" | translate }}
+              <p-sortIcon field="student"></p-sortIcon>
+            </th>
+            <th pSortableColumn="status">
+              {{ "TOPIC_LIST.STATUS" | translate }}
+              <p-sortIcon field="status"></p-sortIcon>
+            </th>
+            <th pSortableColumn="cathedra">
+              {{ "TOPIC_LIST.CATHERDA" | translate }}
+              <p-sortIcon field="cathedra"></p-sortIcon>
+            </th>
+            <th>
+              {{ "TOPIC_LIST.ACTION" | translate }}
+              <p-sortIcon field="action"></p-sortIcon>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-topic>
+          <tr>
+            <td>{{ topic.polishName }}</td>
+            <td>{{ topic.englishName }}</td>
+            <td>{{ topic.supervisor }}</td>
+            <td>{{ topic.student }}</td>
+            <td>{{ topic.status }}</td>
+            <td>{{ topic.cathedra }}</td>
+            <td>{{ topic.action }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </p-panel>
+</div>

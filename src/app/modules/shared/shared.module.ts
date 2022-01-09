@@ -28,7 +28,7 @@ import { TreeSelectModule } from 'primeng/treeselect';
 import { TableModule } from 'primeng/table';
 import {DividerModule} from 'primeng/divider';
 import {CardModule} from 'primeng/card'
-
+import {AccordionModule} from 'primeng/accordion';
 
 @NgModule({
   declarations: [TopBarComponent, HomePageComponent, NonExistingPageComponent],
@@ -59,6 +59,7 @@ import {CardModule} from 'primeng/card'
     TableModule,
     DividerModule,
     CardModule,
+    AccordionModule
   ],
   exports: [
     TopBarComponent,
@@ -89,6 +90,7 @@ import {CardModule} from 'primeng/card'
     TableModule,
     DividerModule,
     CardModule,
+    AccordionModule
   ],
 })
 export class SharedModule {

@@ -75,20 +75,27 @@
       <textarea
         formControlName="message"
         pInputTextarea
-        rows="2"
+        rows="5"
         cols="150"
       ></textarea>
     </div>
     <br />
     <br />
     <div class="bottom-buttons">
-      <p-button label="{{ 'TOPIC_PROPOSAL.BUTTON_CONFIRM' | translate }}"></p-button>
+      <p-button
+        icon="pi pi-check"
+        iconPos="left"
+        label="{{ 'TOPIC_PROPOSAL.BUTTON_CONFIRM' | translate }}"
+      ></p-button>
       <button
         pButton
         pRipple
         type="button"
+        icon="pi pi-times"
+        iconPos="left"
         label="{{ 'TOPIC_PROPOSAL.BUTTON_CANCEL' | translate }}"
         class="p-button-outlined"
+        (click)="onCancel()"
       ></button>
     </div>
   </p-card>
