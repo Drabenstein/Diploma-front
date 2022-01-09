@@ -1,1 +1,154 @@
-<p>review-form works!</p>
+<p-card
+  header="{{ 'REVIEW.THESIS' | translate }} {{ thesisTitle }},  {{
+    thesisStudent
+  }}"
+>
+  <form [formGroup]="formGroup">
+    <p-panel header="{{ 'REVIEW.PURPOSE' | translate }}" [toggleable]="true">
+      <div>
+        <div>
+          <textarea
+            formControlName="purpose"
+            [(ngModel)]="purpose"
+            pInputTextarea
+            rows="5"
+            cols="150"
+          ></textarea>
+        </div>
+        <br />
+        <br />
+        <span class="p-float-label">
+          <p-dropdown
+            formControlName="purposeNumber"
+            [options]="purposeNumber"
+            [(ngModel)]="selectedPurposeNumber"
+            optionLabel="name"
+            [filter]="true"
+            filterBy="name"
+          >
+          </p-dropdown>
+          <label for="purposeNumber">{{ "REVIEW.PURPOSE" | translate }}</label>
+        </span>
+      </div>
+    </p-panel>
+    <p-panel header="{{ 'REVIEW.STRUCTURE' | translate }}" [toggleable]="true">
+      <div>
+        <div>
+          <textarea
+            formControlName="structure"
+            [(ngModel)]="structure"
+            pInputTextarea
+            rows="5"
+            cols="150"
+          ></textarea>
+        </div>
+        <br />
+        <br />
+        <span class="p-float-label">
+          <p-dropdown
+            formControlName="structureNumber"
+            [options]="structureNumber"
+            [(ngModel)]="selectedStructureNumber"
+            optionLabel="name"
+            [filter]="true"
+            filterBy="name"
+          >
+          </p-dropdown>
+          <label for="structureNumber">{{
+            "REVIEW.STRUCTURE" | translate
+          }}</label>
+        </span>
+      </div>
+    </p-panel>
+    <p-panel header="{{ 'REVIEW.DESIGN' | translate }}" [toggleable]="true">
+      <div>
+        <div>
+          <textarea
+            formControlName="design"
+            [(ngModel)]="design"
+            pInputTextarea
+            rows="5"
+            cols="150"
+          ></textarea>
+        </div>
+        <br />
+        <br />
+        <span class="p-float-label">
+          <p-dropdown
+            formControlName="designNumber"
+            [options]="designNumber"
+            [(ngModel)]="selectedDesignNumber"
+            optionLabel="name"
+            [filter]="true"
+            filterBy="name"
+          >
+          </p-dropdown>
+          <label for="designNumber">{{ "REVIEW.DESIGN" | translate }}</label>
+        </span>
+      </div>
+    </p-panel>
+    <p-panel header="{{ 'REVIEW.SOURCES' | translate }}" [toggleable]="true">
+      <div>
+        <div>
+          <textarea
+            formControlName="sources"
+            [(ngModel)]="sources"
+            pInputTextarea
+            rows="5"
+            cols="150"
+          ></textarea>
+        </div>
+        <br />
+        <br />
+        <span class="p-float-label">
+          <p-dropdown
+            formControlName="sourcesNumber"
+            [options]="sourcesNumber"
+            [(ngModel)]="selectedSourcesNumber"
+            optionLabel="name"
+            [filter]="true"
+            filterBy="name"
+          >
+          </p-dropdown>
+          <label for="sourcesNumber">{{ "REVIEW.SOURCES" | translate }}</label>
+        </span>
+      </div>
+    </p-panel>
+    <p-panel header="{{ 'REVIEW.ASSESMENTS' | translate }}" [toggleable]="true">
+      <div>
+        <br />
+        <span class="p-float-label">
+          <p-dropdown
+            formControlName="assesment"
+            [options]="assesment"
+            [(ngModel)]="selectedAssesment"
+            optionLabel="name"
+            [filter]="true"
+            filterBy="name"
+          >
+          </p-dropdown>
+          <label for="assesment">{{ "REVIEW.ASSESMENTS" | translate }}</label>
+        </span>
+      </div>
+    </p-panel>
+    <br />
+    <br />
+    <div class="bottom-buttons">
+      <p-button
+        icon="pi pi-check"
+        iconPos="left"
+        label="{{ 'TOPIC_PROPOSAL.BUTTON_CONFIRM' | translate }}"
+      ></p-button>
+      <button
+        pButton
+        pRipple
+        type="button"
+        icon="pi pi-times"
+        iconPos="left"
+        label="{{ 'TOPIC_PROPOSAL.BUTTON_CANCEL' | translate }}"
+        class="p-button-outlined"
+        (click)="onCancel()"
+      ></button>
+    </div>
+  </form>
+</p-card>

@@ -37,14 +37,22 @@
     "CHECK_APPLICATIONS": "Sprawdź aplikacje",
     "CREATE_TOPIC": "Zgłoś nowy temat",
     "BACK": "Wróć",
-    "MY_REVIEWS": "Moje recenzje"
+    "MY_REVIEWS": "Moje recenzje",
+    "CHOOSE_REVIEWER": "Wybierz recenzenta",
+    "BUTTON_CONFIRM": "Zatwierdź",
+    "REVIEWER_LIST": "Lista recenzentów"
   },
   "USER_DETAILS": {
     "PENSUM_AGREE": "Zgoda na rozszerzenie pensum",
     "PENSUM_DISAGREE": "Brak zgody na rozszerzenie pensum",
-    "AREAS_OF_INTEREST": "Obszary zainteresowań"
+    "AREAS_OF_INTEREST": "Obszary zainteresowań",
+    "MIN_REVIEWS": "Min recenzji",
+    "MAX_REVIEWS": "Max recenzji",
+    "BUTTON_SEARCH": "Szukaj",
+    "ACTUAL_REVIEWS": "Aktualnie recenzji: ",
+    "AREAS": "Obszary zainteresowań: "
   },
-  "TOPIC_PROPOSAL":{
+  "TOPIC_PROPOSAL": {
     "SUPERVISOR": "Promotor",
     "FIELD_OF_STUDY": "Kierunek studiów",
     "MAX_REALIZATIONS": "Maksymalna liczba realizacji (max. 4)",
@@ -57,7 +65,7 @@
     "BUTTON_ADD": "Dodaj temat",
     "YEAR_OF_DEFENCE": "Rok obrony"
   },
-  "TOPIC_APPLICATION":{
+  "TOPIC_APPLICATION": {
     "TOPIC_NAME_PL": "Nazwa tematu w języku polskim",
     "TOPIC_NAME_EN": "Nazwa tematu w języku angielskim",
     "SUPERVISOR": "Opiekun tematu",
@@ -70,5 +78,13 @@
     "HEADDER_REALIZATION": "Zgłoszenie realizacji tematu",
     "MAX_REALIZATIONS": "Maksymalna liczba realizacji:",
     "CURRENT_REALIZATIONS": "Aktualna liczba realizacji:"
+  },
+  "REVIEW": {
+    "PURPOSE": "Cel i zakres pracy",
+    "STRUCTURE": "Struktura pracy",
+    "DESIGN": "Część analityczno projektowa",
+    "SOURCES": "Źródła i redakcja pracy",
+    "ASSESMENTS": "Ocena pracy dyplomowej",
+    "THESIS": "Recenzja pracy dyplomowej:"
   }
 }

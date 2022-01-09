@@ -37,12 +37,20 @@
     "CHECK_APPLICATIONS": "Check applications",
     "CREATE_TOPIC": "Add new topic",
     "BACK": "Back",
-    "MY_REVIEWS": "My reviews"
+    "MY_REVIEWS": "My reviews",
+    "CHOOSE_REVIEWER": "Choose reviewer",
+    "BUTTON_CONFIRM": "Confirm",
+    "REVIEWER_LIST": "Reviewer list"
   },
   "USER_DETAILS": {
     "PENSUM_AGREE": "Consent to extend the working hours",
     "PENSUM_DISAGREE": "No consent to extend the working hours",
-    "AREAS_OF_INTEREST": "Areas of interest"
+    "AREAS_OF_INTEREST": "Areas of interest",
+    "MIN_REVIEWS": "Min reviews",
+    "MAX_REVIEWS": "Max reviews",
+    "BUTTON_SEARCH": "Search",
+    "ACTUAL_REVIEWS": "Actual reviews: ",
+    "AREAS": "Areas of interest: "
   },
   "TOPIC_PROPOSAL":{
     "SUPERVISOR": "Supervisor",
@@ -70,6 +78,13 @@
     "HEADDER_REALIZATION": "Application of topic realisation",
     "MAX_REALIZATIONS": "Max realisations:",
     "CURRENT_REALIZATIONS": "Current realisations:"
+  },
+  "REVIEW": {
+    "PURPOSE": "Purpose and scope of work",
+    "STRUCTURE": "Work structure",
+    "DESIGN": "Analytical and design part",
+    "SOURCES": "Sources and editing of the work",
+    "ASSESMENTS": "Assessment of the thesis",
+    "THESIS": "Diploma thesis review:"
   }
-
 }

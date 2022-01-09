@@ -1,1 +1,78 @@
-<p>reviewer-list works!</p>
+<br />
+<br />
+<form [formGroup]="formGroup">
+  <div class="top-fields">
+    <div>
+      <span class="p-float-label">
+        <p-inputNumber
+          formControlName="minReviews"
+          [(ngModel)]="minReviews"
+          [min]="0"
+        ></p-inputNumber>
+        <label for="minReviews">{{
+          "USER_DETAILS.MAX_REVIEWS" | translate
+        }}</label>
+      </span>
+    </div>
+    <div>
+      <span class="p-float-label">
+        <p-inputNumber
+          formControlName="maxReviews"
+          [(ngModel)]="maxReviews"
+          [min]="0"
+        ></p-inputNumber>
+        <label for="maxReviews">{{
+          "USER_DETAILS.MAX_REVIEWS" | translate
+        }}</label>
+      </span>
+    </div>
+    <div>
+      <span class="p-float-label">
+        <p-multiSelect
+          formControlName="areas"
+          [options]="areas"
+          [(ngModel)]="selectedAreas"
+          display="chip"
+          optionLabel="name"
+          optionValue="code"
+        ></p-multiSelect>
+        <label for="areas">{{
+          "USER_DETAILS.AREAS_OF_INTEREST" | translate
+        }}</label>
+      </span>
+    </div>
+    <p-button
+      icon="pi pi-search"
+      iconPos="left"
+      label="{{ 'USER_DETAILS.BUTTON_SEARCH' | translate }}"
+    ></p-button>
+    <div></div>
+    <div></div>
+  </div>
+  <br />
+</form>
+<h2>Pracownicy</h2>
+<div *ngFor="let worker of workers">
+  {{ worker.title }} {{ worker.name }} {{ worker.faculty }},
+  {{ worker.cathedra }} {{ worker.title }} {{ worker.name }}
+  {{ worker.position }}
+  {{ "USER_DETAILS.ACTUAL_REVIEWS" | translate }} {{ worker.actualReviews }}
+  {{ "USER_DETAILS.AREAS" | translate }}:
+  <div *ngFor="let area of worker.areas">
+    {{ area }}
+  </div>
+</div>
+<br />
+<br />
+<div class="bottom-buttons">
+  <button
+    pButton
+    pRipple
+    type="button"
+    icon="pi pi-times"
+    iconPos="left"
+    label="{{ 'TOPIC_PROPOSAL.BUTTON_CANCEL' | translate }}"
+    class="p-button-outlined"
+    (click)="onCancel()"
+  ></button>
+</div>
