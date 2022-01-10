@@ -1,0 +1,87 @@
+<p-card header="{{ 'DECLARATION.HEADDER' | translate }}">
+  <form [formGroup]="formGroup">
+    <p-panel
+      header="{{ 'DECLARATION.STUDENT_DATA' | translate }}"
+      [toggleable]="true"
+    >
+      {{ thesisTitlePl }}
+    </p-panel>
+    <p-panel header="{{ 'DECLARATION.TOPIC' | translate }}" [toggleable]="true">
+      {{ thesisTitlePl }} <br />
+      {{ thesisTitleEn }}
+    </p-panel>
+    <p-panel
+      header="{{ 'DECLARATION.LANGUAGE' | translate }}"
+      [toggleable]="true"
+    >
+      <div>
+        <br />
+        <span class="p-float-label">
+          <p-dropdown
+            formControlName="language"
+            [options]="languages"
+            [(ngModel)]="selectedLanguage"
+            optionLabel="name"
+            [filter]="true"
+            filterBy="name"
+          >
+          </p-dropdown>
+          <label for="language">{{ "DECLARATION.LANGUAGE_DROPDOWN" | translate }}</label>
+        </span>
+      </div>
+    </p-panel>
+    <p-panel
+      header="{{ 'DECLARATION.SUPERVISOR' | translate }}"
+      [toggleable]="true"
+    >
+      {{ thesisSupervisor }}
+    </p-panel>
+    <p-panel
+      header="{{ 'DECLARATION.PURPOSE' | translate }}"
+      [toggleable]="true"
+    >
+      <div>
+        <textarea
+          formControlName="purpose"
+          [(ngModel)]="purpose"
+          pInputTextarea
+          rows="5"
+          cols="150"
+        ></textarea>
+      </div>
+    </p-panel>
+    <p-panel
+      header="{{ 'DECLARATION.DESCRIPTIN' | translate }}"
+      [toggleable]="true"
+    >
+      <div>
+        <textarea
+          formControlName="description"
+          [(ngModel)]="description"
+          pInputTextarea
+          rows="5"
+          cols="150"
+        ></textarea>
+      </div>
+    </p-panel>
+    <br />
+    <br />
+    <div class="bottom-buttons">
+      <p-button
+        icon="pi pi-check"
+        iconPos="left"
+        label="{{ 'DECLARATION.BUTTON_CONFIRM' | translate }}"
+      ></p-button>
+      <button
+        pButton
+        pRipple
+        type="button"
+        icon="pi pi-times"
+        iconPos="left"
+        label="{{ 'DECLARATION.BUTTON_CANCEL' | translate }}"
+        class="p-button-outlined"
+        (click)="onCancel()"
+      ></button>
+    </div>
+  </form>
+</p-card>

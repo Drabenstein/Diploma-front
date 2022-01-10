@@ -39,8 +39,9 @@
     "BACK": "Wróć",
     "MY_REVIEWS": "Moje recenzje",
     "CHOOSE_REVIEWER": "Wybierz recenzenta",
+    "REVIEWER_LIST": "Lista recenzentów",
     "BUTTON_CONFIRM": "Zatwierdź",
-    "REVIEWER_LIST": "Lista recenzentów"
+    "BUTTON_DENY": "Odrzuć"
   },
   "USER_DETAILS": {
     "PENSUM_AGREE": "Zgoda na rozszerzenie pensum",
@@ -86,5 +87,27 @@
     "SOURCES": "Źródła i redakcja pracy",
     "ASSESMENTS": "Ocena pracy dyplomowej",
     "THESIS": "Recenzja pracy dyplomowej:"
+  },
+  "DECLARATION": {
+    "HEADDER": "Dane do deklaracji",
+    "STUDENT_DATA": "Dane studenta i kierunku (uzupełnione automatycznie)",
+    "TOPIC": "Temat pracy (uzupełniony automatycznie)",
+    "LANGUAGE": "Język realizacji pracy",
+    "SUPERVISOR": "Opiekun pracy (uzupełniony automatycznie)",
+    "PURPOSE": "Cel i zakres pracy",
+    "DESCRIPTIN": "Krótki opis pracy",
+    "BUTTON_CANCEL": "Anuluj",
+    "BUTTON_CONFIRM": "Złóż deklarację",
+    "LANGUAGE_DROPDOWN": "Język"
+  },
+  "THESIS": {
+    "DATA_HEADDER": "Moja praca",
+    "SUPERVISOR": "Promotor: ",
+    "STATUS": "Status: ",
+    "MARK_HEADDER": "Oceny",
+    "DATE": "Data wystawienia: ",
+    "MARK": "Ocena: ",
+    "BUTTON_REVIEW": "Recenzja",
+    "EVENT_HEADDER": "Zdarzenia"
   }
 }

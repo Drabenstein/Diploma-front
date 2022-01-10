@@ -1,3 +1,8 @@
+textarea {
+  resize: none;
+  max-width: 90%;
+}
+
 :host ::ng-deep .p-button{
   margin-right: 50px;
   width: 150px;
@@ -8,4 +13,9 @@
   margin-left: auto;
   margin-right: 10vw;
   width: 400px;
+}
+
+:host ::ng-deep .p-dropdown {
+  min-width: 10rem;
+  width: 18rem;
 }

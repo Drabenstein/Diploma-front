@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { TopicApprovalRoutingModule } from './topic-approval-routing.module';
 import { TopicApprovalComponent } from './topic-approval/topic-approval.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { TopicApprovalComponent } from './topic-approval/topic-approval.componen
   ],
   imports: [
     CommonModule,
-    TopicApprovalRoutingModule
+    TopicApprovalRoutingModule,
+    SharedModule
   ]
 })
 export class TopicApprovalModule { }

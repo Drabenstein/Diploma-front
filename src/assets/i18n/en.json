@@ -38,9 +38,10 @@
     "CREATE_TOPIC": "Add new topic",
     "BACK": "Back",
     "MY_REVIEWS": "My reviews",
-    "CHOOSE_REVIEWER": "Choose reviewer",
-    "BUTTON_CONFIRM": "Confirm",
-    "REVIEWER_LIST": "Reviewer list"
+    "CHOOSE_REVIEWER": "Wybierz recenzenta",
+    "REVIEWER_LIST": "Lista recenzentów",
+    "BUTTON_CONFIRM": "Zatwierdź",
+    "BUTTON_DENY": "Deny"
   },
   "USER_DETAILS": {
     "PENSUM_AGREE": "Consent to extend the working hours",
@@ -80,11 +81,33 @@
     "CURRENT_REALIZATIONS": "Current realisations:"
   },
   "REVIEW": {
-    "PURPOSE": "Purpose and scope of work",
-    "STRUCTURE": "Work structure",
+    "PURPOSE": "Purpose and scope of thesis",
+    "STRUCTURE": "Thesis structure",
     "DESIGN": "Analytical and design part",
-    "SOURCES": "Sources and editing of the work",
+    "SOURCES": "Sources and editing of the thesis",
     "ASSESMENTS": "Assessment of the thesis",
     "THESIS": "Diploma thesis review:"
+  },
+  "DECLARATION": {
+    "HEADDER": "Data for declaration",
+    "STUDENT_DATA": "Student and field of study data (completed automatically)",
+    "TOPIC": "Thesis topic (completed automatically)",
+    "LANGUAGE": "Language of thesis",
+    "SUPERVISOR": "Thesis supervisor (completed automatically)",
+    "PURPOSE": "Purpose and scope of thesis",
+    "DESCRIPTIN": "A short thesis description",
+    "BUTTON_CANCEL": "Cancel",
+    "BUTTON_CONFIRM": "Send declaration",
+    "LANGUAGE_DROPDOWN": "Language"
+  },
+  "THESIS": {
+    "DATA_HEADDER": "My thesis",
+    "SUPERVISOR": "Supervisor: ",
+    "STATUS": "Status: ",
+    "MARK_HEADDER": "Marks",
+    "DATE": "Date: ",
+    "MARK": "Mark: ",
+    "BUTTON_REVIEW": "Review",
+    "EVENT_HEADDER": "Events"
   }
 }

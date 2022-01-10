@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopicApprovalComponent implements OnInit {
 
+  public fields = [[{ name: 'abc' }], [{ name: 'abc1' }]];
+
   constructor() { }
 
   ngOnInit(): void {

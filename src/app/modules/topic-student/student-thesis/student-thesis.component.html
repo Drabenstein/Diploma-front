@@ -1,1 +1,46 @@
-<p>student-thesis works!</p>
+<div class="two-columns">
+  <div class="card">
+    <div>
+      <p-card header="{{ 'THESIS.DATA_HEADDER' | translate }}">
+        {{ thesisTitlePl }}<br />
+        {{ thesisTitleEn }} <br />
+        {{ "THESIS.SUPERVISOR" | translate }} Jan Kowalski <br />
+        <h3>{{ "THESIS.STATUS" | translate }} Oceniona</h3>
+      </p-card>
+    </div>
+    <div class="bottom-card">
+      <p-card header="{{ 'THESIS.MARK_HEADDER' | translate }}">
+        <div *ngFor="let review of reviews">
+          <p-panel header="{{ review.author }}">
+            <div class="two-columns">
+              <div>
+                {{ "THESIS.DATE" | translate }} {{ review.timestump }}<br />
+                {{ "THESIS.MARK" | translate }} {{ review.mark }}
+              </div>
+              <div>
+                <p-button
+                  icon="pi pi-file-o"
+                  iconPos="left"
+                  label="{{ 'THESIS.BUTTON_REVIEW' | translate }}"
+                ></p-button>
+              </div>
+            </div>
+          </p-panel>
+        </div>
+      </p-card>
+    </div>
+  </div>
+  <div class="card">
+    <p-card header="{{ 'THESIS.EVENT_HEADDER' | translate }}">
+      <div *ngFor="let event of events">
+        <div class="two-columns">
+          <div>{{ event.timestump }}<br /></div>
+          <div>
+            {{ event.message }}
+          </div>
+        </div>
+        <p-divider></p-divider>
+      </div>
+    </p-card>
+  </div>
+</div>

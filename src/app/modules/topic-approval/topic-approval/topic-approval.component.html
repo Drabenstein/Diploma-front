@@ -1,1 +1,69 @@
-<p>topic-approval works!</p>
+<br />
+<div *ngFor="let fieldOfStudy of fields">
+  <br />
+  <p-panel header="{{ fieldOfStudy }}" [toggleable]="true">
+    <div class="card">
+      <p-table
+        [value]="fieldOfStudy"
+        [paginator]="true"
+        responsiveLayout="scroll"
+        [rowsPerPageOptions]="[10, 25, 50]"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="polishName">
+              {{ "TOPIC_LIST.TOPIC_NAME_PL" | translate }}
+              <p-sortIcon field="polishName"></p-sortIcon>
+            </th>
+            <th pSortableColumn="englishName">
+              {{ "TOPIC_LIST.TOPIC_NAME_EN" | translate }}
+              <p-sortIcon field="englishName"></p-sortIcon>
+            </th>
+            <th pSortableColumn="supervisor">
+              {{ "TOPIC_LIST.SUPERVISOR" | translate }}
+              <p-sortIcon field="supervisor"></p-sortIcon>
+            </th>
+            <th pSortableColumn="maxRealizations">
+              {{ "TOPIC_LIST.MAX_REALIZATIONS" | translate }}
+              <p-sortIcon field="maxRealizations"></p-sortIcon>
+            </th>
+            <th pSortableColumn="cathedra">
+              {{ "TOPIC_LIST.CATHERDA" | translate }}
+              <p-sortIcon field="cathedra"></p-sortIcon>
+            </th>
+            <th style="width: 5rem">
+              <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-topic>
+          <tr>
+            <td>{{ topic.polishName }}</td>
+            <td>{{ topic.englishName }}</td>
+            <td>{{ topic.supervisor }}</td>
+            <td>{{ topic.maxRealizations }}</td>
+            <td>{{ topic.cathedra }}</td>
+            <td>{{ topic.action }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <br />
+    <div class="bottom-buttons">
+      <p-button
+        icon="pi pi-check"
+        iconPos="left"
+        label="{{ 'TOPIC_LIST.BUTTON_CONFIRM' | translate }}"
+      ></p-button>
+      <button
+        pButton
+        pRipple
+        type="button"
+        icon="pi pi-times"
+        iconPos="left"
+        label="{{ 'TOPIC_LIST.BUTTON_DENY' | translate }}"
+        class="p-button-danger"
+      ></button>
+    </div>
+  </p-panel>
+</div>
