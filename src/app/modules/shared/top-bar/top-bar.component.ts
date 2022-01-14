@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { MenuItem } from 'primeng/api';
 import { LanguageService } from 'src/app/services/language.service';
@@ -16,6 +17,7 @@ export class TopBarComponent implements OnInit {
   private translatedData: Record<string, string> = {};
 
   constructor(
+    public authService: AuthService,
     private router: Router,
     private langService: LanguageService,
     private translateService: TranslateService
@@ -37,8 +39,12 @@ export class TopBarComponent implements OnInit {
       ])
       .subscribe((data: Record<string, string>) => {
         this.translatedData = data;
-        this.loadTopMenuItems();
-        this.loadUserMenuItems();
+        this.authService.isAuthenticated$.subscribe((auth) => {
+          if (auth) {
+            this.loadTopMenuItems();
+            this.loadUserMenuItems();
+          }
+        });
       });
   }
 
@@ -50,7 +56,10 @@ export class TopBarComponent implements OnInit {
       this.langService.setLang('pl');
     }
     window.location.reload();
+  }
 
+  public login(): void {
+    this.authService.loginWithRedirect();
   }
 
   private loadTopMenuItems() {
@@ -114,7 +123,7 @@ export class TopBarComponent implements OnInit {
   }
 
   private logout(): void {
-    throw new Error('Method not implemented.');
+    this.authService.logout({ returnTo: window.location.origin });
   }
   private openMyDetails(): void {
     this.router.navigate(['user']);

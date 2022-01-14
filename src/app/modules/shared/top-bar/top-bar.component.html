@@ -10,7 +10,8 @@
       ></p-button>
     </div>
     <p-tieredMenu #menu [model]="sideItems" [popup]="true"></p-tieredMenu>
-    <button
+    <div *ngIf="authService.isAuthenticated$ | async">
+      <button
       #btn
       type="button"
       pButton
@@ -19,6 +20,18 @@
       class="p-button-raised p-button-rounded top-margin"
       (click)="menu.toggle($event)"
     ></button>
+    </div>
+    <div *ngIf="(authService.isAuthenticated$ | async) === false">
+      <button
+      #btn
+      type="button"
+      pButton
+      label="{{ 'TOP_BAR.LOGIN' | translate }}"
+      icon="pi pi-user"
+      class="p-button-raised p-button-rounded top-margin"
+      (click)="login()"
+    ></button>
+    </div>
   </div>
 </div>
 

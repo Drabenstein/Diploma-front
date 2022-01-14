@@ -11,7 +11,8 @@
     "TOPIC_APPROVAL": "Approve topics",
     "PASSWORD_CHANGE": "Change password",
     "USER_DETAILS": "My details",
-    "LOGOUT": "Logout"
+    "LOGOUT": "Logout",
+    "LOGIN": "Log in"
   },
   "404": {
     "MESSAGE": "Page not found"

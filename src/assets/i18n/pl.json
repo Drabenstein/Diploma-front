@@ -11,7 +11,8 @@
     "TOPIC_APPROVAL": "Zatwierdzanie tematów",
     "PASSWORD_CHANGE": "Zmień hasło",
     "USER_DETAILS": "Moje dane",
-    "LOGOUT": "Wyloguj"
+    "LOGOUT": "Wyloguj",
+    "LOGIN": "Zaloguj"
   },
   "404": {
     "MESSAGE": "Nie znaleziono strony"
