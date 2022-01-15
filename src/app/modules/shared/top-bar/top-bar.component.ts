@@ -13,8 +13,9 @@ import { LanguageService } from 'src/app/services/language.service';
 export class TopBarComponent implements OnInit {
   public items: MenuItem[] = [];
   public sideItems: MenuItem[] = [];
-  public name: string = 'Jan Kowalski';
+  public name: string = '';
   private translatedData: Record<string, string> = {};
+  private roles: string[] = [];
 
   constructor(
     public authService: AuthService,
@@ -41,8 +42,12 @@ export class TopBarComponent implements OnInit {
         this.translatedData = data;
         this.authService.isAuthenticated$.subscribe((auth) => {
           if (auth) {
-            this.loadTopMenuItems();
-            this.loadUserMenuItems();
+            this.authService.user$.subscribe((user) => {
+              this.name = user?.given_name + ` ` + user?.family_name!;
+              this.roles = user?.['https://localhost:5001/api/roles'];
+              this.loadTopMenuItems();
+              this.loadUserMenuItems();
+            });
           }
         });
       });
@@ -63,43 +68,57 @@ export class TopBarComponent implements OnInit {
   }
 
   private loadTopMenuItems() {
-    this.items = [
-      {
+    const userItems: MenuItem[] = [];
+    if (this.roles.includes('student')) {
+      userItems.push({
         label: this.translatedData['TOP_BAR.TOPICS_LIST'],
         icon: 'pi pi-fw pi-list',
         command: () => this.openTopicList(),
-      },
-      {
+      });
+    }
+    if (this.roles.includes('student')) {
+      userItems.push({
         label: this.translatedData['TOP_BAR.MY_THESIS'],
         icon: 'pi pi-fw pi-book',
         command: () => this.openMyThesis(),
-      },
-      {
+      });
+    }
+    if (this.roles.includes('tutor')) {
+      userItems.push({
         label: this.translatedData['TOP_BAR.MY_TOPICS'],
         icon: 'pi pi-fw pi-tag',
         command: () => this.openMyTopics(),
-      },
-      {
+      });
+    }
+    if (this.roles.includes('tutor')) {
+      userItems.push({
         label: this.translatedData['TOP_BAR.MY_CANDIDATES'],
         icon: 'pi pi-fw pi-users',
         command: () => this.openMyStudents(),
-      },
-      {
+      });
+    }
+    if (this.roles.includes('tutor')) {
+      userItems.push({
         label: this.translatedData['TOP_BAR.MY_REVIEWS'],
         icon: 'pi pi-fw pi-briefcase',
         command: () => this.openMyReviews(),
-      },
-      {
+      });
+    }
+    if (this.roles.includes('program-committee')) {
+      userItems.push({
         label: this.translatedData['TOP_BAR.REVIEWERS_ASSIGN'],
         icon: 'pi pi-fw pi-id-card',
         command: () => this.openReviewAssigment(),
-      },
-      {
+      });
+    }
+    if (this.roles.includes('program-committee')) {
+      userItems.push({
         label: this.translatedData['TOP_BAR.TOPIC_APPROVAL'],
         icon: 'pi pi-fw pi-flag',
         command: () => this.openTopicApproval(),
-      },
-    ];
+      });
+    }
+    this.items = userItems;
   }
 
   private loadUserMenuItems() {

@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ForbiddenPageComponent } from './modules/shared/forbidden-page/forbidden-page.component';
 import { HomePageComponent } from './modules/shared/home-page/home-page.component';
 import { NonExistingPageComponent } from './modules/shared/non-existing-page/non-existing-page.component';
+import { UnauthorizedPageComponent } from './modules/shared/unauthorized-page/unauthorized-page.component';
 
 const routes: Routes = [
   {
@@ -49,6 +51,8 @@ const routes: Routes = [
     loadChildren: () => import('./modules/user/user.module').then((m) => m.UserModule),
   },
   { path: '404', component: NonExistingPageComponent },
+  { path: '403', component: ForbiddenPageComponent },
+  { path: '401', component: UnauthorizedPageComponent },
   { path: '', component: HomePageComponent },
   { path: '**', redirectTo: '404' },
 ];

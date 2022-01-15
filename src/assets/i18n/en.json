@@ -14,8 +14,10 @@
     "LOGOUT": "Logout",
     "LOGIN": "Log in"
   },
-  "404": {
-    "MESSAGE": "Page not found"
+  "ERROR": {
+    "401": "Unauthorized",
+    "403": "Forbidden",
+    "404": "Page not found"
   },
   "PASSWORD_CHANGE": {
     "OLD_PASSWORD": "Old password",

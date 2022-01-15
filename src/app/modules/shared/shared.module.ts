@@ -29,9 +29,11 @@ import { TableModule } from 'primeng/table';
 import {DividerModule} from 'primeng/divider';
 import {CardModule} from 'primeng/card'
 import {AccordionModule} from 'primeng/accordion';
+import { ForbiddenPageComponent } from './forbidden-page/forbidden-page.component';
+import { UnauthorizedPageComponent } from './unauthorized-page/unauthorized-page.component';
 
 @NgModule({
-  declarations: [TopBarComponent, HomePageComponent, NonExistingPageComponent],
+  declarations: [TopBarComponent, HomePageComponent, NonExistingPageComponent, ForbiddenPageComponent, UnauthorizedPageComponent],
   imports: [
     CommonModule,
     TranslateModule,
@@ -65,6 +67,8 @@ import {AccordionModule} from 'primeng/accordion';
     TopBarComponent,
     HomePageComponent,
     NonExistingPageComponent,
+    UnauthorizedPageComponent,
+    ForbiddenPageComponent,
     TranslateModule,
     MenubarModule,
     InputTextModule,

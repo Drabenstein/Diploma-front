@@ -14,8 +14,10 @@
     "LOGOUT": "Wyloguj",
     "LOGIN": "Zaloguj"
   },
-  "404": {
-    "MESSAGE": "Nie znaleziono strony"
+  "ERROR": {
+    "401": "Brak autoryzacji",
+    "403": "Dostęp zabroniony",
+    "404": "Nie znaleziono strony"
   },
   "PASSWORD_CHANGE": {
     "OLD_PASSWORD": "Stare hasło",
