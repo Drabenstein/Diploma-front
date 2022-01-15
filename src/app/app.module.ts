@@ -16,6 +16,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ApiModule, BASE_PATH } from './generated';
 import { SharedModule } from './modules/shared/shared.module';
 import { TopicApprovalModule } from './modules/topic-approval/topic-approval.module';
 import { TopicListModule } from './modules/topic-list/topic-list.module';
@@ -42,6 +43,7 @@ import { InterceptorService } from './services/interceptor.service';
     TopicStudentModule,
     TopicSupervisorModule,
     UserModule,
+    ApiModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -58,6 +60,7 @@ import { InterceptorService } from './services/interceptor.service';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+    { provide: BASE_PATH, useValue: environment.API_BASE_PATH },
     HttpClient,
   ],
   bootstrap: [AppComponent],

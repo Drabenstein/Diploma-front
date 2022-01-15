@@ -1,0 +1,15 @@
+.gitignore
+README.md
+api.module.ts
+api/aWS.service.ts
+api/api.ts
+api/theses.service.ts
+configuration.ts
+encoder.ts
+git_push.sh
+index.ts
+model/models.ts
+model/supervisedThesisDto.ts
+model/supervisedThesisDtoFieldOfStudyInitialTableDto.ts
+model/supervisedThesisDtoPagedResultDto.ts
+variables.ts

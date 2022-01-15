@@ -110,7 +110,14 @@
     "MARK_HEADDER": "Oceny",
     "DATE": "Data wystawienia: ",
     "MARK": "Ocena: ",
+    "EVENT_HEADDER": "Zdarzenia",
     "BUTTON_REVIEW": "Recenzja",
-    "EVENT_HEADDER": "Zdarzenia"
+    "BUTTON_UPLOAD": "Wgraj pracę",
+    "BUTTON_DOWNLOAD": "Pobierz pracę",
+    "BUTTON_DELETE": "Usuń pracę",
+    "BUTTON_TRANSLATE": "Tłumaczenie",
+    "BUTTON_SENTIMENT": "Wykrycie sentymentu",
+    "THESIS_AWS": "Usługi uczenia maszynowego",
+    "THESIS_FILE": "Zarządzanie plikiem pracy"
   }
 }

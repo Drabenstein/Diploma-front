@@ -30,7 +30,55 @@
       </p-card>
     </div>
   </div>
+
   <div class="card">
+    <p-card header="{{ 'THESIS.FILE' | translate }}">
+      <div class="two-columns">
+        <p-fileUpload
+          mode="basic"
+          [customUpload]="true"
+          [multiple]="false"
+          (uploadHandler)="onUploadThesis($event)"
+          [auto]="true"
+          [maxFileSize]="20000000"
+          chooseLabel="{{ 'THESIS.BUTTON_UPLOAD' | translate }}"
+        ></p-fileUpload>
+        <p-button
+          iconPos="left"
+          label="{{ 'THESIS.BUTTON_DOWNLOAD' | translate }}"
+          (click)="onDownloadThesis()"
+        ></p-button>
+        <p-button
+          iconPos="left"
+          label="{{ 'THESIS.BUTTON_DELETE' | translate }}"
+          (click)="onDeleteThesis()"
+        ></p-button>
+      </div>
+    </p-card>
+    <br />
+    <p-card header="{{ 'THESIS.AWS' | translate }}">
+      <textarea
+        [(ngModel)]="abstract"
+        pInputTextarea
+        rows="8"
+        cols="200"
+      ></textarea>
+      <div class="two-columns">
+        <p-button
+          iconPos="left"
+          label="{{ 'THESIS.BUTTON_TRANSLATE' | translate }}"
+          (click)="onAbstractTranslate()"
+        ></p-button>
+        <p-button
+          iconPos="left"
+          label="{{ 'THESIS.BUTTON_SENTIMENT' | translate }}"
+          (click)="onAbstractSentiment()"
+        ></p-button>
+      </div>
+      <br />
+      <span>{{ abstractResult }}</span>
+    </p-card>
+    <!--
     <p-card header="{{ 'THESIS.EVENT_HEADDER' | translate }}">
       <div *ngFor="let event of events">
         <div class="two-columns">
@@ -42,5 +90,6 @@
         <p-divider></p-divider>
       </div>
     </p-card>
+        -->
   </div>
 </div>

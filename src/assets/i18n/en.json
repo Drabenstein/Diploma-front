@@ -110,7 +110,14 @@
     "MARK_HEADDER": "Marks",
     "DATE": "Date: ",
     "MARK": "Mark: ",
+    "EVENT_HEADDER": "Events",
     "BUTTON_REVIEW": "Review",
-    "EVENT_HEADDER": "Events"
+    "BUTTON_UPLOAD": "Upload thesis",
+    "BUTTON_DOWNLOAD": "Download thesis",
+    "BUTTON_DELETE": "Delete thesis",
+    "BUTTON_TRANSLATE": "Translate",
+    "BUTTON_SENTIMENT": "Detect sentiment",
+    "THESIS_AWS": "Machine learning services",
+    "THESIS_FILE": "Thesis file management"
   }
 }

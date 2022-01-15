@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NonExistingPageComponent } from './non-existing-page/non-existing-page.component';
+import { ForbiddenPageComponent } from './forbidden-page/forbidden-page.component';
+import { UnauthorizedPageComponent } from './unauthorized-page/unauthorized-page.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from 'src/app/services/language.service';
 import { MenubarModule } from 'primeng/menubar';
@@ -26,14 +28,19 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CascadeSelectModule } from 'primeng/cascadeselect';
 import { TreeSelectModule } from 'primeng/treeselect';
 import { TableModule } from 'primeng/table';
-import {DividerModule} from 'primeng/divider';
-import {CardModule} from 'primeng/card'
-import {AccordionModule} from 'primeng/accordion';
-import { ForbiddenPageComponent } from './forbidden-page/forbidden-page.component';
-import { UnauthorizedPageComponent } from './unauthorized-page/unauthorized-page.component';
+import { DividerModule } from 'primeng/divider';
+import { CardModule } from 'primeng/card';
+import { AccordionModule } from 'primeng/accordion';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
-  declarations: [TopBarComponent, HomePageComponent, NonExistingPageComponent, ForbiddenPageComponent, UnauthorizedPageComponent],
+  declarations: [
+    TopBarComponent,
+    HomePageComponent,
+    NonExistingPageComponent,
+    ForbiddenPageComponent,
+    UnauthorizedPageComponent,
+  ],
   imports: [
     CommonModule,
     TranslateModule,
@@ -61,7 +68,8 @@ import { UnauthorizedPageComponent } from './unauthorized-page/unauthorized-page
     TableModule,
     DividerModule,
     CardModule,
-    AccordionModule
+    AccordionModule,
+    FileUploadModule,
   ],
   exports: [
     TopBarComponent,
@@ -94,7 +102,8 @@ import { UnauthorizedPageComponent } from './unauthorized-page/unauthorized-page
     TableModule,
     DividerModule,
     CardModule,
-    AccordionModule
+    AccordionModule,
+    FileUploadModule,
   ],
 })
 export class SharedModule {
