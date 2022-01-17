@@ -5,32 +5,39 @@
   <h2>{{ "TOPIC_APPLICATION.HEADDER_REALIZATION" | translate }}</h2>
 </div>
 <br />
-<b>Jan Kowalski 2222222</b><br />
-<span>Informatyka stosowana</span>
+<b> {{ application.studentFullName }} {{ application.studentIndex }} </b><br />
+<span>{{ application.fieldOfStudyName }}</span>
+<span
+  >{{ application.fieldOfStudyDegree }},
+  {{ application.fieldOfStudyStudyForm }}</span
+>
+<span>{{ application.yearOfDefence }}</span>
 <br />
 <br />
-{{ "TOPIC_APPLICATION.MAX_REALIZATIONS" | translate }} 3
+{{ "TOPIC_APPLICATION.MAX_REALIZATIONS" | translate }}
+{{ application.topicMaxRealizationNumber }}
 <div *ngIf="true">
-  {{ "TOPIC_APPLICATION.CURRENT_REALIZATIONS" | translate }}: 2
+  {{ "TOPIC_APPLICATION.CURRENT_REALIZATIONS" | translate }}:
+  {{ application.topicCurrentRealizations }}
 </div>
 <br />
 <p-card>
   <div>
     <h2>{{ "TOPIC_APPLICATION.TOPIC_NAME_PL" | translate }}</h2>
     <p-divider></p-divider>
-    Nazwa po angielsku
+    {{ application.topicName }}
   </div>
   <br /><br />
   <div>
     <h2>{{ "TOPIC_APPLICATION.TOPIC_NAME_EN" | translate }}</h2>
     <p-divider></p-divider>
-    Nazwa po polsku
+    {{ application.topicEnglishName }}
   </div>
   <br /><br />
   <div>
     <h2>{{ "TOPIC_APPLICATION.MESSAGE" | translate }}</h2>
     <p-divider></p-divider>
-    Wiadomość
+    {{ application.message }}
   </div>
   <br />
 </p-card>
@@ -40,6 +47,7 @@
     icon="pi pi-check"
     iconPos="left"
     label="{{ 'TOPIC_APPLICATION.BUTTON_APPLY' | translate }}"
+    (click)="onApply()"
   ></p-button>
   <button
     pButton
@@ -48,6 +56,7 @@
     iconPos="left"
     label="{{ 'TOPIC_APPLICATION.BUTTON_DENY' | translate }}"
     class="p-button-danger"
+    (click)="onDeny()"
   ></button>
   <button
     pButton

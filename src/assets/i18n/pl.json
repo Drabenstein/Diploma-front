@@ -116,8 +116,10 @@
     "BUTTON_DOWNLOAD": "Pobierz pracę",
     "BUTTON_DELETE": "Usuń pracę",
     "BUTTON_TRANSLATE": "Tłumaczenie",
-    "BUTTON_SENTIMENT": "Wykrycie sentymentu",
-    "THESIS_AWS": "Usługi uczenia maszynowego",
-    "THESIS_FILE": "Zarządzanie plikiem pracy"
+    "BUTTON_CONFIRM": "Potwierdź",
+    "BUTTON_DECLARATION": "Deklaracja",
+    "AWS": "Usługi uczenia maszynowego",
+    "FILE": "Zarządzanie plikiem pracy",
+    "MY_ACCEPTED_TOPICS": "Moje zaakceptowane tematy"
   }
 }

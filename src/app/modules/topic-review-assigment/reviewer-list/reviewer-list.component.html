@@ -34,7 +34,7 @@
           [(ngModel)]="selectedAreas"
           display="chip"
           optionLabel="name"
-          optionValue="code"
+          optionValue="id"
         ></p-multiSelect>
         <label for="areas">{{
           "USER_DETAILS.AREAS_OF_INTEREST" | translate
@@ -45,6 +45,7 @@
       icon="pi pi-search"
       iconPos="left"
       label="{{ 'USER_DETAILS.BUTTON_SEARCH' | translate }}"
+      (click)="searchForReviewers()"
     ></p-button>
     <div></div>
     <div></div>
@@ -53,13 +54,13 @@
 </form>
 <h2>Pracownicy</h2>
 <div *ngFor="let worker of workers">
-  {{ worker.title }} {{ worker.name }} {{ worker.faculty }},
-  {{ worker.cathedra }} {{ worker.title }} {{ worker.name }}
+  {{ worker.title }} {{ worker.employee }} <br />
+  {{ worker.department }} <br />
   {{ worker.position }}
-  {{ "USER_DETAILS.ACTUAL_REVIEWS" | translate }} {{ worker.actualReviews }}
+  {{ "USER_DETAILS.ACTUAL_REVIEWS" | translate }} {{ worker.reviewsNumber }}
   {{ "USER_DETAILS.AREAS" | translate }}:
-  <div *ngFor="let area of worker.areas">
-    {{ area }}
+  <div *ngFor="let area of worker.areasOfInterestIds">
+    {{ getAreaName(area) }}
   </div>
 </div>
 <br />

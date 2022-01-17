@@ -7,8 +7,11 @@
         <p-dropdown
           formControlName="fieldsOfStudy"
           [options]="fieldsOfStudy"
-          [(ngModel)]="selectedFieldOfStudy"
+          [(ngModel)]="createTopicDto.fieldOfStudyId"
+          [filter]="true"
+          filterBy="name"
           optionLabel="name"
+          optionValue="id"
         ></p-dropdown>
         <label for="fieldsOfStudy">{{
           "TOPIC_PROPOSAL.FIELD_OF_STUDY" | translate
@@ -20,10 +23,11 @@
         <p-dropdown
           formControlName="years"
           [options]="years"
-          [(ngModel)]="year"
+          [(ngModel)]="createTopicDto.yearOfDefence"
           optionLabel="name"
           [filter]="true"
           filterBy="name"
+          optionValue="name"
         >
         </p-dropdown>
         <label for="year">{{
@@ -35,7 +39,7 @@
       <span class="p-float-label">
         <p-inputNumber
           formControlName="maxRealiztions"
-          [(ngModel)]="maxRealiztions"
+          [(ngModel)]="createTopicDto.maxNoRealizations"
           [min]="1"
           [max]="4"
         ></p-inputNumber>
@@ -51,6 +55,7 @@
       <h2>{{ "TOPIC_PROPOSAL.TOPIC_NAME_PL" | translate }}</h2>
       <p-divider></p-divider>
       <textarea
+        [(ngModel)]="createTopicDto.polishName"
         formControlName="topicNamePl"
         pInputTextarea
         rows="2"
@@ -62,20 +67,10 @@
       <h2>{{ "TOPIC_PROPOSAL.TOPIC_NAME_EN" | translate }}</h2>
       <p-divider></p-divider>
       <textarea
+        [(ngModel)]="createTopicDto.englishName"
         formControlName="topicNameEn"
         pInputTextarea
         rows="2"
-        cols="150"
-      ></textarea>
-    </div>
-    <br /><br />
-    <div>
-      <h2>{{ "TOPIC_PROPOSAL.MESSAGE" | translate }}</h2>
-      <p-divider></p-divider>
-      <textarea
-        formControlName="message"
-        pInputTextarea
-        rows="5"
         cols="150"
       ></textarea>
     </div>
@@ -86,6 +81,7 @@
         icon="pi pi-check"
         iconPos="left"
         label="{{ 'TOPIC_PROPOSAL.BUTTON_ADD' | translate }}"
+        (click)="onSubmit()"
       ></p-button>
       <button
         pButton

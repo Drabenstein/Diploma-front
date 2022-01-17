@@ -6,60 +6,66 @@
   (click)="onProposeTopic()"
 ></p-button>
 <br />
-<div *ngFor="let fieldOfStudy of fields">
+<div *ngFor="let fieldOfStudy of fieldsOfStudy">
   <br />
-    <p-panel header="{{ fieldOfStudy }}" [toggleable]="true">
-      <div class="card">
-        <p-table
-          [value]="fieldOfStudy"
-          [paginator]="true"
-          responsiveLayout="scroll"
-          [rowsPerPageOptions]="[10, 25, 50]"
-        >
-          <ng-template pTemplate="header">
-            <tr>
-              <th pSortableColumn="polishName">
-                {{ "TOPIC_LIST.TOPIC_NAME_PL" | translate }}
-                <p-sortIcon field="polishName"></p-sortIcon>
-              </th>
-              <th pSortableColumn="englishName">
-                {{ "TOPIC_LIST.TOPIC_NAME_EN" | translate }}
-                <p-sortIcon field="englishName"></p-sortIcon>
-              </th>
-              <th pSortableColumn="supervisor">
-                {{ "TOPIC_LIST.SUPERVISOR" | translate }}
-                <p-sortIcon field="supervisor"></p-sortIcon>
-              </th>
-              <th pSortableColumn="reviever">
-                {{ "TOPIC_LIST.REVIEWER" | translate }}
-                <p-sortIcon field="reviever"></p-sortIcon>
-              </th>
-              <th pSortableColumn="status">
-                {{ "TOPIC_LIST.STATUS" | translate }}
-                <p-sortIcon field="status"></p-sortIcon>
-              </th>
-              <th pSortableColumn="cathedra">
-                {{ "TOPIC_LIST.CATHERDA" | translate }}
-                <p-sortIcon field="cathedra"></p-sortIcon>
-              </th>
-              <th>
-                {{ "TOPIC_LIST.ACTION" | translate }}
-                <p-sortIcon field="action"></p-sortIcon>
-              </th>
-            </tr>
-          </ng-template>
-          <ng-template pTemplate="body" let-topic>
-            <tr>
-              <td>{{ topic.polishName }}</td>
-              <td>{{ topic.englishName }}</td>
-              <td>{{ topic.supervisor }}</td>
-              <td>{{ topic.reviever }}</td>
-              <td>{{ topic.status }}</td>
-              <td>{{ topic.cathedra }}</td>
-              <td>{{ topic.action }}</td>
-            </tr>
-          </ng-template>
-        </p-table>
-      </div>
-    </p-panel>
+  <p-panel header="{{ fieldOfStudy }}" [toggleable]="true">
+    <div class="card">
+      <p-table
+        [value]="fieldOfStudy.data!.results!"
+        [paginator]="true"
+        responsiveLayout="scroll"
+        [lazy]="true"
+        (onLazyLoad)="loadTopics($event, fieldOfStudy.id!)"
+        [totalRecords]="fieldOfStudy.data!.totalItems!"
+        [loading]="loading[fieldOfStudy.id!]"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        dataKey="id"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th>
+              {{ "TOPIC_LIST.TOPIC_NAME_PL" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.TOPIC_NAME_EN" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.SUPERVISOR" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.REVIEWER" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.STATUS" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.CATHERDA" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.ACTION" | translate }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-topic>
+          <tr>
+            <td>{{ topic.topicName }}</td>
+            <td>{{ topic.englishTopicName }}</td>
+            <td>{{ topic.tutorName }}</td>
+            <td>{{ topic.reviewerName }}</td>
+            <td>{{ topic.status }}</td>
+            <td>{{ topic.department }}</td>
+            <td style="text-align: center">
+              <button
+                pButton
+                type="button"
+                class="p-button-secondary"
+                icon="pi pi-cog"
+                (click)="onAddApplication(topic.id, topic.topicName, topic.englishTopicName, topic.tutorName)"
+              ></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </p-panel>
 </div>

@@ -3,7 +3,14 @@ import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
 import { AWSService } from './api/aWS.service';
+import { ApplicationsService } from './api/applications.service';
+import { AreasOfInterestService } from './api/areasOfInterest.service';
+import { DeclarationsService } from './api/declarations.service';
+import { FieldsOfStudyService } from './api/fieldsOfStudy.service';
+import { ReviewersService } from './api/reviewers.service';
 import { ThesesService } from './api/theses.service';
+import { TopicsService } from './api/topics.service';
+import { UsersService } from './api/users.service';
 
 @NgModule({
   imports:      [],

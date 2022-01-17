@@ -4,11 +4,11 @@
       header="{{ 'DECLARATION.STUDENT_DATA' | translate }}"
       [toggleable]="true"
     >
-      {{ thesisTitlePl }}
+      {{ declarationData.studentName }}
     </p-panel>
     <p-panel header="{{ 'DECLARATION.TOPIC' | translate }}" [toggleable]="true">
-      {{ thesisTitlePl }} <br />
-      {{ thesisTitleEn }}
+      {{ declarationData.name }} <br />
+      {{ declarationData.englishName }}
     </p-panel>
     <p-panel
       header="{{ 'DECLARATION.LANGUAGE' | translate }}"
@@ -20,13 +20,14 @@
           <p-dropdown
             formControlName="language"
             [options]="languages"
-            [(ngModel)]="selectedLanguage"
+            [(ngModel)]="declaration.language"
             optionLabel="name"
-            [filter]="true"
-            filterBy="name"
+            optionValue="name"
           >
           </p-dropdown>
-          <label for="language">{{ "DECLARATION.LANGUAGE_DROPDOWN" | translate }}</label>
+          <label for="language">{{
+            "DECLARATION.LANGUAGE_DROPDOWN" | translate
+          }}</label>
         </span>
       </div>
     </p-panel>
@@ -34,7 +35,7 @@
       header="{{ 'DECLARATION.SUPERVISOR' | translate }}"
       [toggleable]="true"
     >
-      {{ thesisSupervisor }}
+      {{ declarationData.supervisorName }}
     </p-panel>
     <p-panel
       header="{{ 'DECLARATION.PURPOSE' | translate }}"
@@ -43,7 +44,7 @@
       <div>
         <textarea
           formControlName="purpose"
-          [(ngModel)]="purpose"
+          [(ngModel)]="declaration.objectiveOfWork"
           pInputTextarea
           rows="5"
           cols="150"
@@ -57,7 +58,7 @@
       <div>
         <textarea
           formControlName="description"
-          [(ngModel)]="description"
+          [(ngModel)]="declaration.operatingRange"
           pInputTextarea
           rows="5"
           cols="150"
@@ -71,6 +72,7 @@
         icon="pi pi-check"
         iconPos="left"
         label="{{ 'DECLARATION.BUTTON_CONFIRM' | translate }}"
+        (click)="onSend()"
       ></p-button>
       <button
         pButton

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { MenuItem } from 'primeng/api';
+import { UsersService } from 'src/app/generated';
 import { LanguageService } from 'src/app/services/language.service';
 
 @Component({
@@ -19,6 +20,7 @@ export class TopBarComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
+    private userService: UsersService,
     private router: Router,
     private langService: LanguageService,
     private translateService: TranslateService
@@ -64,7 +66,9 @@ export class TopBarComponent implements OnInit {
   }
 
   public login(): void {
-    this.authService.loginWithRedirect();
+    this.authService.loginWithRedirect().subscribe((_) => {
+      this.userService.apiUsersFetchDataPost().subscribe();
+    });
   }
 
   private loadTopMenuItems() {

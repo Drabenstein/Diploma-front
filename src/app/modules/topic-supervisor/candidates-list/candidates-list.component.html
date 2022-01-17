@@ -6,50 +6,61 @@
   (click)="onApplicationsCheck()"
 ></p-button>
 <br />
-<div *ngFor="let fieldOfStudy of fields">
+<div *ngFor="let fieldOfStudy of fieldsOfStudy">
   <br />
-  <p-panel header="{{ fieldOfStudy }}" [toggleable]="true">
-      <div class="card">
-        <p-table
-          [value]="fieldOfStudy"
-          [paginator]="true"
-          responsiveLayout="scroll"
-          [rowsPerPageOptions]="[10, 25, 50]"
-        >
-          <ng-template pTemplate="header">
-            <tr>
-              <th pSortableColumn="polishName">
-                {{ "TOPIC_LIST.TOPIC_NAME_PL" | translate }}
-                <p-sortIcon field="polishName"></p-sortIcon>
-              </th>
-              <th pSortableColumn="englishName">
-                {{ "TOPIC_LIST.TOPIC_NAME_EN" | translate }}
-                <p-sortIcon field="englishName"></p-sortIcon>
-              </th>
-              <th pSortableColumn="student">
-                {{ "TOPIC_LIST.STUDENT" | translate }}
-                <p-sortIcon field="supervisor"></p-sortIcon>
-              </th>
-              <th pSortableColumn="reviever">
-                {{ "TOPIC_LIST.REVIEWER" | translate }}
-                <p-sortIcon field="reviever"></p-sortIcon>
-              </th>
-              <th>
-                {{ "TOPIC_LIST.ACTION" | translate }}
-                <p-sortIcon field="action"></p-sortIcon>
-              </th>
-            </tr>
-          </ng-template>
-          <ng-template pTemplate="body" let-topic>
-            <tr>
-              <td>{{ topic.polishName }}</td>
-              <td>{{ topic.englishName }}</td>
-              <td>{{ topic.student }}</td>
-              <td>{{ topic.reviever }}</td>
-              <td>{{ topic.action }}</td>
-            </tr>
-          </ng-template>
-        </p-table>
-      </div>
-    </p-panel>
+  <p-panel header="{{ fieldOfStudy.name }}" [toggleable]="true">
+    <div class="card">
+      <p-table
+        [value]="fieldOfStudy.data!.results!"
+        [paginator]="true"
+        responsiveLayout="scroll"
+        [lazy]="true"
+        (onLazyLoad)="loadCandidates($event, fieldOfStudy.id!)"
+        [totalRecords]="fieldOfStudy.data!.totalItems!"
+        [loading]="loading[fieldOfStudy.id!]"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        dataKey="id"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th>
+              {{ "TOPIC_LIST.TOPIC_NAME_PL" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.TOPIC_NAME_EN" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.STUDENT" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.REVIEWER" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.ACTION" | translate }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-candidate>
+          <tr>
+            <td>{{ candidate.name }}</td>
+            <td>{{ candidate.englishName }}</td>
+            <td>{{ candidate.studentFullName }}</td>
+            <td>
+              {{ candidate.reviewerAcademicDegree }}
+              {{ candidate.reviewerFullName }}
+            </td>
+            <td style="text-align: center">
+              <button
+                pButton
+                type="button"
+                class="p-button-secondary"
+                icon="pi pi-cog"
+                (click)="openCandidateDetails(candidate.id)"
+              ></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </p-panel>
 </div>

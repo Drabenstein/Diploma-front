@@ -116,8 +116,10 @@
     "BUTTON_DOWNLOAD": "Download thesis",
     "BUTTON_DELETE": "Delete thesis",
     "BUTTON_TRANSLATE": "Translate",
-    "BUTTON_SENTIMENT": "Detect sentiment",
-    "THESIS_AWS": "Machine learning services",
-    "THESIS_FILE": "Thesis file management"
+    "BUTTON_CONFIRM": "Confirm",
+    "BUTTON_DECLARATION": "Declaration",
+    "AWS": "Machine learning services",
+    "FILE": "Thesis file management",
+    "MY_ACCEPTED_TOPICS": "My accepted topics"
   }
 }

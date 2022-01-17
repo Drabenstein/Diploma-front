@@ -1,5 +1,13 @@
 import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
-import { AWSService } from 'src/app/generated';
+import { Router } from '@angular/router';
+import {
+  ApplicationsService,
+  AWSService,
+  ThesesService,
+  TopicsService,
+} from 'src/app/generated';
+import { ApprovedTopicDto } from 'src/app/generated/model/approvedTopicDto';
+import { MyThesisDto } from 'src/app/generated/model/myThesisDto';
 
 @Component({
   selector: 'app-student-thesis',
@@ -9,51 +17,33 @@ import { AWSService } from 'src/app/generated';
 export class StudentThesisComponent implements OnInit {
   public abstract: string = '';
   public abstractResult: string = '';
-  public thesisTitlePl = 'Temat pracy dyplomowej po polsku';
-  public thesisTitleEn = 'Temat pracy dyplomowej po angielsku';
-  public reviews: any[] = [
-    { author: 'Jan Kowalski', timestump: '11.11.2021 11:11:11', mark: '5.0' },
-    {
-      author: 'Krzysztof Iksiński',
-      timestump: '11.11.2021 11:11:11',
-      mark: '5.0',
-    },
-    { author: 'Janusz Nowak', timestump: '11.11.2021 11:11:11', mark: '5.0' },
-  ];
-  public events: any[] = [
-    {
-      author: 'Jan Kowalski',
-      timestump: '11.11.2021 11:11:11',
-      message: 'Wiadomość super zaawansowana',
-    },
-    {
-      author: 'Krzysztof Iksiński',
-      timestump: '11.11.2021 11:11:11',
-      message: 'Wiadomość super zaawansowana',
-    },
-    {
-      author: 'Janusz Nowak',
-      timestump: '11.11.2021 11:11:11',
-      message: 'Wiadomość super zaawansowana',
-    },
-  ];
+  public myThesis: MyThesisDto = null!;
+  public myAcceptedTopics: ApprovedTopicDto[] = [];
+  public thesisId: number = null!;
+  constructor(
+    private awsService: AWSService,
+    private topicService: TopicsService,
+    private thesisService: ThesesService,
+    private applicationService: ApplicationsService,
+    private router: Router
+  ) {}
 
-  private thesisId: number = 0;
-  constructor(private awsService: AWSService) {}
+  ngOnInit(): void {
+    this.topicService.apiTopicsMyAcceptedTopicsGet().subscribe((data) => {
+      this.myAcceptedTopics = data;
+    });
 
-  ngOnInit(): void {}
-
-  public onAbstractTranslate(): void {
-    this.abstractResult =
-      'ASDSDAS ADASDSA DASDASD SADDDDDDDDDDDD DDDDDDDDD DDDDDDDDD DDDDDDDDD DDDD DDDDDDDDDDDD DDDDDDDDDD DDDDDDDDDDDDDDDDD DDDDDDDDD DDDDD  DDDDD';
-    this.awsService.apiAwsTranslateGet(this.abstract).subscribe((text) => {
-      this.abstractResult = text;
+    this.thesisService.apiThesesGetThesisIdGet().subscribe((id) => {
+      this.thesisId = id;
+      if (this.thesisId !== 0) {
+        this.thesisService.apiThesesMyThesisGet().subscribe((thesis) => {
+          this.myThesis = thesis;
+        });
+      }
     });
   }
 
-  public onAbstractSentiment(): void {
-    this.abstractResult =
-      'ASDSDASADASDSADASDASDSADDDDDDD DDDDDDDDDDDDDDD DDDDDDDDDDDD  DDasdsadsadasdasdDDDDDDDDDDDD DDDDDDDDDDDDDDDDDDDDDDDD DDDDDDDDDDD DDDDDDDDDDDDDDDDDD';
+  public onAbstractTranslate(): void {
     this.awsService.apiAwsTranslateGet(this.abstract).subscribe((text) => {
       this.abstractResult = text;
     });
@@ -82,5 +72,17 @@ export class StudentThesisComponent implements OnInit {
 
   public onDeleteThesis(): void {
     this.awsService.apiAwsDeleteThesisDelete(this.thesisId).subscribe();
+  }
+
+  public onConfirmTopic(applicationId: number): void {
+    this.applicationService
+      .apiApplicationsApplicationIdConfirmPost(applicationId)
+      .subscribe((_) => {
+        window.location.reload;
+      });
+  }
+
+  public onSendDeclaration() {
+    this.router.navigate(['thesis', 'declaration', {thesisId: this.thesisId}]);
   }
 }
