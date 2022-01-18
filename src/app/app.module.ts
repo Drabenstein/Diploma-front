@@ -53,7 +53,8 @@ import { InterceptorService } from './services/interceptor.service';
     }),
     AuthModule.forRoot({
       domain: environment.auth.domain,
-      clientId: environment.auth.clientId
+      audience: environment.auth.audience,
+      clientId: environment.auth.clientId,
     })
 
   ],
