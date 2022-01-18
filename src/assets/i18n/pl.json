@@ -89,7 +89,8 @@
     "DESIGN": "Część analityczno projektowa",
     "SOURCES": "Źródła i redakcja pracy",
     "ASSESMENTS": "Ocena pracy dyplomowej",
-    "THESIS": "Recenzja pracy dyplomowej:"
+    "THESIS": "Recenzja pracy dyplomowej:",
+    "IS_DONE": "Czy spełniono wymagania?"
   },
   "DECLARATION": {
     "HEADDER": "Dane do deklaracji",

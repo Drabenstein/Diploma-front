@@ -1,56 +1,70 @@
 <br />
 <h2>{{ "TOPIC_LIST.MY_REVIEWS" | translate }}</h2>
-<div *ngFor="let fieldOfStudy of fields">
+<div *ngFor="let fieldOfStudy of fieldsOfStudy">
   <br />
   <p-panel header="{{ fieldOfStudy }}" [toggleable]="true">
     <div class="card">
       <p-table
-        [value]="fieldOfStudy"
+        [value]="fieldOfStudy.data!.results!"
         [paginator]="true"
         responsiveLayout="scroll"
         [rowsPerPageOptions]="[10, 25, 50]"
+        [lazy]="true"
+        (onLazyLoad)="loadTopics($event, fieldOfStudy.id!)"
+        [totalRecords]="fieldOfStudy.data!.totalItems!"
+        [loading]="loading[fieldOfStudy.id!]"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        dataKey="id"
       >
         <ng-template pTemplate="header">
           <tr>
-            <th pSortableColumn="polishName">
+            <th>
               {{ "TOPIC_LIST.TOPIC_NAME_PL" | translate }}
-              <p-sortIcon field="polishName"></p-sortIcon>
             </th>
-            <th pSortableColumn="englishName">
+            <th>
               {{ "TOPIC_LIST.TOPIC_NAME_EN" | translate }}
-              <p-sortIcon field="englishName"></p-sortIcon>
             </th>
-            <th pSortableColumn="supervisor">
+            <th>
               {{ "TOPIC_LIST.SUPERVISOR" | translate }}
-              <p-sortIcon field="supervisor"></p-sortIcon>
             </th>
-            <th pSortableColumn="student">
+            <th>
               {{ "TOPIC_LIST.REVIEWER" | translate }}
-              <p-sortIcon field="student"></p-sortIcon>
             </th>
-            <th pSortableColumn="status">
+            <th>
               {{ "TOPIC_LIST.STATUS" | translate }}
-              <p-sortIcon field="status"></p-sortIcon>
             </th>
-            <th pSortableColumn="cathedra">
+            <th>
               {{ "TOPIC_LIST.CATHERDA" | translate }}
-              <p-sortIcon field="cathedra"></p-sortIcon>
             </th>
             <th>
               {{ "TOPIC_LIST.ACTION" | translate }}
-              <p-sortIcon field="action"></p-sortIcon>
             </th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-topic>
           <tr>
-            <td>{{ topic.polishName }}</td>
-            <td>{{ topic.englishName }}</td>
+            <td>{{ topic.title }}</td>
+            <td>{{ topic.englishTitle }}</td>
             <td>{{ topic.supervisor }}</td>
-            <td>{{ topic.student }}</td>
+            <td>{{ topic.realizer }}</td>
             <td>{{ topic.status }}</td>
-            <td>{{ topic.cathedra }}</td>
-            <td>{{ topic.action }}</td>
+            <td>{{ topic.department }}</td>
+            <td>
+              <button
+                pButton
+                type="button"
+                class="p-button-secondary"
+                icon="pi pi-cog"
+                (click)="onAddReview(topic.thesisId)"
+              ></button>
+              <button
+                pButton
+                type="button"
+                class="p-button-secondary"
+                icon="pi pi-cog"
+                (click)="onDownloadThesis(topic.thesisId)"
+              ></button>
+            </td>
           </tr>
         </ng-template>
       </p-table>

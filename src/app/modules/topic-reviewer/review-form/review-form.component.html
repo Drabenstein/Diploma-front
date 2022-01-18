@@ -1,8 +1,4 @@
-<p-card
-  header="{{ 'REVIEW.THESIS' | translate }} {{ thesisTitle }},  {{
-    thesisStudent
-  }}"
->
+<p-card header="{{ 'REVIEW.THESIS' | translate }} {{ thesis.topic }}">
   <form [formGroup]="formGroup">
     <p-panel header="{{ 'REVIEW.PURPOSE' | translate }}" [toggleable]="true">
       <div>
@@ -23,11 +19,10 @@
             [options]="purposeNumber"
             [(ngModel)]="selectedPurposeNumber"
             optionLabel="name"
-            [filter]="true"
-            filterBy="name"
+            optionValue="name"
           >
           </p-dropdown>
-          <label for="purposeNumber">{{ "REVIEW.PURPOSE" | translate }}</label>
+          <label for="purposeNumber">{{ "REVIEW.IS_DONE" | translate }}</label>
         </span>
       </div>
     </p-panel>
@@ -50,12 +45,11 @@
             [options]="structureNumber"
             [(ngModel)]="selectedStructureNumber"
             optionLabel="name"
-            [filter]="true"
-            filterBy="name"
+            optionValue="name"
           >
           </p-dropdown>
           <label for="structureNumber">{{
-            "REVIEW.STRUCTURE" | translate
+            "REVIEW.IS_DONE" | translate
           }}</label>
         </span>
       </div>
@@ -79,11 +73,10 @@
             [options]="designNumber"
             [(ngModel)]="selectedDesignNumber"
             optionLabel="name"
-            [filter]="true"
-            filterBy="name"
+            optionValue="name"
           >
           </p-dropdown>
-          <label for="designNumber">{{ "REVIEW.DESIGN" | translate }}</label>
+          <label for="designNumber">{{ "REVIEW.IS_DONE" | translate }}</label>
         </span>
       </div>
     </p-panel>
@@ -106,11 +99,10 @@
             [options]="sourcesNumber"
             [(ngModel)]="selectedSourcesNumber"
             optionLabel="name"
-            [filter]="true"
-            filterBy="name"
+            optionValue="name"
           >
           </p-dropdown>
-          <label for="sourcesNumber">{{ "REVIEW.SOURCES" | translate }}</label>
+          <label for="sourcesNumber">{{ "REVIEW.IS_DONE" | translate }}</label>
         </span>
       </div>
     </p-panel>
@@ -123,8 +115,7 @@
             [options]="assesment"
             [(ngModel)]="selectedAssesment"
             optionLabel="name"
-            [filter]="true"
-            filterBy="name"
+            optionValue="name"
           >
           </p-dropdown>
           <label for="assesment">{{ "REVIEW.ASSESMENTS" | translate }}</label>

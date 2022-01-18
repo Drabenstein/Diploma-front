@@ -24,7 +24,7 @@ export class SupervisorTopicListComponent implements OnInit {
     });
   }
 
-  public loadTopics(event: LazyLoadEvent, id: number) {
+  public loadTopics(event: LazyLoadEvent, id: number): void {
     this.loading[id] = true;
     setTimeout(() => {
       const fieldOfStudyIndex = this.fieldsOfStudy.findIndex(

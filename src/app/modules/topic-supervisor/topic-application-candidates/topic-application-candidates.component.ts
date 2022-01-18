@@ -30,7 +30,7 @@ export class TopicApplicationCandidatesComponent implements OnInit {
       });
   }
 
-  public loadCandidates(event: LazyLoadEvent, id: number) {
+  public loadCandidates(event: LazyLoadEvent, id: number): void {
     this.loading[id] = true;
     setTimeout(() => {
       const fieldOfStudyIndex = this.fieldsOfStudy.findIndex(
@@ -51,11 +51,11 @@ export class TopicApplicationCandidatesComponent implements OnInit {
     }, 1000);
   }
 
-  public openApplicationDetails(applicationId: number) {
+  public openApplicationDetails(applicationId: number): void {
     this.router.navigate(['supervisor', 'application', 'applicationId']);
   }
 
-  public onCancel() {
+  public onCancel(): void {
     this.router.navigate(['supervisor', 'candidates']);
   }
 }

@@ -1,5 +1,6 @@
-import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { saveAs } from 'file-saver';
 import {
   ApplicationsService,
   AWSService,
@@ -67,7 +68,12 @@ export class StudentThesisComponent implements OnInit {
   }
 
   public onDownloadThesis(): void {
-    this.awsService.apiAwsDownloadThesisGet(this.thesisId).subscribe();
+    this.awsService.apiAwsDownloadThesisGet(this.thesisId).subscribe((data) => {
+      saveAs(
+        new Blob([data], { type: 'application/pdf' }),
+        this.thesisId + '_thesis.json'
+      );
+    });
   }
 
   public onDeleteThesis(): void {
@@ -82,7 +88,15 @@ export class StudentThesisComponent implements OnInit {
       });
   }
 
-  public onSendDeclaration() {
-    this.router.navigate(['thesis', 'declaration', {thesisId: this.thesisId}]);
+  public onSendDeclaration(): void {
+    this.router.navigate([
+      'thesis',
+      'declaration',
+      { thesisId: this.thesisId },
+    ]);
+  }
+
+  public onOpenReview(reviewId: number): void {
+    this.router.navigate(['thesis', 'review', reviewId]);
   }
 }

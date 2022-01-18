@@ -89,7 +89,8 @@
     "DESIGN": "Analytical and design part",
     "SOURCES": "Sources and editing of the thesis",
     "ASSESMENTS": "Assessment of the thesis",
-    "THESIS": "Diploma thesis review:"
+    "THESIS": "Diploma thesis review:",
+    "IS_DONE": "Are the requirements met?"
   },
   "DECLARATION": {
     "HEADDER": "Data for declaration",

@@ -26,7 +26,7 @@ export class TopicListComponent implements OnInit {
     });
   }
 
-  public loadTopics(event: LazyLoadEvent, id: number) {
+  public loadTopics(event: LazyLoadEvent, id: number): void {
     this.loading[id] = true;
     setTimeout(() => {
       const fieldOfStudyIndex = this.fieldsOfStudy.findIndex(
@@ -52,7 +52,7 @@ export class TopicListComponent implements OnInit {
     topicName: string,
     englishTopicName: string,
     tutorName: string
-  ) {
+  ): void {
     this.router.navigate([
       'list',
       'application',
@@ -65,7 +65,7 @@ export class TopicListComponent implements OnInit {
     ]);
   }
 
-  public onProposeTopic() {
+  public onProposeTopic(): void {
     this.router.navigate(['list', 'proposal']);
   }
 }

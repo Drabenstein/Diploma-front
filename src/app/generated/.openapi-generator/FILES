@@ -27,9 +27,14 @@ model/fieldOfStudyForApplicationDto.ts
 model/models.ts
 model/myThesisDto.ts
 model/problemDetails.ts
+model/reviewDataDto.ts
 model/reviewForMyThesisDto.ts
+model/reviewModuleDto.ts
 model/reviewerWithInterestsDto.ts
 model/reviewerWithInterestsDtoPagedResultDto.ts
+model/reviewersThesisDto.ts
+model/reviewersThesisDtoFieldOfStudyInitialTableDto.ts
+model/reviewersThesisDtoPagedResultDto.ts
 model/sendDeclarationDto.ts
 model/studentDataDto.ts
 model/studentsTopicDto.ts
@@ -38,6 +43,9 @@ model/studentsTopicDtoPagedResultDto.ts
 model/supervisedThesisDto.ts
 model/supervisedThesisDtoFieldOfStudyInitialTableDto.ts
 model/supervisedThesisDtoPagedResultDto.ts
+model/thesisForReviewerAssignmentDto.ts
+model/thesisForReviewerAssignmentDtoFieldOfStudyInitialTableDto.ts
+model/thesisForReviewerAssignmentDtoPagedResultDto.ts
 model/topicForConsiderationDto.ts
 model/topicForConsiderationDtoFieldOfStudyInitialTableDto.ts
 model/topicForConsiderationDtoPagedResultDto.ts

@@ -17,7 +17,7 @@ export class LanguageService {
     this.lang$.next(lang);
   }
 
-  public setLang(lang: string) {
+  public setLang(lang: string): void {
     this.lang$.next(lang);
     localStorage.setItem('language', lang);
   }

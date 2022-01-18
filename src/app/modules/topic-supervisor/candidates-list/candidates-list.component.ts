@@ -26,7 +26,7 @@ export class CandidatesListComponent implements OnInit {
     });
   }
 
-  public loadCandidates(event: LazyLoadEvent, id: number) {
+  public loadCandidates(event: LazyLoadEvent, id: number): void {
     this.loading[id] = true;
     setTimeout(() => {
       const fieldOfStudyIndex = this.fieldsOfStudy.findIndex(
@@ -51,7 +51,7 @@ export class CandidatesListComponent implements OnInit {
     this.router.navigate(['supervisor', 'candidates', 'applications']);
   }
 
-  public openCandidateDetails(candidateId: number){
+  public openCandidateDetails(candidateId: number): void {
     this.router.navigate(['supervisor', 'candidates', candidateId]);
   }
 }

@@ -545,6 +545,91 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ReviewerWithInterestsDtoPagedResultDto'
+  /api/reviewers/getMyReviews:
+    get:
+      tags:
+        - Reviewers
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReviewersThesisDtoFieldOfStudyInitialTableDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReviewersThesisDtoFieldOfStudyInitialTableDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReviewersThesisDtoFieldOfStudyInitialTableDto'
+  /api/reviewers/getMyReviewsPage:
+    get:
+      tags:
+        - Reviewers
+      parameters:
+        - name: fieldOfStudyId
+          in: query
+          schema:
+            type: integer
+            format: int64
+        - name: yearOfDefence
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReviewersThesisDtoPagedResultDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewersThesisDtoPagedResultDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReviewersThesisDtoPagedResultDto'
+  /api/reviewers/getDataForReview:
+    get:
+      tags:
+        - Reviewers
+      parameters:
+        - name: ThesisId
+          in: query
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReviewDataDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewDataDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReviewDataDto'
   /api/theses/get-thesis-id:
     get:
       tags:
@@ -650,6 +735,80 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/SupervisedThesisDtoPagedResultDto'
+  /api/theses/reviewer-assignment-initial:
+    get:
+      tags:
+        - Theses
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ThesisForReviewerAssignmentDtoFieldOfStudyInitialTableDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ThesisForReviewerAssignmentDtoFieldOfStudyInitialTableDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ThesisForReviewerAssignmentDtoFieldOfStudyInitialTableDto'
+  /api/theses/reviewer-assignment:
+    get:
+      tags:
+        - Theses
+      parameters:
+        - name: fieldOfStudyId
+          in: query
+          schema:
+            type: integer
+            format: int64
+        - name: yearOfDefence
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ThesisForReviewerAssignmentDtoPagedResultDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThesisForReviewerAssignmentDtoPagedResultDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ThesisForReviewerAssignmentDtoPagedResultDto'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/topics:
     get:
       tags:
@@ -1405,6 +1564,96 @@ components:
           type: string
           nullable: true
       additionalProperties: { }
+    ReviewDataDto:
+      type: object
+      properties:
+        reviewId:
+          type: integer
+          format: int64
+        thesisId:
+          type: integer
+          format: int64
+        realizer:
+          type: string
+          nullable: true
+        supervisor:
+          type: string
+          nullable: true
+        topic:
+          type: string
+          nullable: true
+        modules:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReviewModuleDto'
+          nullable: true
+      additionalProperties: false
+    ReviewersThesisDto:
+      type: object
+      properties:
+        thesisId:
+          type: integer
+          format: int64
+        title:
+          type: string
+          nullable: true
+        englishTitle:
+          type: string
+          nullable: true
+        supervisor:
+          type: string
+          nullable: true
+        realizer:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        department:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ReviewersThesisDtoFieldOfStudyInitialTableDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        degree:
+          type: integer
+          format: int32
+        studyForm:
+          type: string
+          nullable: true
+        lectureLanguage:
+          type: string
+          nullable: true
+        defenceYear:
+          type: string
+          nullable: true
+        data:
+          $ref: '#/components/schemas/ReviewersThesisDtoPagedResultDto'
+      additionalProperties: false
+    ReviewersThesisDtoPagedResultDto:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          format: int32
+        totalItems:
+          type: integer
+          format: int32
+        hasNextPage:
+          type: boolean
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReviewersThesisDto'
+          nullable: true
+      additionalProperties: false
     ReviewerWithInterestsDto:
       type: object
       properties:
@@ -1461,6 +1710,19 @@ components:
           format: date-time
           nullable: true
         reviewer:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ReviewModuleDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        type:
           type: string
           nullable: true
       additionalProperties: false
@@ -1643,6 +1905,79 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SupervisedThesisDto'
+          nullable: true
+      additionalProperties: false
+    ThesisForReviewerAssignmentDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        englishName:
+          type: string
+          nullable: true
+        supervisorAcademicDegree:
+          type: string
+          nullable: true
+        supervisorFullName:
+          type: string
+          nullable: true
+        supervisorDepartment:
+          type: string
+          nullable: true
+        reviewerAcademicDegree:
+          type: string
+          nullable: true
+        reviewerFullName:
+          type: string
+          nullable: true
+        reviewerId:
+          type: integer
+          format: int64
+          nullable: true
+      additionalProperties: false
+    ThesisForReviewerAssignmentDtoFieldOfStudyInitialTableDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        degree:
+          type: integer
+          format: int32
+        studyForm:
+          type: string
+          nullable: true
+        lectureLanguage:
+          type: string
+          nullable: true
+        defenceYear:
+          type: string
+          nullable: true
+        data:
+          $ref: '#/components/schemas/ThesisForReviewerAssignmentDtoPagedResultDto'
+      additionalProperties: false
+    ThesisForReviewerAssignmentDtoPagedResultDto:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          format: int32
+        totalItems:
+          type: integer
+          format: int32
+        hasNextPage:
+          type: boolean
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThesisForReviewerAssignmentDto'
           nullable: true
       additionalProperties: false
     TopicForConsiderationDto:
