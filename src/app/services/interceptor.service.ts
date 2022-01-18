@@ -20,10 +20,7 @@ export class InterceptorService implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     if (
-      req.url.match('\\/api\\/roles$') ||
-      req.url.match('\\/api\\/chats\\/\\d+\\/history$') ||
-      req.url.match('\\/api\\/chats\\/userOnly$') ||
-      req.url.match('\\/api\\/applications$')
+      req.url.match('\\/api\\/.*')
     ) {
       return this.auth.getAccessTokenSilently().pipe(
         mergeMap((token) => {
