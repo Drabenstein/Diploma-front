@@ -809,6 +809,66 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+  /api/theses/reviewers/bulk:
+    post:
+      tags:
+        - Theses
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ReviewerChangeDto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ReviewerChangeDto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ReviewerChangeDto'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '409':
+          description: Conflict
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/topics:
     get:
       tags:
@@ -1587,6 +1647,16 @@ components:
           items:
             $ref: '#/components/schemas/ReviewModuleDto'
           nullable: true
+      additionalProperties: false
+    ReviewerChangeDto:
+      type: object
+      properties:
+        thesisId:
+          type: integer
+          format: int64
+        reviewerId:
+          type: integer
+          format: int64
       additionalProperties: false
     ReviewersThesisDto:
       type: object

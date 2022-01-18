@@ -4,6 +4,7 @@ import { LazyLoadEvent } from 'primeng/api';
 import { ThesesService, TopicsService } from 'src/app/generated';
 import { ThesisForReviewerAssignmentDtoFieldOfStudyInitialTableDto } from 'src/app/generated/model/thesisForReviewerAssignmentDtoFieldOfStudyInitialTableDto';
 import { ThesisForReviewerAssignmentDto } from 'src/app/generated/model/thesisForReviewerAssignmentDto';
+import { ReviewerChangeDto } from 'src/app/generated/model/reviewerChangeDto';
 @Component({
   selector: 'app-review-assigment',
   templateUrl: './review-assigment.component.html',
@@ -64,8 +65,18 @@ export class ReviewAssigmentComponent implements OnInit {
   }
 
   public onRevieverChange(records: ThesisForReviewerAssignmentDto[]): void {
-    const newReviewers = records.map((r) => r.id);
-    //this.router.navigate(['supervisor', 'candidates', 'applications']);
+    const newReviewers: ReviewerChangeDto[] = records.map((r) => {
+      const reviewer: ReviewerChangeDto = {
+        thesisId: r.id!,
+        reviewerId: r.reviewerId!,
+      };
+      return reviewer;
+    });
+    this.thesesService
+      .apiThesesReviewersBulkPost(newReviewers)
+      .subscribe((_) => {
+        window.location.reload;
+      });
   }
 
   public onWorkerList(): void {

@@ -12,6 +12,7 @@ export * from './problemDetails';
 export * from './reviewDataDto';
 export * from './reviewForMyThesisDto';
 export * from './reviewModuleDto';
+export * from './reviewerChangeDto';
 export * from './reviewerWithInterestsDto';
 export * from './reviewerWithInterestsDtoPagedResultDto';
 export * from './reviewersThesisDto';

@@ -30,6 +30,7 @@ model/problemDetails.ts
 model/reviewDataDto.ts
 model/reviewForMyThesisDto.ts
 model/reviewModuleDto.ts
+model/reviewerChangeDto.ts
 model/reviewerWithInterestsDto.ts
 model/reviewerWithInterestsDtoPagedResultDto.ts
 model/reviewersThesisDto.ts

@@ -1,11 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
-  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
-  ValidationErrors,
-  ValidatorFn,
   Validators,
 } from '@angular/forms';
 
@@ -14,7 +11,7 @@ import {
   templateUrl: './password-change.component.html',
   styleUrls: ['./password-change.component.scss'],
 })
-export class PasswordChangeComponent implements OnInit {
+export class PasswordChangeComponent {
   public formGroup: FormGroup;
   public model: PasswordChange = {
     oldPassword: '',
@@ -29,8 +26,6 @@ export class PasswordChangeComponent implements OnInit {
       newPasswordRepeat: new FormControl(null, [Validators.required]),
     });
   }
-
-  ngOnInit(): void {}
 
   public isPasswordMatching(): boolean {
     if (
