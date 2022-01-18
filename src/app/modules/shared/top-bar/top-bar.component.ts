@@ -44,6 +44,7 @@ export class TopBarComponent implements OnInit {
         this.translatedData = data;
         this.authService.isAuthenticated$.subscribe((auth) => {
           if (auth) {
+            this.userService.apiUsersFetchDataPost().subscribe();
             this.authService.user$.subscribe((user) => {
               this.name = user?.given_name + ` ` + user?.family_name!;
               this.roles = user?.['https://localhost:5001/api/roles'];
@@ -66,9 +67,7 @@ export class TopBarComponent implements OnInit {
   }
 
   public login(): void {
-    this.authService.loginWithRedirect().subscribe((_) => {
-      this.userService.apiUsersFetchDataPost().subscribe();
-    });
+    this.authService.loginWithRedirect().subscribe();
   }
 
   private loadTopMenuItems() {
