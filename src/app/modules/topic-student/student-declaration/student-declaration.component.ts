@@ -47,6 +47,7 @@ export class StudentDeclarationComponent implements OnInit {
 
   public onSend() {
     this.declaration.hasConsentToChangeLanguage = true;
+    this.declaration.thesisId = this.thesisId;
     const date = new Date();
     this.declaration.declarationDateTime = this.datepipe.transform(
       date,

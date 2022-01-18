@@ -58,7 +58,7 @@
         icon="pi pi-check"
         iconPos="left"
         label="{{ 'TOPIC_LIST.BUTTON_CONFIRM' | translate }}"
-        (click)="onTopicsApprove()"
+        (click)="onTopicsApprove(fieldOfStudy.id!)"
       ></p-button>
       <button
         pButton
@@ -68,7 +68,7 @@
         iconPos="left"
         label="{{ 'TOPIC_LIST.BUTTON_DENY' | translate }}"
         class="p-button-danger"
-        (click)="onTopicsDeny()"
+        (click)="onTopicsDeny(fieldOfStudy.id!)"
       ></button>
     </div>
   </p-panel>

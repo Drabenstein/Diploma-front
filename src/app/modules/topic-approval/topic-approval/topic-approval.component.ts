@@ -9,7 +9,7 @@ import { TopicForConsiderationDtoFieldOfStudyInitialTableDto } from 'src/app/gen
   styleUrls: ['./topic-approval.component.scss'],
 })
 export class TopicApprovalComponent implements OnInit {
-  public topicApprovalSelectionList: number[] = [];
+  public topicApprovalSelectionList: Record<number, number[]> = {};
   public fieldsOfStudy: TopicForConsiderationDtoFieldOfStudyInitialTableDto[] =
     [];
 
@@ -23,6 +23,7 @@ export class TopicApprovalComponent implements OnInit {
         this.fieldsOfStudy = data;
         this.fieldsOfStudy.forEach((f) => {
           this.loading[f.id!] = true;
+          this.topicApprovalSelectionList[f.id!] = [];
         });
       });
   }
@@ -48,17 +49,17 @@ export class TopicApprovalComponent implements OnInit {
     }, 1000);
   }
 
-  public onTopicsApprove(): void {
+  public onTopicsApprove(id:number): void {
     this.topicService
-      .apiTopicsBulkAcceptPost(this.topicApprovalSelectionList)
+      .apiTopicsBulkAcceptPost(this.topicApprovalSelectionList[id])
       .subscribe((_) => {
         window.location.reload();
       });
   }
 
-  public onTopicsDeny(): void {
+  public onTopicsDeny(id:number): void {
     this.topicService
-      .apiTopicsBulkRejectPost(this.topicApprovalSelectionList)
+      .apiTopicsBulkRejectPost(this.topicApprovalSelectionList[id])
       .subscribe((_) => {
         window.location.reload();
       });
