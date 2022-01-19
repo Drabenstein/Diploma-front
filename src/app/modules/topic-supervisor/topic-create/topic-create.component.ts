@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import {
   FieldOfStudyForApplicationDto,
   TopicsService,
+  FieldsOfStudyService
 } from 'src/app/generated';
 import { CreateTopicDto } from 'src/app/generated/model/createTopicDto';
 
@@ -31,6 +32,7 @@ export class TopicCreateComponent implements OnInit {
 
   constructor(
     private topicService: TopicsService,
+    private fieldsOfStudyService : FieldsOfStudyService,
     private fb: FormBuilder,
     private router: Router
   ) {
@@ -53,7 +55,7 @@ export class TopicCreateComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.topicService.apiTopicsPossibleFieldsOfStudyGet().subscribe((data) => {
+    this.fieldsOfStudyService.apiFieldsOfStudyGet().subscribe((data) => {
       this.fieldsOfStudy = data;
     });
   }
