@@ -2,7 +2,12 @@
 <h2>{{ "TOPIC_LIST.MY_REVIEWS" | translate }}</h2>
 <div *ngFor="let fieldOfStudy of fieldsOfStudy">
   <br />
-  <p-panel header="{{ fieldOfStudy }}" [toggleable]="true">
+  <p-panel
+    header="{{ fieldOfStudy.name }} + {{ fieldOfStudy.degree }} + {{
+      fieldOfStudy.defenceYear
+    }}"
+    [toggleable]="true"
+  >
     <div class="card">
       <p-table
         [value]="fieldOfStudy.data!.results!"
