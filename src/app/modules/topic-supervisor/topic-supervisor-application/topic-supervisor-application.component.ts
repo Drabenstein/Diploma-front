@@ -10,6 +10,7 @@ import { ApplicationDetailsDto } from 'src/app/generated/model/applicationDetail
 })
 export class TopicSupervisorApplicationComponent implements OnInit {
   public application: ApplicationDetailsDto = null!;
+  public isProposal: boolean = null!;
   private applicationId: number = null!;
 
   constructor(
@@ -20,6 +21,9 @@ export class TopicSupervisorApplicationComponent implements OnInit {
 
   ngOnInit(): void {
     this.applicationId = this.activatedRoute.snapshot.params['id'];
+    this.isProposal = Boolean(
+      this.activatedRoute.snapshot.paramMap.get('isProposal')
+    );
 
     this.applicationService
       .apiApplicationsApplicationIdGet(this.applicationId)

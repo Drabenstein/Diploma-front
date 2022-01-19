@@ -51,8 +51,8 @@ export class TopicApplicationCandidatesComponent implements OnInit {
     }, 1000);
   }
 
-  public openApplicationDetails(applicationId: number): void {
-    this.router.navigate(['supervisor', 'application', 'applicationId']);
+  public openApplicationDetails(applicationId: number, isProposal: boolean): void {
+    this.router.navigate(['supervisor', 'candidates', 'application', applicationId, {isProposal: isProposal}]);
   }
 
   public onCancel(): void {

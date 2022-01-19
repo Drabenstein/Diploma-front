@@ -1,14 +1,14 @@
-<div *ngIf="true">
+<div *ngIf="isProposal">
   <h2>{{ "TOPIC_APPLICATION.HEADDER_PROPOSE" | translate }}</h2>
 </div>
-<div *ngIf="true">
+<div *ngIf="!isProposal">
   <h2>{{ "TOPIC_APPLICATION.HEADDER_REALIZATION" | translate }}</h2>
 </div>
 <br />
 <b> {{ application.studentFullName }} {{ application.studentIndex }} </b><br />
 <span>{{ application.fieldOfStudyName }}</span>
 <span
-  >{{ application.fieldOfStudyDegree }},
+  ><br />{{ application.fieldOfStudyDegree }}<br />
   {{ application.fieldOfStudyStudyForm }}</span
 >
 <span>{{ application.yearOfDefence }}</span>
