@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LazyLoadEvent } from 'primeng/api';
+import { TranslateService } from '@ngx-translate/core';
+import { ConfirmationService, LazyLoadEvent } from 'primeng/api';
 import { TopicsService } from 'src/app/generated';
 import { TopicForConsiderationDtoFieldOfStudyInitialTableDto } from 'src/app/generated/model/topicForConsiderationDtoFieldOfStudyInitialTableDto';
 
@@ -12,11 +13,22 @@ export class TopicApprovalComponent implements OnInit {
   public topicApprovalSelectionList: Record<number, number[]> = {};
   public fieldsOfStudy: TopicForConsiderationDtoFieldOfStudyInitialTableDto[] =
     [];
+  private translatedData: Record<string, string> = {};
 
   public loading: Record<number, boolean> = {};
-  constructor(private topicService: TopicsService) {}
+  constructor(
+    private topicService: TopicsService,
+    private translateService: TranslateService,
+    private confirmationService: ConfirmationService
+  ) {}
 
   ngOnInit(): void {
+    this.translateService
+      .get(['CONFIRMATION.MESSAGE', 'CONFIRMATION.YES', 'CONFIRMATION.NO'])
+      .subscribe((data: Record<string, string>) => {
+        this.translatedData = data;
+      });
+
     this.topicService
       .apiTopicsForConsiderationInitialGet()
       .subscribe((data) => {
@@ -49,7 +61,35 @@ export class TopicApprovalComponent implements OnInit {
     }, 1000);
   }
 
-  public onTopicsApprove(id:number): void {
+  public onTopicsApprove(event: Event, id: number): void {
+    this.confirmationService.confirm({
+      acceptLabel: this.translatedData['CONFIRMATION.YES'],
+      rejectLabel: this.translatedData['CONFIRMATION.NO'],
+      target: event.target!,
+      message: this.translatedData['CONFIRMATION.MESSAGE'],
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.approveTopics(id);
+      },
+      reject: () => this.confirmationService.close(),
+    });
+  }
+
+  public onTopicsDeny(event: Event, id: number): void {
+    this.confirmationService.confirm({
+      acceptLabel: this.translatedData['CONFIRMATION.YES'],
+      rejectLabel: this.translatedData['CONFIRMATION.NO'],
+      target: event.target!,
+      message: this.translatedData['CONFIRMATION.MESSAGE'],
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.denyTopics(id);
+      },
+      reject: () => this.confirmationService.close(),
+    });
+  }
+
+  private approveTopics(id: number): void {
     this.topicService
       .apiTopicsBulkAcceptPost(this.topicApprovalSelectionList[id])
       .subscribe((_) => {
@@ -57,7 +97,7 @@ export class TopicApprovalComponent implements OnInit {
       });
   }
 
-  public onTopicsDeny(id:number): void {
+  private denyTopics(id: number): void {
     this.topicService
       .apiTopicsBulkRejectPost(this.topicApprovalSelectionList[id])
       .subscribe((_) => {

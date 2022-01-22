@@ -122,5 +122,10 @@
     "AWS": "Usługi uczenia maszynowego",
     "FILE": "Zarządzanie plikiem pracy",
     "MY_ACCEPTED_TOPICS": "Moje zaakceptowane tematy"
-  }
+  },
+  "CONFIRMATION": {
+  "MESSAGE": "Jesteś pewien że chcesz kontynuować?",
+  "YES": "Tak",
+  "NO": "Nie"
+}
 }

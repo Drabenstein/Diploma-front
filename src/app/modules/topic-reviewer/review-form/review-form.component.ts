@@ -6,6 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { ConfirmationService } from 'primeng/api';
 import { MyThesisDto, ThesesService } from 'src/app/generated';
 
 @Component({
@@ -59,12 +61,15 @@ export class ReviewFormComponent implements OnInit {
   ];
   public selectedAssesment: number = null!;
   private thesisId: number = null!;
+  private translatedData: Record<string, string> = {};
 
   constructor(
     private thesisService: ThesesService,
     private fb: FormBuilder,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private translateService: TranslateService,
+    private confirmationService: ConfirmationService
   ) {
     this.formGroup = this.fb.group({
       purpose: new FormControl(null),
@@ -80,13 +85,38 @@ export class ReviewFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.translateService
+      .get(['CONFIRMATION.MESSAGE', 'CONFIRMATION.YES', 'CONFIRMATION.NO'])
+      .subscribe((data: Record<string, string>) => {
+        this.translatedData = data;
+      });
+
     this.thesisId = this.activatedRoute.snapshot.params['id'];
     this.thesisService.apiThesesMyThesisGet(this.thesisId).subscribe((data) => {
       this.thesis = data;
     });
   }
 
+  public onConfirm(event: Event) {
+    this.confirmationService.confirm({
+      acceptLabel: this.translatedData['CONFIRMATION.YES'],
+      rejectLabel: this.translatedData['CONFIRMATION.NO'],
+      target: event.target!,
+      message: this.translatedData['CONFIRMATION.MESSAGE'],
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.confirm();
+      },
+      reject: () => this.confirmationService.close(),
+    });
+  }
+
   public onCancel() {
+    this.router.navigate(['reviewer']);
+  }
+
+  private confirm() {
+    //TODO
     this.router.navigate(['reviewer']);
   }
 }

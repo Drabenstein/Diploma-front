@@ -78,12 +78,13 @@
         </ng-template>
       </p-table>
       <br />
+      <p-confirmPopup></p-confirmPopup>
       <p-button
         class="lower-button"
         icon="pi pi-check"
         iconPos="left"
         label="{{ 'TOPIC_LIST.BUTTON_CONFIRM' | translate }}"
-        (click)="onRevieverChange(fieldOfStudy.data!.results!)"
+        (click)="onRevieverChange($event, fieldOfStudy.data!.results!)"
       ></p-button>
     </div>
   </p-panel>

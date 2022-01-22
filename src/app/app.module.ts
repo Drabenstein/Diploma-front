@@ -6,13 +6,10 @@ import {
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  AuthHttpInterceptor,
-  AuthModule,
-  HttpMethod,
-} from '@auth0/auth0-angular';
+import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { MessageService } from 'primeng/api';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -55,14 +52,14 @@ import { InterceptorService } from './services/interceptor.service';
       domain: environment.auth.domain,
       audience: environment.auth.audience,
       clientId: environment.auth.clientId,
-    })
-
+    }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
     { provide: BASE_PATH, useValue: environment.API_BASE_PATH },
     HttpClient,
+    MessageService,
   ],
   bootstrap: [AppComponent],
 })

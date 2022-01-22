@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LazyLoadEvent } from 'primeng/api';
+import { ConfirmationService, LazyLoadEvent } from 'primeng/api';
 import { ThesesService, TopicsService } from 'src/app/generated';
 import { ThesisForReviewerAssignmentDtoFieldOfStudyInitialTableDto } from 'src/app/generated/model/thesisForReviewerAssignmentDtoFieldOfStudyInitialTableDto';
 import { ThesisForReviewerAssignmentDto } from 'src/app/generated/model/thesisForReviewerAssignmentDto';
 import { ReviewerChangeDto } from 'src/app/generated/model/reviewerChangeDto';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-review-assigment',
   templateUrl: './review-assigment.component.html',
@@ -16,13 +17,22 @@ export class ReviewAssigmentComponent implements OnInit {
   public reviewers: { id: number; name: string }[] = [];
 
   public loading: Record<number, boolean> = {};
+  private translatedData: Record<string, string> = {};
   constructor(
     private topicService: TopicsService,
     private thesesService: ThesesService,
-    private router: Router
+    private router: Router,
+    private translateService: TranslateService,
+    private confirmationService: ConfirmationService
   ) {}
 
   ngOnInit(): void {
+    this.translateService
+      .get(['CONFIRMATION.MESSAGE', 'CONFIRMATION.YES', 'CONFIRMATION.NO'])
+      .subscribe((data: Record<string, string>) => {
+        this.translatedData = data;
+      });
+
     this.thesesService
       .apiThesesReviewerAssignmentInitialGet()
       .subscribe((data) => {
@@ -64,7 +74,28 @@ export class ReviewAssigmentComponent implements OnInit {
     }, 1000);
   }
 
-  public onRevieverChange(records: ThesisForReviewerAssignmentDto[]): void {
+  public onRevieverChange(
+    event: Event,
+    records: ThesisForReviewerAssignmentDto[]
+  ): void {
+    this.confirmationService.confirm({
+      acceptLabel: this.translatedData['CONFIRMATION.YES'],
+      rejectLabel: this.translatedData['CONFIRMATION.NO'],
+      target: event.target!,
+      message: this.translatedData['CONFIRMATION.MESSAGE'],
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.changeReviewer(records);
+      },
+      reject: () => this.confirmationService.close(),
+    });
+  }
+
+  public onWorkerList(): void {
+    this.router.navigate(['review-assigments', 'list']);
+  }
+
+  private changeReviewer(records: ThesisForReviewerAssignmentDto[]): void {
     const newReviewers: ReviewerChangeDto[] = records.map((r) => {
       const reviewer: ReviewerChangeDto = {
         thesisId: r.id!,
@@ -77,9 +108,5 @@ export class ReviewAssigmentComponent implements OnInit {
       .subscribe((_) => {
         window.location.reload;
       });
-  }
-
-  public onWorkerList(): void {
-    this.router.navigate(['review-assigments', 'list']);
   }
 }

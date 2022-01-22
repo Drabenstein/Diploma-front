@@ -76,12 +76,13 @@
     </div>
     <br />
     <br />
+    <p-confirmPopup></p-confirmPopup>
     <div class="bottom-buttons">
       <p-button
         icon="pi pi-check"
         iconPos="left"
         label="{{ 'TOPIC_PROPOSAL.BUTTON_ADD' | translate }}"
-        (click)="onSubmit()"
+        (click)="onSubmit($event)"
       ></p-button>
       <button
         pButton

@@ -122,5 +122,10 @@
     "AWS": "Machine learning services",
     "FILE": "Thesis file management",
     "MY_ACCEPTED_TOPICS": "My accepted topics"
+  },
+    "CONFIRMATION": {
+    "MESSAGE": "Are you sure that you want to proceed?",
+    "YES": "Yes",
+    "NO": "No"
   }
 }

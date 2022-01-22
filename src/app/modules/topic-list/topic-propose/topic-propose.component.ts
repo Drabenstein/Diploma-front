@@ -6,6 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { ConfirmationService } from 'primeng/api';
 import {
   FieldOfStudyForApplicationDto,
   TopicsService,
@@ -27,11 +29,14 @@ export class TopicProposeComponent implements OnInit {
   public topicNamePl: string = '';
   public topicNameEn: string = '';
   public message: string = '';
+  private translatedData: Record<string, string> = {};
 
   constructor(
     private topicService: TopicsService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private translateService: TranslateService,
+    private confirmationService: ConfirmationService
   ) {
     this.formGroup = this.fb.group({
       supervisors: new FormControl(null, [Validators.required]),
@@ -53,6 +58,12 @@ export class TopicProposeComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    this.translateService
+      .get(['CONFIRMATION.MESSAGE', 'CONFIRMATION.YES', 'CONFIRMATION.NO'])
+      .subscribe((data: Record<string, string>) => {
+        this.translatedData = data;
+      });
+
     this.topicService.apiTopicsPossibleFieldsOfStudyGet().subscribe((data) => {
       this.fieldsOfStudy = data;
     });
@@ -68,7 +79,25 @@ export class TopicProposeComponent implements OnInit {
     });
   }
 
-  public onSendPropose() {
+  public onSendPropose(event: Event) {
+    this.confirmationService.confirm({
+      acceptLabel: this.translatedData['CONFIRMATION.YES'],
+      rejectLabel: this.translatedData['CONFIRMATION.NO'],
+      target: event.target!,
+      message: this.translatedData['CONFIRMATION.MESSAGE'],
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.proposeSend();
+      },
+      reject: () => this.confirmationService.close(),
+    });
+  }
+
+  public onCancel() {
+    this.router.navigate(['list']);
+  }
+
+  private proposeSend() {
     if (this.formGroup.valid) {
       this.topicService
         .apiTopicsPost(
@@ -83,9 +112,5 @@ export class TopicProposeComponent implements OnInit {
           this.router.navigate(['list']);
         });
     }
-  }
-
-  public onCancel() {
-    this.router.navigate(['list']);
   }
 }

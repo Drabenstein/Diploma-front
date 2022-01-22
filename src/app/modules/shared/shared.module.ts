@@ -32,6 +32,7 @@ import { DividerModule } from 'primeng/divider';
 import { CardModule } from 'primeng/card';
 import { AccordionModule } from 'primeng/accordion';
 import { FileUploadModule } from 'primeng/fileupload';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
 @NgModule({
   declarations: [
@@ -104,6 +105,7 @@ import { FileUploadModule } from 'primeng/fileupload';
     CardModule,
     AccordionModule,
     FileUploadModule,
+    ConfirmPopupModule,
   ],
 })
 export class SharedModule {

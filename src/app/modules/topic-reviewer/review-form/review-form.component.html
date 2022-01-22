@@ -124,11 +124,13 @@
     </p-panel>
     <br />
     <br />
+    <p-confirmPopup></p-confirmPopup>
     <div class="bottom-buttons">
       <p-button
         icon="pi pi-check"
         iconPos="left"
         label="{{ 'TOPIC_PROPOSAL.BUTTON_CONFIRM' | translate }}"
+        (click)="onConfirm($event)"
       ></p-button>
       <button
         pButton
