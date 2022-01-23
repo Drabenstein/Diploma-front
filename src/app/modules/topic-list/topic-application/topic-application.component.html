@@ -35,6 +35,7 @@
   <p-confirmPopup></p-confirmPopup>
   <div class="bottom-buttons">
     <p-button
+    (click)="onApplicationSend()"
     icon="pi pi-check" iconPos="left"
       label="{{ 'TOPIC_APPLICATION.BUTTON_CONFIRM' | translate }}"
       (click)="onApplicationSend($event)"
