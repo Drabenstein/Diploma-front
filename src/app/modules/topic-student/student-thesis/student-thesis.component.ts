@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { saveAs } from 'file-saver';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import {
   ApplicationsService,
   AWSService,
@@ -21,15 +23,33 @@ export class StudentThesisComponent implements OnInit {
   public myThesis: MyThesisDto = null!;
   public myAcceptedTopics: ApprovedTopicDto[] = [];
   public thesisId: number = null!;
+  private translatedData: Record<string, string> = {};
   constructor(
     private awsService: AWSService,
     private topicService: TopicsService,
     private thesisService: ThesesService,
     private applicationService: ApplicationsService,
-    private router: Router
+    private router: Router,
+    private translateService: TranslateService,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
+    this.translateService
+      .get([
+        'CONFIRMATION.SUCCESS',
+        'CONFIRMATION.YES',
+        'CONFIRMATION.NO',
+        'CONFIRMATION.MESSAGE',
+        'CONFIRMATION.ERROR',
+        'CONFIRMATION.SUCCESS_MESSAGE',
+        'CONFIRMATION.ERROR_MESSAGE',
+      ])
+      .subscribe((data: Record<string, string>) => {
+        this.translatedData = data;
+      });
+
     this.topicService.apiTopicsMyAcceptedTopicsGet().subscribe((data) => {
       this.myAcceptedTopics = data;
     });
@@ -62,7 +82,22 @@ export class StudentThesisComponent implements OnInit {
         console.log(uploadedFileString);
         this.awsService
           .apiAwsUploadThesisPost(this.thesisId, uploadedFileString)
-          .subscribe();
+          .subscribe({
+            error: (e) => {
+              this.messageService.add({
+                severity: 'error',
+                summary: this.translatedData['MESSAGE.ERROR'],
+                detail: this.translatedData['MESSAGE.ERROR_MESSAGE'],
+              });
+            },
+            complete: () => {
+              this.messageService.add({
+                severity: 'success',
+                summary: this.translatedData['MESSAGE.SUCCESS'],
+                detail: this.translatedData['MESSAGE.SUCCESS_MESSAGE'],
+              });
+            },
+          });
       };
     }
   }
@@ -77,14 +112,43 @@ export class StudentThesisComponent implements OnInit {
   }
 
   public onDeleteThesis(): void {
-    this.awsService.apiAwsDeleteThesisDelete(this.thesisId).subscribe();
+    this.awsService.apiAwsDeleteThesisDelete(this.thesisId).subscribe({
+      error: (e) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: this.translatedData['MESSAGE.ERROR'],
+          detail: this.translatedData['MESSAGE.ERROR_MESSAGE'],
+        });
+      },
+      complete: () => {
+        this.messageService.add({
+          severity: 'success',
+          summary: this.translatedData['MESSAGE.SUCCESS'],
+          detail: this.translatedData['MESSAGE.SUCCESS_MESSAGE'],
+        });
+      },
+    });
   }
 
   public onConfirmTopic(applicationId: number): void {
     this.applicationService
       .apiApplicationsApplicationIdConfirmPost(applicationId)
-      .subscribe((_) => {
-        window.location.reload;
+      .subscribe({
+        error: (e) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: this.translatedData['MESSAGE.ERROR'],
+            detail: this.translatedData['MESSAGE.ERROR_MESSAGE'],
+          });
+        },
+        complete: () => {
+          this.messageService.add({
+            severity: 'success',
+            summary: this.translatedData['MESSAGE.SUCCESS'],
+            detail: this.translatedData['MESSAGE.SUCCESS_MESSAGE'],
+          });
+          setTimeout(() => window.location.reload(), 1000);
+        },
       });
   }
 

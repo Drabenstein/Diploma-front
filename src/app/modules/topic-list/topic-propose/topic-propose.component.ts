@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import {
   FieldOfStudyForApplicationDto,
   TopicsService,
@@ -36,7 +36,8 @@ export class TopicProposeComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private translateService: TranslateService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
   ) {
     this.formGroup = this.fb.group({
       supervisors: new FormControl(null, [Validators.required]),
@@ -59,7 +60,15 @@ export class TopicProposeComponent implements OnInit {
   }
   ngOnInit(): void {
     this.translateService
-      .get(['CONFIRMATION.MESSAGE', 'CONFIRMATION.YES', 'CONFIRMATION.NO'])
+      .get([
+        'CONFIRMATION.MESSAGE',
+        'CONFIRMATION.YES',
+        'CONFIRMATION.NO',
+        'CONFIRMATION.MESSAGE',
+        'CONFIRMATION.ERROR',
+        'CONFIRMATION.SUCCESS_MESSAGE',
+        'CONFIRMATION.ERROR_MESSAGE',
+      ])
       .subscribe((data: Record<string, string>) => {
         this.translatedData = data;
       });
@@ -108,8 +117,22 @@ export class TopicProposeComponent implements OnInit {
           this.topicNameEn,
           this.message
         )
-        .subscribe((_) => {
-          this.router.navigate(['list']);
+        .subscribe({
+          error: (e) => {
+            this.messageService.add({
+              severity: 'error',
+              summary: this.translatedData['MESSAGE.ERROR'],
+              detail: this.translatedData['MESSAGE.ERROR_MESSAGE'],
+            });
+          },
+          complete: () => {
+            this.messageService.add({
+              severity: 'success',
+              summary: this.translatedData['MESSAGE.SUCCESS'],
+              detail: this.translatedData['MESSAGE.SUCCESS_MESSAGE'],
+            });
+            setTimeout(() => this.router.navigate(['list']), 1000);
+          },
         });
     }
   }

@@ -56,7 +56,7 @@
     "ACTUAL_REVIEWS": "Actual reviews: ",
     "AREAS": "Areas of interest: "
   },
-  "TOPIC_PROPOSAL":{
+  "TOPIC_PROPOSAL": {
     "SUPERVISOR": "Supervisor",
     "FIELD_OF_STUDY": "Field of study",
     "MAX_REALIZATIONS": "Maximum realization number (max. 4)",
@@ -69,7 +69,7 @@
     "BUTTON_ADD": "Add topic",
     "YEAR_OF_DEFENCE": "Year of defence"
   },
-  "TOPIC_APPLICATION":{
+  "TOPIC_APPLICATION": {
     "TOPIC_NAME_PL": "Polish topic name",
     "TOPIC_NAME_EN": "English topic name",
     "SUPERVISOR": "Supervisor",
@@ -123,9 +123,12 @@
     "FILE": "Thesis file management",
     "MY_ACCEPTED_TOPICS": "My accepted topics"
   },
-    "CONFIRMATION": {
+  "CONFIRMATION": {
     "MESSAGE": "Are you sure that you want to proceed?",
     "YES": "Yes",
-    "NO": "No"
+    "SUCCESS": "Success",
+    "ERROR": "Error",
+    "SUCCESS_MESSAGE": "Action was successful",
+    "ERROR_MESSAGE": "An error occurred while processing the action"
   }
 }

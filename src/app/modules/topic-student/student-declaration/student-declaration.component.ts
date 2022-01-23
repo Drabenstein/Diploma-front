@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { DeclarationsService, SendDeclarationDto } from 'src/app/generated';
 import { DeclarationDataDto } from 'src/app/generated/model/declarationDataDto';
 
@@ -32,7 +32,8 @@ export class StudentDeclarationComponent implements OnInit {
     private declarationService: DeclarationsService,
     private activatedRoute: ActivatedRoute,
     private translateService: TranslateService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
   ) {
     this.formGroup = this.fb.group({
       language: new FormControl(null, [Validators.required]),
@@ -43,7 +44,15 @@ export class StudentDeclarationComponent implements OnInit {
 
   ngOnInit(): void {
     this.translateService
-      .get(['CONFIRMATION.MESSAGE', 'CONFIRMATION.YES', 'CONFIRMATION.NO'])
+      .get([
+        'CONFIRMATION.SUCCESS',
+        'CONFIRMATION.YES',
+        'CONFIRMATION.NO',
+        'CONFIRMATION.MESSAGE',
+        'CONFIRMATION.ERROR',
+        'CONFIRMATION.SUCCESS_MESSAGE',
+        'CONFIRMATION.ERROR_MESSAGE',
+      ])
       .subscribe((data: Record<string, string>) => {
         this.translatedData = data;
       });
@@ -83,10 +92,22 @@ export class StudentDeclarationComponent implements OnInit {
       'MMMM d, y, h:mm:ss a z'
     )!;
 
-    this.declarationService
-      .apiDeclarationsPost(this.declaration)
-      .subscribe((_) => {
-        this.router.navigate(['thesis']);
-      });
+    this.declarationService.apiDeclarationsPost(this.declaration).subscribe({
+      error: (e) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: this.translatedData['MESSAGE.ERROR'],
+          detail: this.translatedData['MESSAGE.ERROR_MESSAGE'],
+        });
+      },
+      complete: () => {
+        this.messageService.add({
+          severity: 'success',
+          summary: this.translatedData['MESSAGE.SUCCESS'],
+          detail: this.translatedData['MESSAGE.SUCCESS_MESSAGE'],
+        });
+        setTimeout(() => this.router.navigate(['thesis']), 1000);
+      },
+    });
   }
 }

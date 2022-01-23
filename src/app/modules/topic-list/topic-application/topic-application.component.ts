@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { TopicsService } from 'src/app/generated';
 
 @Component({
@@ -22,12 +22,21 @@ export class TopicApplicationComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private translateService: TranslateService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
     this.translateService
-      .get(['CONFIRMATION.MESSAGE', 'CONFIRMATION.YES', 'CONFIRMATION.NO'])
+      .get([
+        'CONFIRMATION.MESSAGE',
+        'CONFIRMATION.YES',
+        'CONFIRMATION.NO',
+        'CONFIRMATION.MESSAGE',
+        'CONFIRMATION.ERROR',
+        'CONFIRMATION.SUCCESS_MESSAGE',
+        'CONFIRMATION.ERROR_MESSAGE',
+      ])
       .subscribe((data: Record<string, string>) => {
         this.translatedData = data;
       });
@@ -59,8 +68,22 @@ export class TopicApplicationComponent implements OnInit {
   private sendApplication() {
     this.topicService
       .apiTopicsApplyForTopicPost(this.thesisId, this.message)
-      .subscribe((_) => {
-        this.router.navigate(['list']);
+      .subscribe({
+        error: (e) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: this.translatedData['MESSAGE.ERROR'],
+            detail: this.translatedData['MESSAGE.ERROR_MESSAGE'],
+          });
+        },
+        complete: () => {
+          this.messageService.add({
+            severity: 'success',
+            summary: this.translatedData['MESSAGE.SUCCESS'],
+            detail: this.translatedData['MESSAGE.SUCCESS_MESSAGE'],
+          });
+          setTimeout(() => this.router.navigate(['list']), 1000);
+        },
       });
   }
 }

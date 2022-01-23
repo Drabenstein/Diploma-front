@@ -126,6 +126,10 @@
   "CONFIRMATION": {
   "MESSAGE": "Jesteś pewien że chcesz kontynuować?",
   "YES": "Tak",
-  "NO": "Nie"
+  "NO": "Nie",
+  "SUCCESS": "Sukces",
+  "ERROR": "Błąd",
+  "SUCCESS_MESSAGE": "Akcja została wykonana pomyślnie",
+  "ERROR_MESSAGE": "Wystąpił błąd podczas przetwarzania akcji"
 }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { ApplicationsService } from 'src/app/generated';
 import { ApplicationDetailsDto } from 'src/app/generated/model/applicationDetailsDto';
 
@@ -21,10 +21,25 @@ export class TopicSupervisorApplicationComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private translateService: TranslateService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
+    this.translateService
+      .get([
+        'CONFIRMATION.SUCCESS',
+        'CONFIRMATION.YES',
+        'CONFIRMATION.NO',
+        'CONFIRMATION.MESSAGE',
+        'CONFIRMATION.ERROR',
+        'CONFIRMATION.SUCCESS_MESSAGE',
+        'CONFIRMATION.ERROR_MESSAGE',
+      ])
+      .subscribe((data: Record<string, string>) => {
+        this.translatedData = data;
+      });
+
     this.applicationId = this.activatedRoute.snapshot.params['id'];
     this.isProposal = Boolean(
       this.activatedRoute.snapshot.paramMap.get('isProposal')
@@ -72,16 +87,50 @@ export class TopicSupervisorApplicationComponent implements OnInit {
   private apply() {
     this.applicationService
       .apiApplicationsApplicationIdAcceptPost(this.applicationId)
-      .subscribe((_) => {
-        this.router.navigate(['supervisor', 'candidates', 'applications']);
+      .subscribe({
+        error: (e) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: this.translatedData['MESSAGE.ERROR'],
+            detail: this.translatedData['MESSAGE.ERROR_MESSAGE'],
+          });
+        },
+        complete: () => {
+          this.messageService.add({
+            severity: 'success',
+            summary: this.translatedData['MESSAGE.SUCCESS'],
+            detail: this.translatedData['MESSAGE.SUCCESS_MESSAGE'],
+          });
+          setTimeout(
+            () => this.router.navigate(['list', 'candidates', 'applications']),
+            1000
+          );
+        },
       });
   }
 
   private deny() {
     this.applicationService
       .apiApplicationsApplicationIdRejectPost(this.applicationId)
-      .subscribe((_) => {
-        this.router.navigate(['supervisor', 'candidates', 'applications']);
+      .subscribe({
+        error: (e) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: this.translatedData['MESSAGE.ERROR'],
+            detail: this.translatedData['MESSAGE.ERROR_MESSAGE'],
+          });
+        },
+        complete: () => {
+          this.messageService.add({
+            severity: 'success',
+            summary: this.translatedData['MESSAGE.SUCCESS'],
+            detail: this.translatedData['MESSAGE.SUCCESS_MESSAGE'],
+          });
+          setTimeout(
+            () => this.router.navigate(['list', 'candidates', 'applications']),
+            1000
+          );
+        },
       });
   }
 }

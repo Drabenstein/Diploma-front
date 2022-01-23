@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ConfirmationService, LazyLoadEvent } from 'primeng/api';
+import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
 import { ThesesService, TopicsService } from 'src/app/generated';
 import { ThesisForReviewerAssignmentDtoFieldOfStudyInitialTableDto } from 'src/app/generated/model/thesisForReviewerAssignmentDtoFieldOfStudyInitialTableDto';
 import { ThesisForReviewerAssignmentDto } from 'src/app/generated/model/thesisForReviewerAssignmentDto';
@@ -23,12 +23,21 @@ export class ReviewAssigmentComponent implements OnInit {
     private thesesService: ThesesService,
     private router: Router,
     private translateService: TranslateService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
     this.translateService
-      .get(['CONFIRMATION.MESSAGE', 'CONFIRMATION.YES', 'CONFIRMATION.NO'])
+      .get([
+        'CONFIRMATION.MESSAGE',
+        'CONFIRMATION.YES',
+        'CONFIRMATION.NO',
+        'CONFIRMATION.MESSAGE',
+        'CONFIRMATION.ERROR',
+        'CONFIRMATION.SUCCESS_MESSAGE',
+        'CONFIRMATION.ERROR_MESSAGE',
+      ])
       .subscribe((data: Record<string, string>) => {
         this.translatedData = data;
       });
@@ -103,10 +112,22 @@ export class ReviewAssigmentComponent implements OnInit {
       };
       return reviewer;
     });
-    this.thesesService
-      .apiThesesReviewersBulkPost(newReviewers)
-      .subscribe((_) => {
-        window.location.reload;
-      });
+    this.thesesService.apiThesesReviewersBulkPost(newReviewers).subscribe({
+      error: (e) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: this.translatedData['MESSAGE.ERROR'],
+          detail: this.translatedData['MESSAGE.ERROR_MESSAGE'],
+        });
+      },
+      complete: () => {
+        this.messageService.add({
+          severity: 'success',
+          summary: this.translatedData['MESSAGE.SUCCESS'],
+          detail: this.translatedData['MESSAGE.SUCCESS_MESSAGE'],
+        });
+        setTimeout(() => window.location.reload(), 1000);
+      },
+    });
   }
 }

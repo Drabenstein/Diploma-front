@@ -33,6 +33,7 @@ import { CardModule } from 'primeng/card';
 import { AccordionModule } from 'primeng/accordion';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,8 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
     CardModule,
     AccordionModule,
     FileUploadModule,
+    ConfirmPopupModule,
+    ToastModule,
   ],
   exports: [
     TopBarComponent,
@@ -106,6 +109,7 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
     AccordionModule,
     FileUploadModule,
     ConfirmPopupModule,
+    ToastModule,
   ],
 })
 export class SharedModule {

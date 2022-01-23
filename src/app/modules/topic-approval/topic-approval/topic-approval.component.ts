@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { ConfirmationService, LazyLoadEvent } from 'primeng/api';
+import {
+  ConfirmationService,
+  LazyLoadEvent,
+  MessageService,
+} from 'primeng/api';
 import { TopicsService } from 'src/app/generated';
 import { TopicForConsiderationDtoFieldOfStudyInitialTableDto } from 'src/app/generated/model/topicForConsiderationDtoFieldOfStudyInitialTableDto';
 
@@ -19,12 +23,21 @@ export class TopicApprovalComponent implements OnInit {
   constructor(
     private topicService: TopicsService,
     private translateService: TranslateService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
     this.translateService
-      .get(['CONFIRMATION.MESSAGE', 'CONFIRMATION.YES', 'CONFIRMATION.NO'])
+      .get([
+        'CONFIRMATION.SUCCESS',
+        'CONFIRMATION.YES',
+        'CONFIRMATION.NO',
+        'CONFIRMATION.MESSAGE',
+        'CONFIRMATION.ERROR',
+        'CONFIRMATION.SUCCESS_MESSAGE',
+        'CONFIRMATION.ERROR_MESSAGE',
+      ])
       .subscribe((data: Record<string, string>) => {
         this.translatedData = data;
       });
@@ -92,16 +105,44 @@ export class TopicApprovalComponent implements OnInit {
   private approveTopics(id: number): void {
     this.topicService
       .apiTopicsBulkAcceptPost(this.topicApprovalSelectionList[id])
-      .subscribe((_) => {
-        window.location.reload();
+      .subscribe({
+        error: (e) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: this.translatedData['MESSAGE.ERROR'],
+            detail: this.translatedData['MESSAGE.ERROR_MESSAGE'],
+          });
+        },
+        complete: () => {
+          this.messageService.add({
+            severity: 'success',
+            summary: this.translatedData['MESSAGE.SUCCESS'],
+            detail: this.translatedData['MESSAGE.SUCCESS_MESSAGE'],
+          });
+          setTimeout(() => window.location.reload(), 1000);
+        },
       });
   }
 
   private denyTopics(id: number): void {
     this.topicService
       .apiTopicsBulkRejectPost(this.topicApprovalSelectionList[id])
-      .subscribe((_) => {
-        window.location.reload();
+      .subscribe({
+        error: (e) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: this.translatedData['MESSAGE.ERROR'],
+            detail: this.translatedData['MESSAGE.ERROR_MESSAGE'],
+          });
+        },
+        complete: () => {
+          this.messageService.add({
+            severity: 'success',
+            summary: this.translatedData['MESSAGE.SUCCESS'],
+            detail: this.translatedData['MESSAGE.SUCCESS_MESSAGE'],
+          });
+          setTimeout(() => window.location.reload(), 1000);
+        },
       });
   }
 }
