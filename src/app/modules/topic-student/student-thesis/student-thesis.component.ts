@@ -57,7 +57,7 @@ export class StudentThesisComponent implements OnInit {
     this.thesisService.apiThesesGetThesisIdGet().subscribe((id) => {
       this.thesisId = id;
       if (this.thesisId !== 0) {
-        this.thesisService.apiThesesMyThesisGet().subscribe((thesis) => {
+        this.thesisService.apiThesesMyThesisGet(this.thesisId).subscribe((thesis) => {
           this.myThesis = thesis;
         });
       }
@@ -106,7 +106,7 @@ export class StudentThesisComponent implements OnInit {
     this.awsService.apiAwsDownloadThesisGet(this.thesisId).subscribe((data) => {
       saveAs(
         new Blob([data], { type: 'application/pdf' }),
-        this.thesisId + '_thesis.json'
+        this.thesisId + '_thesis.pdf'
       );
     });
   }
