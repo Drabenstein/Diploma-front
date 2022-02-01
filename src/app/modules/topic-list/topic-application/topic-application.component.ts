@@ -26,7 +26,7 @@ export class TopicApplicationComponent implements OnInit {
     private messageService: MessageService
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.translateService
       .get([
         'CONFIRMATION.MESSAGE',

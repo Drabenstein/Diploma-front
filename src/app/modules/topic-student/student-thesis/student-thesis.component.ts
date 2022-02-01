@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { saveAs } from 'file-saver';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 import {
   ApplicationsService,
   AWSService,
   ThesesService,
-  TopicsService,
 } from 'src/app/generated';
 import { ApprovedTopicDto } from 'src/app/generated/model/approvedTopicDto';
 import { MyThesisDto } from 'src/app/generated/model/myThesisDto';
@@ -26,16 +25,15 @@ export class StudentThesisComponent implements OnInit {
   private translatedData: Record<string, string> = {};
   constructor(
     private awsService: AWSService,
-    private topicService: TopicsService,
     private thesisService: ThesesService,
     private applicationService: ApplicationsService,
     private router: Router,
     private translateService: TranslateService,
-    private confirmationService: ConfirmationService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.translateService
       .get([
         'CONFIRMATION.SUCCESS',
@@ -50,24 +48,13 @@ export class StudentThesisComponent implements OnInit {
         this.translatedData = data;
       });
 
-    this.topicService.apiTopicsMyAcceptedTopicsGet().subscribe((data) => {
-      this.myAcceptedTopics = data;
-    });
+    this.thesisId = this.activatedRoute.snapshot.params['id'];
 
-    this.thesisService.apiThesesGetThesisIdGet().subscribe((id) => {
-      this.thesisId = id;
-      if (this.thesisId !== 0) {
-        this.thesisService.apiThesesMyThesisGet(this.thesisId).subscribe((thesis) => {
-          this.myThesis = thesis;
-        });
-      }
-    });
-  }
-
-  public onAbstractTranslate(): void {
-    this.awsService.apiAwsTranslateGet(this.abstract).subscribe((text) => {
-      this.abstractResult = text;
-    });
+    this.thesisService
+      .apiThesesMyThesisGet(this.thesisId)
+      .subscribe((thesis) => {
+        this.myThesis = thesis;
+      });
   }
 
   public onUploadThesis(event: any): void {

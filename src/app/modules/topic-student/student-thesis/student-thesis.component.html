@@ -1,113 +1,66 @@
 <p-toast></p-toast>
-<div *ngIf="thesisId === null || thesisId === 0">
-  <p-card header="{{ 'THESIS.MY_ACCEPTED_TOPICS' | translate }}">
-    <div *ngFor="let acceptedTopic of myAcceptedTopics">
-      <p-panel header="{{ acceptedTopic.applicationStatus }}">
-        {{ acceptedTopic.name }}<br />
-        {{ acceptedTopic.englishName }}<br />
-        {{ acceptedTopic.supervisor }}<br />
-        <p-button
-          iconPos="left"
-          label="{{ 'THESIS.BUTTON_CONFIRM' | translate }}"
-          (click)="onConfirmTopic(acceptedTopic.applicationId!)"
-        ></p-button> </p-panel
-      ><br />
-    </div>
-  </p-card>
-</div>
-<div *ngIf="thesisId !== null && thesisId !== 0">
-  <div class="two-columns">
-    <div class="card">
-      <div>
-        <p-card header="{{ 'THESIS.DATA_HEADDER' | translate }}">
-          {{ myThesis.topic }}<br />
-          <br />
-          <p-button
-            iconPos="left"
-            label="{{ 'THESIS.BUTTON_DECLARATION' | translate }}"
-            (click)="onSendDeclaration()"
-          ></p-button>
-        </p-card>
-      </div>
-      <div class="bottom-card">
-        <p-card header="{{ 'THESIS.MARK_HEADDER' | translate }}">
-          <div *ngFor="let review of myThesis.reviews">
-            <p-panel header="{{ review.reviewer }}">
-              <div class="two-columns">
-                <div>
-                  {{ "THESIS.DATE" | translate }} {{ review.timestamp }}<br />
-                  {{ "THESIS.MARK" | translate }} {{ review.grade }}
-                </div>
-                <div>
-                  <p-button
-                    icon="pi pi-file-o"
-                    iconPos="left"
-                    label="{{ 'THESIS.BUTTON_REVIEW' | translate }}"
-                    (click)="onOpenReview(review.id!)"
-                  ></p-button>
-                </div>
-              </div>
-            </p-panel>
-          </div>
-        </p-card>
-      </div>
-    </div>
-
-    <div class="card">
-      <p-card header="{{ 'THESIS.FILE' | translate }}">
-        <div class="two-columns">
-          <p-fileUpload
-            mode="basic"
-            [customUpload]="true"
-            [multiple]="false"
-            (uploadHandler)="onUploadThesis($event)"
-            [auto]="true"
-            [maxFileSize]="20000000"
-            chooseLabel="{{ 'THESIS.BUTTON_UPLOAD' | translate }}"
-          ></p-fileUpload>
-          <p-button
-            iconPos="left"
-            label="{{ 'THESIS.BUTTON_DOWNLOAD' | translate }}"
-            (click)="onDownloadThesis()"
-          ></p-button>
-          <p-button
-            iconPos="left"
-            label="{{ 'THESIS.BUTTON_DELETE' | translate }}"
-            (click)="onDeleteThesis()"
-          ></p-button>
-        </div>
-      </p-card>
-      <br />
-      <p-card header="{{ 'THESIS.AWS' | translate }}">
-        <textarea
-          [(ngModel)]="abstract"
-          pInputTextarea
-          rows="8"
-          cols="200"
-        ></textarea>
-        <br />
+<div class="two-columns">
+  <div class="card">
+    <div>
+      <p-card header="{{ 'THESIS.DATA_HEADDER' | translate }}">
+        {{ myThesis.topic }}<br />
         <br />
         <p-button
           iconPos="left"
-          label="{{ 'THESIS.BUTTON_TRANSLATE' | translate }}"
-          (click)="onAbstractTranslate()"
+          label="{{ 'THESIS.BUTTON_DECLARATION' | translate }}"
+          (click)="onSendDeclaration()"
         ></p-button>
-        <br />
-        <span>{{ abstractResult }}</span>
       </p-card>
-      <!--
-    <p-card header="{{ 'THESIS.EVENT_HEADDER' | translate }}">
-      <div *ngFor="let event of events">
-        <div class="two-columns">
-          <div>{{ event.timestump }}<br /></div>
-          <div>
-            {{ event.message }}
-          </div>
+    </div>
+    <div class="bottom-card">
+      <p-card header="{{ 'THESIS.MARK_HEADDER' | translate }}">
+        <div *ngFor="let review of myThesis.reviews">
+          <p-panel header="{{ review.reviewer }}">
+            <div class="two-columns">
+              <div>
+                {{ "THESIS.DATE" | translate }} {{ review.timestamp }}<br />
+                {{ "THESIS.MARK" | translate }} {{ review.grade }}
+              </div>
+              <div>
+                <p-button
+                  icon="pi pi-file-o"
+                  iconPos="left"
+                  label="{{ 'THESIS.BUTTON_REVIEW' | translate }}"
+                  (click)="onOpenReview(review.id!)"
+                ></p-button>
+              </div>
+            </div>
+          </p-panel>
         </div>
-        <p-divider></p-divider>
+      </p-card>
+    </div>
+  </div>
+
+  <div class="card">
+    <p-card header="{{ 'THESIS.FILE' | translate }}">
+      <div class="two-columns">
+        <p-fileUpload
+          mode="basic"
+          [customUpload]="true"
+          [multiple]="false"
+          (uploadHandler)="onUploadThesis($event)"
+          [auto]="true"
+          [maxFileSize]="20000000"
+          chooseLabel="{{ 'THESIS.BUTTON_UPLOAD' | translate }}"
+        ></p-fileUpload>
+        <p-button
+          iconPos="left"
+          label="{{ 'THESIS.BUTTON_DOWNLOAD' | translate }}"
+          (click)="onDownloadThesis()"
+        ></p-button>
+        <p-button
+          iconPos="left"
+          label="{{ 'THESIS.BUTTON_DELETE' | translate }}"
+          (click)="onDeleteThesis()"
+        ></p-button>
       </div>
     </p-card>
-        -->
-    </div>
+    <br />
+    <p-card header="{{ 'THESIS.ACTIONS' | translate }}"> </p-card>
   </div>
 </div>

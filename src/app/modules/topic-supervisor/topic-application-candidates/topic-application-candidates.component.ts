@@ -19,7 +19,7 @@ export class TopicApplicationCandidatesComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.applicationService
       .apiApplicationsInitialByFieldGet()
       .subscribe((data) => {

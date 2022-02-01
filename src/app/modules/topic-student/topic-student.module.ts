@@ -6,13 +6,15 @@ import { StudentThesisComponent } from './student-thesis/student-thesis.componen
 import { StudentDeclarationComponent } from './student-declaration/student-declaration.component';
 import { SharedModule } from '../shared/shared.module';
 import { StudentThesisReviewComponent } from './student-thesis-review/student-thesis-review.component';
+import { StudentThesisMainComponent } from './student-thesis-main/student-thesis-main.component';
 
 
 @NgModule({
   declarations: [
     StudentThesisComponent,
     StudentDeclarationComponent,
-    StudentThesisReviewComponent
+    StudentThesisReviewComponent,
+    StudentThesisMainComponent
   ],
   imports: [
     CommonModule,

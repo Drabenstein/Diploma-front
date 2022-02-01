@@ -23,7 +23,7 @@ export class ReviewListComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.reviewerService.apiReviewersGetMyReviewsGet().subscribe((data) => {
       this.fieldsOfStudy = data;
       this.fieldsOfStudy.forEach((f) => {

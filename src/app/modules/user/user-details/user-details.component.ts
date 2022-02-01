@@ -24,7 +24,7 @@ export class UserDetailsComponent implements OnInit {
     private userService: UsersService
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.areasService
       .apiAreasOfInterestGetAreasOfInterestGet()
       .subscribe((data) => {

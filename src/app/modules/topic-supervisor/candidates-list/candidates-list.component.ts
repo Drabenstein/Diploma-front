@@ -17,7 +17,7 @@ export class CandidatesListComponent implements OnInit {
   public loading: Record<number, boolean> = {};
   constructor(private thesesService: ThesesService, private router: Router) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.thesesService.apiThesesSupervisedByFieldGet().subscribe((data) => {
       this.fieldsOfStudy = data;
       this.fieldsOfStudy.forEach((f) => {

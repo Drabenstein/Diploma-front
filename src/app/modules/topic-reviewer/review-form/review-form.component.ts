@@ -84,7 +84,7 @@ export class ReviewFormComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.translateService
       .get(['CONFIRMATION.MESSAGE', 'CONFIRMATION.YES', 'CONFIRMATION.NO'])
       .subscribe((data: Record<string, string>) => {

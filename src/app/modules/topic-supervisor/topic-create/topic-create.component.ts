@@ -60,7 +60,7 @@ export class TopicCreateComponent implements OnInit {
       ]),
     });
   }
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.translateService
       .get([
         'CONFIRMATION.SUCCESS',

@@ -15,7 +15,7 @@ export class SupervisorTopicListComponent implements OnInit {
   public loading: Record<number, boolean> = {};
   constructor(private topicService: TopicsService, private router: Router) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.topicService.apiTopicsTopicsForTutorGet().subscribe((data) => {
       this.fieldsOfStudy = data;
       this.fieldsOfStudy.forEach((f) => {

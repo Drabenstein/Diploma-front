@@ -35,7 +35,7 @@ export class ReviewerListComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.areasService
       .apiAreasOfInterestGetAreasOfInterestGet()
       .subscribe((data) => {

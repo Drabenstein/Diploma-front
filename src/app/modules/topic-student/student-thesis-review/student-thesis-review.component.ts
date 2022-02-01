@@ -34,7 +34,7 @@ export class StudentThesisReviewComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.reviewId = this.activatedRoute.snapshot.params['reviewId'];
     this.thesisId = this.activatedRoute.snapshot.params['thesisId'];
     this.reviewService

@@ -58,7 +58,7 @@ export class TopicProposeComponent implements OnInit {
       message: new FormControl(null),
     });
   }
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.translateService
       .get([
         'CONFIRMATION.MESSAGE',

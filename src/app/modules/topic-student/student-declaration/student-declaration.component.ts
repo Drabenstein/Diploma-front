@@ -42,7 +42,7 @@ export class StudentDeclarationComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.translateService
       .get([
         'CONFIRMATION.SUCCESS',
@@ -106,7 +106,7 @@ export class StudentDeclarationComponent implements OnInit {
           summary: this.translatedData['MESSAGE.SUCCESS'],
           detail: this.translatedData['MESSAGE.SUCCESS_MESSAGE'],
         });
-        setTimeout(() => this.router.navigate(['thesis']), 1000);
+        setTimeout(() => this.router.navigate(['thesis', this.thesisId]), 1000);
       },
     });
   }
