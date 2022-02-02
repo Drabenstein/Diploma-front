@@ -18,7 +18,6 @@ export class TopicApprovalComponent implements OnInit {
   public fieldsOfStudy: TopicForConsiderationDtoFieldOfStudyInitialTableDto[] =
     [];
   private translatedData: Record<string, string> = {};
-
   public loading: Record<number, boolean> = {};
   constructor(
     private topicService: TopicsService,
