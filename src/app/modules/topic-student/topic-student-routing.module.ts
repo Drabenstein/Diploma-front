@@ -6,7 +6,7 @@ import { StudentThesisReviewComponent } from './student-thesis-review/student-th
 import { StudentThesisComponent } from './student-thesis/student-thesis.component';
 
 const routes: Routes = [
-  { path: 'declaration', component: StudentDeclarationComponent },
+  { path: 'declaration/:thesisId', component: StudentDeclarationComponent },
   { path: 'review/:thesisId/:reviewId', component: StudentThesisReviewComponent },
   { path: ':thesisId', component: StudentThesisComponent },
   { path: '', component: StudentThesisMainComponent },

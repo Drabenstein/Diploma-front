@@ -117,7 +117,7 @@ export class StudentThesisComponent implements OnInit {
     this.router.navigate([
       'thesis',
       'declaration',
-      { thesisId: this.thesisId },
+      this.thesisId,
     ]);
   }
 

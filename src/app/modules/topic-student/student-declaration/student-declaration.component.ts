@@ -57,9 +57,8 @@ export class StudentDeclarationComponent implements OnInit {
         this.translatedData = data;
       });
 
-    this.thesisId = Number(
-      this.activatedRoute.snapshot.paramMap.get('thesisId')
-    );
+    this.thesisId = this.activatedRoute.snapshot.params['thesisId'];
+
     this.declarationService.apiDeclarationsGet(0).subscribe((data) => {
       this.declarationData = data;
     });
