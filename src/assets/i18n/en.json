@@ -126,6 +126,7 @@
   "CONFIRMATION": {
     "MESSAGE": "Are you sure that you want to proceed?",
     "YES": "Yes",
+    "NO": "Nie",
     "SUCCESS": "Success",
     "ERROR": "Error",
     "SUCCESS_MESSAGE": "Action was successful",
