@@ -5,7 +5,7 @@ import {
   LazyLoadEvent,
   MessageService,
 } from 'primeng/api';
-import { TopicsService } from 'src/app/generated';
+import { TopicForConsiderationDto, TopicsService } from 'src/app/generated';
 import { TopicForConsiderationDtoFieldOfStudyInitialTableDto } from 'src/app/generated/model/topicForConsiderationDtoFieldOfStudyInitialTableDto';
 
 @Component({
@@ -14,7 +14,10 @@ import { TopicForConsiderationDtoFieldOfStudyInitialTableDto } from 'src/app/gen
   styleUrls: ['./topic-approval.component.scss'],
 })
 export class TopicApprovalComponent implements OnInit {
-  public topicApprovalSelectionList: Record<number, number[]> = {};
+  public topicApprovalSelectionList: Record<
+    number,
+    TopicForConsiderationDto[]
+  > = {};
   public fieldsOfStudy: TopicForConsiderationDtoFieldOfStudyInitialTableDto[] =
     [];
   private translatedData: Record<string, string> = {};
@@ -103,7 +106,9 @@ export class TopicApprovalComponent implements OnInit {
 
   private approveTopics(id: number): void {
     this.topicService
-      .apiTopicsBulkAcceptPost(this.topicApprovalSelectionList[id])
+      .apiTopicsBulkAcceptPost(
+        this.topicApprovalSelectionList[id].map((t) => t.id!)
+      )
       .subscribe({
         error: (e) => {
           this.messageService.add({
@@ -125,7 +130,9 @@ export class TopicApprovalComponent implements OnInit {
 
   private denyTopics(id: number): void {
     this.topicService
-      .apiTopicsBulkRejectPost(this.topicApprovalSelectionList[id])
+      .apiTopicsBulkRejectPost(
+        this.topicApprovalSelectionList[id].map((t) => t.id!)
+      )
       .subscribe({
         error: (e) => {
           this.messageService.add({

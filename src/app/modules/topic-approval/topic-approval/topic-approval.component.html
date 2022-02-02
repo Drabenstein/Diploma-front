@@ -20,7 +20,7 @@
         [rowsPerPageOptions]="[10, 25, 50]"
         [rows]="10"
         dataKey="id"
-        [selection]="topicApprovalSelectionList[fieldOfStudy.id!]"
+        [(selection)]="topicApprovalSelectionList[fieldOfStudy.id!]"
       >
         <ng-template pTemplate="header">
           <tr>
@@ -54,7 +54,7 @@
             <td>{{ topic.supervisorDepartment }}</td>
             <td>
               <p-tableCheckbox
-                [value]="topic.id"
+                [value]="topic"
               ></p-tableCheckbox>
             </td>
           </tr>

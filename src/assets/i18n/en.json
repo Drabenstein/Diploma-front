@@ -54,7 +54,8 @@
     "MAX_REVIEWS": "Max reviews",
     "BUTTON_SEARCH": "Search",
     "ACTUAL_REVIEWS": "Actual reviews: ",
-    "AREAS": "Areas of interest: "
+    "AREAS": "Areas of interest: ",
+    "WORKERS": "Workers"
   },
   "TOPIC_PROPOSAL": {
     "SUPERVISOR": "Supervisor",
