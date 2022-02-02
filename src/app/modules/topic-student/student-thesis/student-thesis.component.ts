@@ -141,15 +141,15 @@ export class StudentThesisComponent implements OnInit {
 
   public isDeclarationDisabled(): boolean {
     return (
-      this.myThesis.status !== 'ReadyToReview' &&
-      this.myThesis.status !== 'Reviewed'
+      this.myThesis.status === 'ReadyToReview' ||
+      this.myThesis.status === 'Reviewed'
     );
   }
   public isToReviewDisabled(): boolean {
     return (
-      this.myThesis.status !== 'ReadyToReview' &&
-      this.myThesis.status !== 'Reviewed' &&
-      this.myThesis.hasDeclaration === true
+      this.myThesis.status === 'ReadyToReview' ||
+      this.myThesis.status === 'Reviewed' ||
+      this.myThesis.hasDeclaration === false
     );
   }
 

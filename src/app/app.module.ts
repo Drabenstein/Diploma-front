@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import {
   HttpClient,
   HttpClientModule,
@@ -60,7 +61,8 @@ import { InterceptorService } from './services/interceptor.service';
     { provide: BASE_PATH, useValue: environment.API_BASE_PATH },
     HttpClient,
     MessageService,
-    ConfirmationService
+    ConfirmationService,
+    DatePipe,
   ],
   bootstrap: [AppComponent],
 })

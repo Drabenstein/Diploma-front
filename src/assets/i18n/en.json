@@ -123,7 +123,9 @@
     "AWS": "Machine learning services",
     "FILE": "Thesis file management",
     "MY_ACCEPTED_TOPICS": "My accepted topics",
-    "THESIS": "My theses"
+    "THESIS": "My theses",
+    "SEND_DECLARATION": "Declaration",
+    "TO_REVIEW": "Send to review"
   },
   "CONFIRMATION": {
     "MESSAGE": "Are you sure that you want to proceed?",
