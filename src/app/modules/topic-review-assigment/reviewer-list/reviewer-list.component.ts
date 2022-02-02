@@ -17,7 +17,7 @@ import {
 export class ReviewerListComponent implements OnInit {
   public formGroup: FormGroup;
   public areas: AreaOfInterestDto[] = [];
-  public selectedAreas: AreaOfInterestDto[] = [];
+  public selectedAreas: number[] = [];
   public minReviews: number = 1;
   public maxReviews: number = 1;
   public workers: ReviewerWithInterestsDto[] = [];
@@ -45,10 +45,9 @@ export class ReviewerListComponent implements OnInit {
 
   public searchForReviewers() {
     if (this.formGroup.valid) {
-      const selectedAreasIds: number[] = this.selectedAreas.map((a) => a.id!);
       this.reviewersService
         .apiReviewersGetReviewersWithInterestsGet(
-          selectedAreasIds,
+          this.selectedAreas,
           this.minReviews,
           this.maxReviews,
           1,
