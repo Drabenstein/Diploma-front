@@ -10,7 +10,7 @@
           }}"
           [toggleable]="true"
         >
-          <div class="card">
+          <div>
             <p-table
               [value]="fieldOfStudy.data!.results!"
               [paginator]="true"
@@ -45,6 +45,7 @@
                   <td>{{ topic.englishName }}</td>
                   <td>{{ topic.supervisorAcademicDegree }} {{ topic.supervisorFullName }}</td>
                   <td style="text-align: center">
+                    <p-confirmPopup></p-confirmPopup>
                     <button
                       pButton
                       type="button"
