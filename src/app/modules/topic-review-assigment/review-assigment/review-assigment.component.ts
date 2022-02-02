@@ -70,7 +70,7 @@ export class ReviewAssigmentComponent implements OnInit {
       );
 
       this.thesesService
-        .apiThesesSupervisedGet(
+        .apiThesesReviewerAssignmentGet(
           this.fieldsOfStudy[fieldOfStudyIndex]?.id,
           this.fieldsOfStudy[fieldOfStudyIndex]?.defenceYear!,
           event.first! / event.rows! + 1,
