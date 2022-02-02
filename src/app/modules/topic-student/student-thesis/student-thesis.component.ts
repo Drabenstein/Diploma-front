@@ -44,7 +44,7 @@ export class StudentThesisComponent implements OnInit {
         this.translatedData = data;
       });
 
-    this.thesisId = this.activatedRoute.snapshot.params['id'];
+    this.thesisId = this.activatedRoute.snapshot.params['thesisId'];
 
     this.thesisService
       .apiThesesMyThesisGet(this.thesisId)
