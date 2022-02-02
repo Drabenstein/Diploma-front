@@ -42,6 +42,7 @@ model/reviewersThesisDtoPagedResultDto.ts
 model/sendDeclarationDto.ts
 model/studentDataDto.ts
 model/studentsApprovedTopicDto.ts
+model/studentsApprovedTopicDtoFieldOfStudyInitialTableDto.ts
 model/studentsApprovedTopicDtoPagedResultDto.ts
 model/studentsReviewDataDto.ts
 model/studentsThesisDto.ts

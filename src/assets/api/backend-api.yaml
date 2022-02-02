@@ -1515,17 +1515,17 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/TopicForConsiderationDtoFieldOfStudyInitialTableDto'
+                  $ref: '#/components/schemas/StudentsApprovedTopicDtoFieldOfStudyInitialTableDto'
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/TopicForConsiderationDtoFieldOfStudyInitialTableDto'
+                  $ref: '#/components/schemas/StudentsApprovedTopicDtoFieldOfStudyInitialTableDto'
             text/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/TopicForConsiderationDtoFieldOfStudyInitialTableDto'
+                  $ref: '#/components/schemas/StudentsApprovedTopicDtoFieldOfStudyInitialTableDto'
         '400':
           description: Bad Request
           content:
@@ -2218,9 +2218,12 @@ components:
     StudentsApprovedTopicDto:
       type: object
       properties:
-        id:
+        topicId:
           type: integer
-          format: int64
+          format: int32
+        applicationId:
+          type: integer
+          format: int32
         name:
           type: string
           nullable: true
@@ -2239,6 +2242,30 @@ components:
         supervisorDepartment:
           type: string
           nullable: true
+      additionalProperties: false
+    StudentsApprovedTopicDtoFieldOfStudyInitialTableDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        degree:
+          type: integer
+          format: int32
+        studyForm:
+          type: string
+          nullable: true
+        lectureLanguage:
+          type: string
+          nullable: true
+        defenceYear:
+          type: string
+          nullable: true
+        data:
+          $ref: '#/components/schemas/StudentsApprovedTopicDtoPagedResultDto'
       additionalProperties: false
     StudentsApprovedTopicDtoPagedResultDto:
       type: object

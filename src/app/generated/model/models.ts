@@ -24,6 +24,7 @@ export * from './reviewersThesisDtoPagedResultDto';
 export * from './sendDeclarationDto';
 export * from './studentDataDto';
 export * from './studentsApprovedTopicDto';
+export * from './studentsApprovedTopicDtoFieldOfStudyInitialTableDto';
 export * from './studentsApprovedTopicDtoPagedResultDto';
 export * from './studentsReviewDataDto';
 export * from './studentsThesisDto';

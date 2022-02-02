@@ -27,6 +27,8 @@ import { FieldOfStudyForApplicationDto } from '../model/fieldOfStudyForApplicati
 // @ts-ignore
 import { ProblemDetails } from '../model/problemDetails';
 // @ts-ignore
+import { StudentsApprovedTopicDtoFieldOfStudyInitialTableDto } from '../model/studentsApprovedTopicDtoFieldOfStudyInitialTableDto';
+// @ts-ignore
 import { StudentsApprovedTopicDtoPagedResultDto } from '../model/studentsApprovedTopicDtoPagedResultDto';
 // @ts-ignore
 import { StudentsTopicDtoFieldOfStudyInitialTableDto } from '../model/studentsTopicDtoFieldOfStudyInitialTableDto';
@@ -813,9 +815,9 @@ export class TopicsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public apiTopicsStudentsApprovedTopicsGet(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<Array<TopicForConsiderationDtoFieldOfStudyInitialTableDto>>;
-    public apiTopicsStudentsApprovedTopicsGet(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpResponse<Array<TopicForConsiderationDtoFieldOfStudyInitialTableDto>>>;
-    public apiTopicsStudentsApprovedTopicsGet(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpEvent<Array<TopicForConsiderationDtoFieldOfStudyInitialTableDto>>>;
+    public apiTopicsStudentsApprovedTopicsGet(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<Array<StudentsApprovedTopicDtoFieldOfStudyInitialTableDto>>;
+    public apiTopicsStudentsApprovedTopicsGet(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpResponse<Array<StudentsApprovedTopicDtoFieldOfStudyInitialTableDto>>>;
+    public apiTopicsStudentsApprovedTopicsGet(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpEvent<Array<StudentsApprovedTopicDtoFieldOfStudyInitialTableDto>>>;
     public apiTopicsStudentsApprovedTopicsGet(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
@@ -845,7 +847,7 @@ export class TopicsService {
             responseType_ = 'text';
         }
 
-        return this.httpClient.get<Array<TopicForConsiderationDtoFieldOfStudyInitialTableDto>>(`${this.configuration.basePath}/api/topics/students-approved-topics`,
+        return this.httpClient.get<Array<StudentsApprovedTopicDtoFieldOfStudyInitialTableDto>>(`${this.configuration.basePath}/api/topics/students-approved-topics`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,

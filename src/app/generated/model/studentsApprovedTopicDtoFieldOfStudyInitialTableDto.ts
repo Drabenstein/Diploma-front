@@ -9,16 +9,16 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { StudentsApprovedTopicDtoPagedResultDto } from './studentsApprovedTopicDtoPagedResultDto';
 
 
-export interface StudentsApprovedTopicDto { 
-    topicId?: number;
-    applicationId?: number;
+export interface StudentsApprovedTopicDtoFieldOfStudyInitialTableDto { 
+    id?: number;
     name?: string | null;
-    englishName?: string | null;
-    status?: string | null;
-    supervisorAcademicDegree?: string | null;
-    supervisorFullName?: string | null;
-    supervisorDepartment?: string | null;
+    degree?: number;
+    studyForm?: string | null;
+    lectureLanguage?: string | null;
+    defenceYear?: string | null;
+    data?: StudentsApprovedTopicDtoPagedResultDto;
 }
 

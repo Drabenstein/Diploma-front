@@ -8,9 +8,9 @@ import {
 } from 'primeng/api';
 import {
   ApplicationsService,
+  StudentsApprovedTopicDtoFieldOfStudyInitialTableDto,
   StudentsThesisDto,
   ThesesService,
-  TopicForConsiderationDtoFieldOfStudyInitialTableDto,
   TopicsService,
 } from 'src/app/generated';
 
@@ -20,7 +20,7 @@ import {
   styleUrls: ['./student-thesis-main.component.scss'],
 })
 export class StudentThesisMainComponent implements OnInit {
-  public fieldsOfStudy: TopicForConsiderationDtoFieldOfStudyInitialTableDto[] =
+  public fieldsOfStudy: StudentsApprovedTopicDtoFieldOfStudyInitialTableDto[] =
     [];
   public theses: StudentsThesisDto[] = [];
 
