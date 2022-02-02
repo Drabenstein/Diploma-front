@@ -41,9 +41,9 @@
     "CREATE_TOPIC": "Add new topic",
     "BACK": "Back",
     "MY_REVIEWS": "My reviews",
-    "CHOOSE_REVIEWER": "Wybierz recenzenta",
-    "REVIEWER_LIST": "Lista recenzentów",
-    "BUTTON_CONFIRM": "Zatwierdź",
+    "CHOOSE_REVIEWER": "Choose reviewer",
+    "REVIEWER_LIST": "Reviewers list",
+    "BUTTON_CONFIRM": "Confirm",
     "BUTTON_DENY": "Deny"
   },
   "USER_DETAILS": {

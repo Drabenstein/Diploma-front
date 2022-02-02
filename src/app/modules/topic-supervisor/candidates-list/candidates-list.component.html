@@ -41,9 +41,6 @@
             <th>
               {{ "TOPIC_LIST.REVIEWER" | translate }}
             </th>
-            <th style="width: 5rem">
-              {{ "TOPIC_LIST.ACTION" | translate }}
-            </th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-candidate>
@@ -54,14 +51,6 @@
             <td>
               {{ candidate.reviewerAcademicDegree }}
               {{ candidate.reviewerFullName }}
-            </td>
-            <td style="text-align: center">
-              <button
-                pButton
-                type="button"
-                icon="pi pi-cog"
-                (click)="openCandidateDetails(candidate.id)"
-              ></button>
             </td>
           </tr>
         </ng-template>

@@ -50,8 +50,4 @@ export class CandidatesListComponent implements OnInit {
   public onApplicationsCheck() {
     this.router.navigate(['supervisor', 'candidates', 'applications']);
   }
-
-  public openCandidateDetails(candidateId: number): void {
-    this.router.navigate(['supervisor', 'candidates', candidateId]);
-  }
 }
