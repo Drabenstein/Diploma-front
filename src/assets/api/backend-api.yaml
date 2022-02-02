@@ -413,7 +413,6 @@ paths:
               properties:
                 file:
                   type: string
-                  format: byte
             encoding:
               file:
                 style: form
@@ -630,6 +629,48 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ReviewDataDto'
+  /api/reviewers/postReview:
+    post:
+      tags:
+        - Reviewers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostReviewDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/PostReviewDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/PostReviewDto'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/theses/get-thesis-id:
     get:
       tags:
@@ -1331,6 +1372,116 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+  /api/topics/students-approved-topics:
+    get:
+      tags:
+        - Topics
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TopicForConsiderationDtoFieldOfStudyInitialTableDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TopicForConsiderationDtoFieldOfStudyInitialTableDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TopicForConsiderationDtoFieldOfStudyInitialTableDto'
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /api/topics/students-approved-topics-by-year-and-field:
+    get:
+      tags:
+        - Topics
+      parameters:
+        - name: fieldOfStudyId
+          in: query
+          schema:
+            type: integer
+            format: int64
+        - name: yearOfDefence
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StudentsApprovedTopicDtoPagedResultDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentsApprovedTopicDtoPagedResultDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StudentsApprovedTopicDtoPagedResultDto'
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /api/users/fetchData:
     post:
       tags:
@@ -1586,22 +1737,71 @@ components:
           type: string
           nullable: true
       additionalProperties: false
+    FilledReviewModuleDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        type:
+          type: string
+          nullable: true
+        value:
+          type: string
+          nullable: true
+      additionalProperties: false
     MyThesisDto:
       type: object
       properties:
         id:
           type: integer
           format: int64
-        topic:
+        topicName:
+          type: string
+          nullable: true
+        topicEnglishName:
           type: string
           nullable: true
         status:
+          type: string
+          nullable: true
+        language:
+          type: string
+          nullable: true
+        hasConsentToChangeLanguage:
+          type: boolean
+          nullable: true
+        supervisorFullName:
+          type: string
+          nullable: true
+        yearOfDefence:
+          type: string
+          nullable: true
+        fieldOfStudy:
           type: string
           nullable: true
         reviews:
           type: array
           items:
             $ref: '#/components/schemas/ReviewForMyThesisDto'
+          nullable: true
+      additionalProperties: false
+    PostReviewDto:
+      type: object
+      properties:
+        reviewId:
+          type: integer
+          format: int32
+        reviewModules:
+          type: array
+          items:
+            $ref: '#/components/schemas/FilledReviewModuleDto'
+          nullable: true
+        grade:
+          type: string
           nullable: true
       additionalProperties: false
     ProblemDetails:
@@ -1840,6 +2040,48 @@ components:
           nullable: true
         studyForm:
           type: string
+          nullable: true
+      additionalProperties: false
+    StudentsApprovedTopicDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        englishName:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        supervisorAcademicDegree:
+          type: string
+          nullable: true
+        supervisorFullName:
+          type: string
+          nullable: true
+        supervisorDepartment:
+          type: string
+          nullable: true
+      additionalProperties: false
+    StudentsApprovedTopicDtoPagedResultDto:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          format: int32
+        totalItems:
+          type: integer
+          format: int32
+        hasNextPage:
+          type: boolean
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/StudentsApprovedTopicDto'
           nullable: true
       additionalProperties: false
     StudentsTopicDto:

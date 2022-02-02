@@ -186,7 +186,7 @@ export class AWSService {
         }
 
 
-        let responseType_: 'text' | 'blob' = 'blob';
+        let responseType_: 'text' | 'json' = 'json';
         if(localVarHttpHeaderAcceptSelected && localVarHttpHeaderAcceptSelected.startsWith('text')) {
             responseType_ = 'text';
         }

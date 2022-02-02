@@ -24,8 +24,10 @@ model/areaOfInterestDto.ts
 model/createTopicDto.ts
 model/declarationDataDto.ts
 model/fieldOfStudyForApplicationDto.ts
+model/filledReviewModuleDto.ts
 model/models.ts
 model/myThesisDto.ts
+model/postReviewDto.ts
 model/problemDetails.ts
 model/reviewDataDto.ts
 model/reviewForMyThesisDto.ts
@@ -38,6 +40,8 @@ model/reviewersThesisDtoFieldOfStudyInitialTableDto.ts
 model/reviewersThesisDtoPagedResultDto.ts
 model/sendDeclarationDto.ts
 model/studentDataDto.ts
+model/studentsApprovedTopicDto.ts
+model/studentsApprovedTopicDtoPagedResultDto.ts
 model/studentsTopicDto.ts
 model/studentsTopicDtoFieldOfStudyInitialTableDto.ts
 model/studentsTopicDtoPagedResultDto.ts

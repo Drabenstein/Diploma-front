@@ -9,19 +9,15 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ReviewForMyThesisDto } from './reviewForMyThesisDto';
 
 
-export interface MyThesisDto { 
+export interface StudentsApprovedTopicDto { 
     id?: number;
-    topicName?: string | null;
-    topicEnglishName?: string | null;
+    name?: string | null;
+    englishName?: string | null;
     status?: string | null;
-    language?: string | null;
-    hasConsentToChangeLanguage?: boolean | null;
+    supervisorAcademicDegree?: string | null;
     supervisorFullName?: string | null;
-    yearOfDefence?: string | null;
-    fieldOfStudy?: string | null;
-    reviews?: Array<ReviewForMyThesisDto> | null;
+    supervisorDepartment?: string | null;
 }
 

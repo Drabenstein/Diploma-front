@@ -3,7 +3,13 @@
   <div class="card">
     <div>
       <p-card header="{{ 'THESIS.DATA_HEADDER' | translate }}">
-        {{ myThesis.topic }}<br />
+        {{ myThesis.topicName }}<br />
+        {{ myThesis.topicEnglishName }}<br />
+        Supervisor: {{ myThesis.supervisorFullName }}<br />
+        Thesis language: {{ myThesis.language }}<br />
+        Consent to Change language: {{ myThesis.hasConsentToChangeLanguage }}<br />
+        Field of study:{{ myThesis.fieldOfStudy }}<br />
+        Year of defence: {{ myThesis.yearOfDefence }}<br />
         <br />
         <p-button
           iconPos="left"
@@ -61,6 +67,7 @@
       </div>
     </p-card>
     <br />
-    <p-card header="{{ 'THESIS.ACTIONS' | translate }}"> </p-card>
+    <p-card header="{{ 'THESIS.ACTIONS' | translate }}">
+      <h2>        {{ myThesis.status }}<br /></h2> </p-card>
   </div>
 </div>

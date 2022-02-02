@@ -38,9 +38,19 @@ export class StudentThesisReviewComponent implements OnInit {
     this.reviewId = this.activatedRoute.snapshot.params['reviewId'];
     this.thesisId = this.activatedRoute.snapshot.params['thesisId'];
     this.reviewService
-      .apiReviewersGetDataForReviewGet(this.thesisId)
+      .apiReviewersGetDataForReviewGet(this.reviewId)
       .subscribe((data) => {
         this.review = data;
+        this.purpose = this.review.modules?.find(m => m.name === "Cel i zakres pracy" && m.type === "Text");
+        this.purposeNumber = this.review.modules?.find(m => m.name === "Cel i zakres pracy" && m.type === "Number");
+        this.structure = this.review.modules?.find(m => m.name === "Struktura pracy" && m.type === "Text");
+        this.structureNumber = this.review.modules?.find(m => m.name === "Struktura pracy" && m.type === "Number");
+        this.design = this.review.modules?.find(m => m.name === "Część analityczno projektowa" && m.type === "Text");
+        this.designNumber = this.review.modules?.find(m => m.name === "Część analityczno projektowa" && m.type === "Number");
+        this.sources = this.review.modules?.find(m => m.name === "Źródła i redakcja pracy" && m.type === "Text");
+        this.sourcesNumber = this.review.modules?.find(m => m.name === "Źródła i redakcja pracy" && m.type === "Number");
+        this.assesment = this.review.modules?.find(m => m.name === "Ocena" && m.type === "Number");
+
       });
 
     this.thesisService.apiThesesMyThesisGet(this.thesisId).subscribe((data) => {

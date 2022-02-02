@@ -61,7 +61,7 @@ export class ReviewListComponent implements OnInit {
     this.awsService.apiAwsDownloadThesisGet(thesisId).subscribe((data) => {
       saveAs(
         new Blob([data], { type: 'application/pdf' }),
-        thesisId + '_thesis.json'
+        thesisId + '_thesis.pdf'
       );
     });
   }
