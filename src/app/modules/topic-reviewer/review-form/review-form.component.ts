@@ -10,11 +10,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import {
   FilledReviewModuleDto,
-  PostReviewDto,
   ReviewDataDto,
   ReviewersService,
-  ThesesService,
 } from 'src/app/generated';
+import { PostReviewDto } from 'src/app/generated/model/postReviewDto';
 
 @Component({
   selector: 'app-review-form',
@@ -115,7 +114,7 @@ export class ReviewFormComponent implements OnInit {
       });
   }
 
-  public onConfirm(event: Event) {
+  public onConfirm(event: Event): void {
     this.confirmationService.confirm({
       acceptLabel: this.translatedData['CONFIRMATION.YES'],
       rejectLabel: this.translatedData['CONFIRMATION.NO'],
@@ -133,7 +132,7 @@ export class ReviewFormComponent implements OnInit {
     this.router.navigate(['reviewer']);
   }
 
-  private confirm() {
+  private confirm(): void {
     let reviewPost: PostReviewDto = {};
     reviewPost.grade = this.selectedAssesment.toString();
     reviewPost.reviewId = this.review.reviewId;

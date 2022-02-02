@@ -2,12 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { saveAs } from 'file-saver';
-import { MessageService } from 'primeng/api';
-import {
-  ApplicationsService,
-  AWSService,
-  ThesesService,
-} from 'src/app/generated';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { AWSService, ThesesService } from 'src/app/generated';
 import { ApprovedTopicDto } from 'src/app/generated/model/approvedTopicDto';
 import { MyThesisDto } from 'src/app/generated/model/myThesisDto';
 
@@ -26,9 +22,9 @@ export class StudentThesisComponent implements OnInit {
   constructor(
     private awsService: AWSService,
     private thesisService: ThesesService,
-    private applicationService: ApplicationsService,
     private router: Router,
     private translateService: TranslateService,
+    private confirmationService: ConfirmationService,
     private messageService: MessageService,
     private activatedRoute: ActivatedRoute
   ) {}
@@ -117,9 +113,49 @@ export class StudentThesisComponent implements OnInit {
     });
   }
 
-  public onConfirmTopic(applicationId: number): void {
-    this.applicationService
-      .apiApplicationsApplicationIdConfirmPost(applicationId)
+  public onSendDeclaration(): void {
+    this.router.navigate([
+      'thesis',
+      'declaration',
+      { thesisId: this.thesisId },
+    ]);
+  }
+
+  public onOpenReview(reviewId: number): void {
+    this.router.navigate(['thesis', 'review', reviewId]);
+  }
+
+  public onSendToReview(event: Event): void {
+    this.confirmationService.confirm({
+      acceptLabel: this.translatedData['CONFIRMATION.YES'],
+      rejectLabel: this.translatedData['CONFIRMATION.NO'],
+      target: event.target!,
+      message: this.translatedData['CONFIRMATION.MESSAGE'],
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.sendToReview();
+      },
+      reject: () => this.confirmationService.close(),
+    });
+  }
+
+  public isDeclarationDisabled(): boolean {
+    return (
+      this.myThesis.status !== 'ReadyToReview' &&
+      this.myThesis.status !== 'Reviewed'
+    );
+  }
+  public isToReviewDisabled(): boolean {
+    return (
+      this.myThesis.status !== 'ReadyToReview' &&
+      this.myThesis.status !== 'Reviewed' &&
+      this.myThesis.hasDeclaration === true
+    );
+  }
+
+  private sendToReview(): void {
+    this.thesisService
+      .apiThesesDeclareThesisReadyForReviewPut(this.thesisId)
       .subscribe({
         error: (e) => {
           this.messageService.add({
@@ -137,17 +173,5 @@ export class StudentThesisComponent implements OnInit {
           setTimeout(() => window.location.reload(), 1000);
         },
       });
-  }
-
-  public onSendDeclaration(): void {
-    this.router.navigate([
-      'thesis',
-      'declaration',
-      { thesisId: this.thesisId },
-    ]);
-  }
-
-  public onOpenReview(reviewId: number): void {
-    this.router.navigate(['thesis', 'review', reviewId]);
   }
 }

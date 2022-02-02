@@ -5,11 +5,13 @@
       <p-card header="{{ 'THESIS.DATA_HEADDER' | translate }}">
         {{ myThesis.topicName }}<br />
         {{ myThesis.topicEnglishName }}<br />
-        Supervisor: {{ myThesis.supervisorFullName }}<br />
-        Thesis language: {{ myThesis.language }}<br />
-        Consent to Change language: {{ myThesis.hasConsentToChangeLanguage }}<br />
-        Field of study:{{ myThesis.fieldOfStudy }}<br />
-        Year of defence: {{ myThesis.yearOfDefence }}<br />
+        {{ "THESIS.SUPERVISOR" | translate }} {{ myThesis.supervisorFullName
+        }}<br />
+        {{ "DECLARATION.LANGUAGE" | translate }} {{ myThesis.language }}<br />
+        {{ "TOPIC_PROPOSAL.FIELD_OF_STUDY" | translate
+        }}{{ myThesis.fieldOfStudy }}<br />
+        {{ "TOPIC_PROPOSAL.YEAR_OF_DEFENCE" | translate }}
+        {{ myThesis.yearOfDefence }}<br />
         <br />
         <p-button
           iconPos="left"
@@ -68,6 +70,22 @@
     </p-card>
     <br />
     <p-card header="{{ 'THESIS.ACTIONS' | translate }}">
-      <h2>        {{ myThesis.status }}<br /></h2> </p-card>
+      <h2>{{ myThesis.status }}</h2>
+      <br />
+      <br />
+      <p-button
+        iconPos="left"
+        label="{{ 'THESIS.SEND_DECLARATION' | translate }}"
+        (click)="onSendDeclaration()"
+        [disabled]="isDeclarationDisabled()"
+      ></p-button>
+      <br />
+      <p-button
+        iconPos="left"
+        label="{{ 'THESIS.TO_REVIEW' | translate }}"
+        [disabled]="isToReviewDisabled()"
+        (click)="onSendToReview($event)"
+      ></p-button>
+    </p-card>
   </div>
 </div>

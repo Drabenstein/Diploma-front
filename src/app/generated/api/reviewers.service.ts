@@ -19,8 +19,6 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
-import { PostReviewDto } from '../model/postReviewDto';
-// @ts-ignore
 import { ProblemDetails } from '../model/problemDetails';
 // @ts-ignore
 import { ReviewDataDto } from '../model/reviewDataDto';
@@ -30,6 +28,8 @@ import { ReviewerWithInterestsDtoPagedResultDto } from '../model/reviewerWithInt
 import { ReviewersThesisDtoFieldOfStudyInitialTableDto } from '../model/reviewersThesisDtoFieldOfStudyInitialTableDto';
 // @ts-ignore
 import { ReviewersThesisDtoPagedResultDto } from '../model/reviewersThesisDtoPagedResultDto';
+// @ts-ignore
+import { SubmitReviewDto } from '../model/submitReviewDto';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -351,14 +351,14 @@ export class ReviewersService {
     }
 
     /**
-     * @param postReviewDto 
+     * @param submitReviewDto 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public apiReviewersPostReviewPost(postReviewDto?: PostReviewDto, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<any>;
-    public apiReviewersPostReviewPost(postReviewDto?: PostReviewDto, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpResponse<any>>;
-    public apiReviewersPostReviewPost(postReviewDto?: PostReviewDto, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpEvent<any>>;
-    public apiReviewersPostReviewPost(postReviewDto?: PostReviewDto, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<any> {
+    public apiReviewersPostReviewPost(submitReviewDto?: SubmitReviewDto, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<any>;
+    public apiReviewersPostReviewPost(submitReviewDto?: SubmitReviewDto, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpResponse<any>>;
+    public apiReviewersPostReviewPost(submitReviewDto?: SubmitReviewDto, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<HttpEvent<any>>;
+    public apiReviewersPostReviewPost(submitReviewDto?: SubmitReviewDto, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -399,7 +399,7 @@ export class ReviewersService {
         }
 
         return this.httpClient.post<any>(`${this.configuration.basePath}/api/reviewers/postReview`,
-            postReviewDto,
+            submitReviewDto,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,

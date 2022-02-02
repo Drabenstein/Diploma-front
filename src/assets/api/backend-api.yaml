@@ -637,13 +637,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PostReviewDto'
+              $ref: '#/components/schemas/SubmitReviewDto'
           text/json:
             schema:
-              $ref: '#/components/schemas/PostReviewDto'
+              $ref: '#/components/schemas/SubmitReviewDto'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/PostReviewDto'
+              $ref: '#/components/schemas/SubmitReviewDto'
       responses:
         '200':
           description: Success
@@ -886,6 +886,137 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+        '409':
+          description: Conflict
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /api/theses/students-theses:
+    get:
+      tags:
+        - Theses
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudentsThesisDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudentsThesisDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudentsThesisDto'
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /api/theses/declare-thesis-ready-for-review:
+    put:
+      tags:
+        - Theses
+      parameters:
+        - name: ThesisId
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+        '409':
+          description: Conflict
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /api/theses/students-review-display:
+    get:
+      tags:
+        - Theses
+      parameters:
+        - name: ReviewId
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StudentsReviewDataDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentsReviewDataDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StudentsReviewDataDto'
         '409':
           description: Conflict
           content:
@@ -1556,6 +1687,38 @@ paths:
       responses:
         '200':
           description: Success
+  /api/users/changePassword:
+    put:
+      tags:
+        - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordRequest'
+      responses:
+        '200':
+          description: Success
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '502':
+          description: Server Error
 components:
   schemas:
     ApplicationDetailsDto:
@@ -1686,6 +1849,13 @@ components:
           type: string
           nullable: true
       additionalProperties: false
+    ChangePasswordRequest:
+      type: object
+      properties:
+        password:
+          type: string
+          nullable: true
+      additionalProperties: false
     CreateTopicDto:
       type: object
       properties:
@@ -1783,25 +1953,12 @@ components:
         fieldOfStudy:
           type: string
           nullable: true
+        hasDeclaration:
+          type: boolean
         reviews:
           type: array
           items:
             $ref: '#/components/schemas/ReviewForMyThesisDto'
-          nullable: true
-      additionalProperties: false
-    PostReviewDto:
-      type: object
-      properties:
-        reviewId:
-          type: integer
-          format: int32
-        reviewModules:
-          type: array
-          items:
-            $ref: '#/components/schemas/FilledReviewModuleDto'
-          nullable: true
-        grade:
-          type: string
           nullable: true
       additionalProperties: false
     ProblemDetails:
@@ -1996,6 +2153,22 @@ components:
           type: string
           nullable: true
       additionalProperties: false
+    ReviewModuleWithValueDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        type:
+          type: string
+          nullable: true
+        value:
+          type: string
+          nullable: true
+      additionalProperties: false
     SendDeclarationDto:
       type: object
       properties:
@@ -2084,6 +2257,46 @@ components:
             $ref: '#/components/schemas/StudentsApprovedTopicDto'
           nullable: true
       additionalProperties: false
+    StudentsReviewDataDto:
+      type: object
+      properties:
+        reviewId:
+          type: integer
+          format: int64
+        reviewer:
+          type: string
+          nullable: true
+        topicName:
+          type: string
+          nullable: true
+        englishTopicName:
+          type: string
+          nullable: true
+        modules:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReviewModuleWithValueDto'
+          nullable: true
+      additionalProperties: false
+    StudentsThesisDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        topicName:
+          type: string
+          nullable: true
+        topicEnglishName:
+          type: string
+          nullable: true
+        supervisor:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+      additionalProperties: false
     StudentsTopicDto:
       type: object
       properties:
@@ -2148,6 +2361,21 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/StudentsTopicDto'
+          nullable: true
+      additionalProperties: false
+    SubmitReviewDto:
+      type: object
+      properties:
+        reviewId:
+          type: integer
+          format: int32
+        reviewModules:
+          type: array
+          items:
+            $ref: '#/components/schemas/FilledReviewModuleDto'
+          nullable: true
+        grade:
+          type: string
           nullable: true
       additionalProperties: false
     SupervisedThesisDto:
