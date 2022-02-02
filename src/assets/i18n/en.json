@@ -121,7 +121,8 @@
     "BUTTON_DECLARATION": "Declaration",
     "AWS": "Machine learning services",
     "FILE": "Thesis file management",
-    "MY_ACCEPTED_TOPICS": "My accepted topics"
+    "MY_ACCEPTED_TOPICS": "My accepted topics",
+    "THESIS": "My theses"
   },
   "CONFIRMATION": {
     "MESSAGE": "Are you sure that you want to proceed?",

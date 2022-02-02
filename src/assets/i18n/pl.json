@@ -121,7 +121,8 @@
     "BUTTON_DECLARATION": "Deklaracja",
     "AWS": "Usługi uczenia maszynowego",
     "FILE": "Zarządzanie plikiem pracy",
-    "MY_ACCEPTED_TOPICS": "Moje zaakceptowane tematy"
+    "MY_ACCEPTED_TOPICS": "Moje zaakceptowane tematy",
+    "THESIS": "Moje prace"
   },
   "CONFIRMATION": {
   "MESSAGE": "Jesteś pewien że chcesz kontynuować?",
