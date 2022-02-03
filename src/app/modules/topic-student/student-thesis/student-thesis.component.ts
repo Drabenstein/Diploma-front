@@ -122,7 +122,7 @@ export class StudentThesisComponent implements OnInit {
   }
 
   public onOpenReview(reviewId: number): void {
-    this.router.navigate(['thesis', 'review', reviewId]);
+    this.router.navigate(['thesis', 'review', this.thesisId, reviewId]);
   }
 
   public onSendToReview(event: Event): void {    
