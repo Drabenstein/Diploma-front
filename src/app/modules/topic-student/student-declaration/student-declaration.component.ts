@@ -56,10 +56,9 @@ export class StudentDeclarationComponent implements OnInit {
       .subscribe((data: Record<string, string>) => {
         this.translatedData = data;
       });
-
     this.thesisId = this.activatedRoute.snapshot.params['thesisId'];
 
-    this.declarationService.apiDeclarationsGet(0).subscribe((data) => {
+    this.declarationService.apiDeclarationsGet(this.thesisId).subscribe((data) => {
       this.declarationData = data;
     });
   }
@@ -88,9 +87,8 @@ export class StudentDeclarationComponent implements OnInit {
     const date = new Date();
     this.declaration.declarationDateTime = this.datepipe.transform(
       date,
-      'MMMM d, y, h:mm:ss a z'
+      'yyyy-MM-ddThh:mm:ss'
     )!;
-
     this.declarationService.apiDeclarationsPost(this.declaration).subscribe({
       error: (e) => {
         this.messageService.add({

@@ -125,7 +125,7 @@ export class StudentThesisComponent implements OnInit {
     this.router.navigate(['thesis', 'review', reviewId]);
   }
 
-  public onSendToReview(event: Event): void {
+  public onSendToReview(event: Event): void {    
     this.confirmationService.confirm({
       acceptLabel: this.translatedData['CONFIRMATION.YES'],
       rejectLabel: this.translatedData['CONFIRMATION.NO'],
