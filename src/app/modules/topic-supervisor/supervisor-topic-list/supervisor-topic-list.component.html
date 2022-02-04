@@ -14,47 +14,56 @@
     }}"
     [toggleable]="true"
   >
-      <div class="card">
-        <p-table
+    <div class="card">
+      <p-table
         [value]="fieldOfStudy.data!.results!"
-          [paginator]="true"
-          responsiveLayout="scroll"
-          [lazy]="true"
-          (onLazyLoad)="loadTopics($event, fieldOfStudy.id!)"
-          [totalRecords]="fieldOfStudy.data!.totalItems!"
-          [loading]="loading[fieldOfStudy.id!]"
-          [rowsPerPageOptions]="[10, 25, 50]"
-          [rows]="10"
-          dataKey="id"
-        >
-          <ng-template pTemplate="header">
-            <tr>
-              <th>
-                {{ "TOPIC_LIST.TOPIC_NAME_PL" | translate }}
-              </th>
-              <th>
-                {{ "TOPIC_LIST.TOPIC_NAME_EN" | translate }}
-              </th>
-              <th>
-                {{ "TOPIC_LIST.STUDENT" | translate }}
-              <th>
-                {{ "TOPIC_LIST.REVIEWER" | translate }}
-              </th>
-              <th>
-                {{ "TOPIC_LIST.IS_FREE" | translate }}
-              </th>
-            </tr>
-          </ng-template>
-          <ng-template pTemplate="body" let-topic>
-            <tr>
-              <td>{{ topic.topicName }}</td>
-              <td>{{ topic.englishTopicName }}</td>
-              <td>{{ topic.studentName }}</td>
-              <td>{{ topic.reviewerName }}</td>
-              <td>{{ topic.status }}</td>
-            </tr>
-          </ng-template>
-        </p-table>
-      </div>
-    </p-panel>
+        [paginator]="true"
+        responsiveLayout="scroll"
+        [lazy]="true"
+        (onLazyLoad)="loadTopics($event, fieldOfStudy.id!)"
+        [totalRecords]="fieldOfStudy.data!.totalItems!"
+        [loading]="loading[fieldOfStudy.id!]"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [rows]="10"
+        dataKey="id"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th>
+              {{ "TOPIC_LIST.TOPIC_NAME_PL" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.TOPIC_NAME_EN" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.STUDENT" | translate }}
+            </th>
+
+            <th>
+              {{ "TOPIC_LIST.REVIEWER" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.IS_FREE" | translate }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-topic>
+          <tr>
+            <td>{{ topic.topicName }}</td>
+            <td>{{ topic.englishTopicName }}</td>
+            <td>{{ topic.studentName }}</td>
+            <td>{{ topic.reviewerName }}</td>
+            <td>
+              <div *ngIf="topic.status === 'Wolny'">
+                {{ "ENUM.YES" | translate }}
+              </div>
+              <div *ngIf="topic.status !== 'Wolny'">
+                {{ "ENUM.NO" | translate }}
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </p-panel>
 </div>

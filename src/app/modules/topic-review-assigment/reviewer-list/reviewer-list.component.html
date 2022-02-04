@@ -52,11 +52,23 @@
   </div>
   <br />
 </form>
-<h2>{{ 'USER_DETAILS.WORKERS' | translate }}</h2>
+<h2>{{ "USER_DETAILS.WORKERS" | translate }}</h2>
 <div *ngFor="let worker of workers">
   {{ worker.title }} {{ worker.employee }} <br />
   {{ worker.department }} <br />
-  {{ worker.position }}
+  <div *ngIf="worker.position === 'AssistantProfessor'">
+    {{ "ENUM.ASSISTANT_PROFESSOR" | translate }}
+  </div>
+  <div *ngIf="worker.position === 'SeniorLecturer'">
+    {{ "ENUM.SENIOR_LECTURER" | translate }}
+  </div>
+  <div *ngIf="worker.position === 'Lecturer'">
+    {{ "ENUM.LECTURER" | translate }}
+  </div>
+  <div *ngIf="worker.position === 'Assistant'">
+    {{ "ENUM.ASSISTANT" | translate }}
+  </div>
+  <br />
   {{ "USER_DETAILS.ACTUAL_REVIEWS" | translate }} {{ worker.reviewsNumber }}
   {{ "USER_DETAILS.AREAS" | translate }}:
   <div *ngFor="let area of worker.areasOfInterestIds">

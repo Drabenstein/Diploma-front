@@ -133,12 +133,23 @@
     "TO_REVIEW": "Wyślij do recenzji"
   },
   "CONFIRMATION": {
-  "MESSAGE": "Jesteś pewien że chcesz kontynuować?",
-  "YES": "Tak",
-  "NO": "Nie",
-  "SUCCESS": "Sukces",
-  "ERROR": "Błąd",
-  "SUCCESS_MESSAGE": "Akcja została wykonana pomyślnie",
-  "ERROR_MESSAGE": "Wystąpił błąd podczas przetwarzania akcji"
-}
+    "MESSAGE": "Jesteś pewien że chcesz kontynuować?",
+    "YES": "Tak",
+    "NO": "Nie",
+    "SUCCESS": "Sukces",
+    "ERROR": "Błąd",
+    "SUCCESS_MESSAGE": "Akcja została wykonana pomyślnie",
+    "ERROR_MESSAGE": "Wystąpił błąd podczas przetwarzania akcji"
+  },
+  "ENUMS": {
+    "ASSISTANT_PROFESSOR": "Adiunkt",
+    "SENIOR_LECTURER": "Starszy Wykładowca",
+    "LECTURER": "Wykładowca",
+    "ASSISTANT": "Asystent ",
+    "YES": "Tak",
+    "NO": "Nie",
+    "IN_PROGRESS": "W trakcie realizacji",
+    "READY_TO_REVIEW": "Gotowa do recenzji",
+    "REVIEWED": "Zrecenzowana"
+  }
 }

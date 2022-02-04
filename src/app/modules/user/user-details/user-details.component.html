@@ -1,9 +1,15 @@
 <div class="content-display">
   <div *ngIf="student !== null && student !== undefined">
-    <h2>{{student[0].name}} {{student[0].index}}</h2>
+    <h2>{{ student[0].name }} {{ student[0].index }}</h2>
   </div>
-  <div *ngIf="(worker !== null && worker !== undefined) && (student === null || student === undefined)">
-    <h2>{{worker.name}}</h2>
+  <div
+    *ngIf="
+      worker !== null &&
+      worker !== undefined &&
+      (student === null || student === undefined)
+    "
+  >
+    <h2>{{ worker.name }}</h2>
   </div>
   <br />
   <div *ngIf="student !== null && student !== undefined">
@@ -17,7 +23,20 @@
   </div>
   <div *ngIf="worker !== null && worker !== undefined">
     <h2>{{ worker.department }}</h2>
-    <h2>{{ worker.position }}</h2>
+    <h2>
+      <div *ngIf="worker.position === 'AssistantProfessor'">
+        {{ "ENUM.ASSISTANT_PROFESSOR" | translate }}
+      </div>
+      <div *ngIf="worker.position === 'SeniorLecturer'">
+        {{ "ENUM.SENIOR_LECTURER" | translate }}
+      </div>
+      <div *ngIf="worker.position === 'Lecturer'">
+        {{ "ENUM.LECTURER" | translate }}
+      </div>
+      <div *ngIf="worker.position === 'Assistant'">
+        {{ "ENUM.ASSISTANT" | translate }}
+      </div>
+    </h2>
     <h2>
       <div *ngIf="worker.hasConsentToExtendPensum">
         {{ "USER_DETAILS.PENSUM_AGREE" | translate }}

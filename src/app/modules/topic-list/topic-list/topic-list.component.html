@@ -58,14 +58,28 @@
             <td>{{ topic.englishTopicName }}</td>
             <td>{{ topic.tutorName }}</td>
             <td>{{ topic.reviewerName }}</td>
-            <td>{{ topic.status }}</td>
+            <td>
+              <div *ngIf="topic.status === 'Wolny'">
+                {{ "ENUM.YES" | translate }}
+              </div>
+              <div *ngIf="topic.status !== 'Wolny'">
+                {{ "ENUM.NO" | translate }}
+              </div>
+            </td>
             <td>{{ topic.department }}</td>
             <td style="text-align: center">
               <button
                 pButton
                 type="button"
                 icon="pi pi-cog"
-                (click)="onAddApplication(topic.id, topic.topicName, topic.englishTopicName, topic.tutorName)"
+                (click)="
+                  onAddApplication(
+                    topic.id,
+                    topic.topicName,
+                    topic.englishTopicName,
+                    topic.tutorName
+                  )
+                "
               ></button>
             </td>
           </tr>

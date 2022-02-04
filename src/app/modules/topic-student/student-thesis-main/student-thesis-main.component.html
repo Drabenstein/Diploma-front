@@ -95,7 +95,17 @@
           <td>{{ thesis.topicName }}</td>
           <td>{{ thesis.topicEnglishName }}</td>
           <td>{{ thesis.supervisor }}</td>
-          <td>{{ thesis.status }}</td>
+          <td>
+            <div *ngIf="thesis.status === 'InProgress'">
+              {{ "ENUM.IN_PROGRESS" | translate }}
+            </div>
+            <div *ngIf="thesis.status !== 'ReadyToReview'">
+              {{ "ENUM.READY_TO_REVIEW" | translate }}
+            </div>
+            <div *ngIf="thesis.status === 'Reviewed'">
+              {{ "ENUM.REVIEWED" | translate }}
+            </div>
+          </td>
           <td style="text-align: center">
             <button
               pButton
