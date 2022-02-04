@@ -32,7 +32,7 @@
     "SUPERVISOR": "Supervisor",
     "REVIEWER": "Reviewer",
     "STATUS": "Status",
-    "CATHERDA": "Cathedra",
+    "CATHERDA": "Department",
     "ACTION": "Actions",
     "ADD_TOPIC": "Propose topic",
     "STUDENT": "Student",
@@ -44,7 +44,8 @@
     "CHOOSE_REVIEWER": "Choose reviewer",
     "REVIEWER_LIST": "Reviewers list",
     "BUTTON_CONFIRM": "Confirm",
-    "BUTTON_DENY": "Deny"
+    "BUTTON_DENY": "Deny",
+    "IS_FREE": "Free"
   },
   "USER_DETAILS": {
     "PENSUM_AGREE": "Consent to extend the working hours",
@@ -55,7 +56,11 @@
     "BUTTON_SEARCH": "Search",
     "ACTUAL_REVIEWS": "Actual reviews: ",
     "AREAS": "Areas of interest: ",
-    "WORKERS": "Workers"
+    "WORKERS": "Workers",
+    "BUTTON_SAVE": "Save",
+    "DEGREE": "Degree",
+    "SEMESTER": "Semester",
+    "STUDY_FORM": "Study form"
   },
   "TOPIC_PROPOSAL": {
     "SUPERVISOR": "Supervisor",

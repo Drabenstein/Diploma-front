@@ -3,13 +3,16 @@
     <h2>{{student[0].name}} {{student[0].index}}</h2>
   </div>
   <div *ngIf="(worker !== null && worker !== undefined) && (student === null || student === undefined)">
-    <h2>{{worker.name}} {{worker.name}}</h2>
+    <h2>{{worker.name}}</h2>
   </div>
   <br />
   <div *ngIf="student !== null && student !== undefined">
     <div *ngFor="let stud of student">
-      <h2>{{ stud.fieldOfStudy }}, {{ stud.specialization }}</h2>
-      <h2>{{ stud.degree }}, {{ stud.semester }}, {{ stud.studyForm }}</h2>
+      <h2>{{ stud.fieldOfStudy }}</h2>
+      <h2>{{ stud.specialization }}</h2>
+      <h2>{{ "USER_DETAILS.DEGREE" | translate }} {{ stud.degree }}</h2>
+      <h2>{{ "USER_DETAILS.SEMESTER" | translate }} {{ stud.semester }}</h2>
+      <h2>{{ "USER_DETAILS.STUDY_FORM" | translate }} {{ stud.studyForm }}</h2>
     </div>
   </div>
   <div *ngIf="worker !== null && worker !== undefined">
@@ -29,14 +32,13 @@
       [(ngModel)]="selectedAreas"
       display="chip"
       optionLabel="name"
-      optionValue="id"
     ></p-multiSelect>
     <br />
     <button
       pButton
       pRipple
       type="button"
-      icon="pi pi-times"
+      icon="pi pi-save"
       iconPos="left"
       label="{{ 'USER_DETAILS.BUTTON_SAVE' | translate }}"
       class="p-button-outlined"

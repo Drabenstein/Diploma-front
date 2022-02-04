@@ -44,7 +44,8 @@
     "CHOOSE_REVIEWER": "Wybierz recenzenta",
     "REVIEWER_LIST": "Lista recenzentów",
     "BUTTON_CONFIRM": "Zatwierdź",
-    "BUTTON_DENY": "Odrzuć"
+    "BUTTON_DENY": "Odrzuć",
+    "IS_FREE": "Wolny"
   },
   "USER_DETAILS": {
     "PENSUM_AGREE": "Zgoda na rozszerzenie pensum",
@@ -55,7 +56,11 @@
     "BUTTON_SEARCH": "Szukaj",
     "ACTUAL_REVIEWS": "Aktualnie recenzji: ",
     "AREAS": "Obszary zainteresowań: ",
-    "WORKERS": "Pracownicy"
+    "WORKERS": "Pracownicy",
+    "BUTTON_SAVE": "Zapisz",
+    "DEGREE": "Stopień",
+    "SEMESTER": "Semestr",
+    "STUDY_FORM": "Forma studiów"
   },
   "TOPIC_PROPOSAL": {
     "SUPERVISOR": "Promotor",
