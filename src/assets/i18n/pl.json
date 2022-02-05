@@ -141,7 +141,7 @@
     "SUCCESS_MESSAGE": "Akcja została wykonana pomyślnie",
     "ERROR_MESSAGE": "Wystąpił błąd podczas przetwarzania akcji"
   },
-  "ENUMS": {
+  "ENUM": {
     "ASSISTANT_PROFESSOR": "Adiunkt",
     "SENIOR_LECTURER": "Starszy Wykładowca",
     "LECTURER": "Wykładowca",

@@ -141,7 +141,7 @@
     "SUCCESS_MESSAGE": "Action was successful",
     "ERROR_MESSAGE": "An error occurred while processing the action"
   },
-  "ENUMS": {
+  "ENUM": {
     "ASSISTANT_PROFESSOR": "Assistant Professor",
     "SENIOR_LECTURER": "Senior Lecturer",
     "LECTURER": "Lecturer",
