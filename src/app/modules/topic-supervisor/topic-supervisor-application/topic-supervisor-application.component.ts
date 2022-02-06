@@ -81,7 +81,7 @@ export class TopicSupervisorApplicationComponent implements OnInit {
   }
 
   public onCancel() {
-    this.router.navigate(['list', 'candidates', 'applications']);
+    this.router.navigate(['supervisor', 'candidates', 'applications']);
   }
 
   private apply() {
@@ -102,7 +102,7 @@ export class TopicSupervisorApplicationComponent implements OnInit {
             detail: this.translatedData['MESSAGE.SUCCESS_MESSAGE'],
           });
           setTimeout(
-            () => this.router.navigate(['list', 'candidates', 'applications']),
+            () => this.router.navigate(['supervisor', 'candidates', 'applications']),
             1000
           );
         },
@@ -127,7 +127,7 @@ export class TopicSupervisorApplicationComponent implements OnInit {
             detail: this.translatedData['MESSAGE.SUCCESS_MESSAGE'],
           });
           setTimeout(
-            () => this.router.navigate(['list', 'candidates', 'applications']),
+            () => this.router.navigate(['supervisor', 'candidates', 'applications']),
             1000
           );
         },
