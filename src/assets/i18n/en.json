@@ -151,6 +151,15 @@
     "NO": "No",
     "IN_PROGRESS": "W trakcie realizacji",
     "READY_TO_REVIEW": "Ready to review",
-    "REVIEWED": "Reviewed"
+    "REVIEWED": "Reviewed",
+    "Engineer": "inż",
+    "MasterOfScience": "mgr",
+    "MasterOfScienceBEng": "mgr inż.",
+    "DoctorOfPhilosophy":"dr",
+    "DoctorOfPhilosophyBEng": "dr inż.",
+    "DoctorOfScience" :"dr hab.",
+    "DoctorOfScienceBEng": "dr hab. inż.",
+    "ProfessorOfUniversity": "prof. dr hab.",
+    "Professor" : "prof. dr hab. inż."
   }
 }

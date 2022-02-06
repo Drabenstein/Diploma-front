@@ -49,7 +49,33 @@
             <td>{{ candidate.englishName }}</td>
             <td>{{ candidate.studentFullName }}</td>
             <td>
-              {{ candidate.reviewerAcademicDegree }}
+              <div *ngIf="candidate.reviewerAcademicDegree === 'Engineer'">
+                {{ "ENUM.Engineer" | translate }}
+              </div>
+              <div *ngIf="candidate.reviewerAcademicDegree === 'MasterOfScience'">
+                {{ "ENUM.MasterOfScience" | translate }}
+              </div>
+              <div *ngIf="candidate.reviewerAcademicDegree === 'MasterOfScienceBEng'">
+                {{ "ENUM.MasterOfScienceBEng" | translate }}
+              </div>
+              <div *ngIf="candidate.reviewerAcademicDegree === 'DoctorOfPhilosophy'">
+                {{ "ENUM.DoctorOfPhilosophy" | translate }}
+              </div>
+              <div *ngIf="candidate.reviewerAcademicDegree === 'DoctorOfPhilosophyBEng'">
+                {{ "ENUM.DoctorOfPhilosophyBEng" | translate }}
+              </div>
+              <div *ngIf="candidate.reviewerAcademicDegree === 'DoctorOfScience'">
+                {{ "ENUM.DoctorOfScience" | translate }}
+              </div>
+              <div *ngIf="candidate.reviewerAcademicDegree === 'DoctorOfScienceBEng'">
+                {{ "ENUM.DoctorOfScienceBEng" | translate }}
+              </div>
+              <div *ngIf="candidate.reviewerAcademicDegree === 'ProfessorOfUniversity'">
+                {{ "ENUM.ProfessorOfUniversity" | translate }}
+              </div>
+              <div *ngIf="candidate.reviewerAcademicDegree === 'Professor'">
+                {{ "ENUM.Professor" | translate }}
+              </div>
               {{ candidate.reviewerFullName }}
             </td>
           </tr>

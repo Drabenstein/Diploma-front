@@ -10,7 +10,7 @@
           [min]="0"
         ></p-inputNumber>
         <label for="minReviews">{{
-          "USER_DETAILS.MAX_REVIEWS" | translate
+          "USER_DETAILS.MIN_REVIEWS" | translate
         }}</label>
       </span>
     </div>
@@ -54,7 +54,36 @@
 </form>
 <h2>{{ "USER_DETAILS.WORKERS" | translate }}</h2>
 <div *ngFor="let worker of workers">
-  {{ worker.title }} {{ worker.employee }} <br />
+  <div>
+  <div *ngIf="worker.title === 'Engineer'">
+    {{ "ENUM.Engineer" | translate }}
+  </div>
+  <div *ngIf="worker.title === 'MasterOfScience'">
+    {{ "ENUM.MasterOfScience" | translate }}
+  </div>
+  <div *ngIf="worker.title === 'MasterOfScienceBEng'">
+    {{ "ENUM.MasterOfScienceBEng" | translate }}
+  </div>
+  <div *ngIf="worker.title === 'DoctorOfPhilosophy'">
+    {{ "ENUM.DoctorOfPhilosophy" | translate }}
+  </div>
+  <div *ngIf="worker.title === 'DoctorOfPhilosophyBEng'">
+    {{ "ENUM.DoctorOfPhilosophyBEng" | translate }}
+  </div>
+  <div *ngIf="worker.title === 'DoctorOfScience'">
+    {{ "ENUM.DoctorOfScience" | translate }}
+  </div>
+  <div *ngIf="worker.title === 'DoctorOfScienceBEng'">
+    {{ "ENUM.DoctorOfScienceBEng" | translate }}
+  </div>
+  <div *ngIf="worker.title === 'ProfessorOfUniversity'">
+    {{ "ENUM.ProfessorOfUniversity" | translate }}
+  </div>
+  <div *ngIf="worker.title === 'Professor'">
+    {{ "ENUM.Professor" | translate }}
+  </div>
+  {{ worker.employee }}
+</div><br />
   {{ worker.department }} <br />
   <div *ngIf="worker.position === 'AssistantProfessor'">
     {{ "ENUM.ASSISTANT_PROFESSOR" | translate }}
@@ -70,7 +99,8 @@
   </div>
   <br />
   {{ "USER_DETAILS.ACTUAL_REVIEWS" | translate }} {{ worker.reviewsNumber }}
-  {{ "USER_DETAILS.AREAS" | translate }}:
+  <br />
+  {{ "USER_DETAILS.AREAS" | translate }}
   <div *ngFor="let area of worker.areasOfInterestIds">
     {{ getAreaName(area) }}
   </div>
