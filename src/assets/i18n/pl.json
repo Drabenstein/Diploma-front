@@ -130,7 +130,8 @@
     "MY_ACCEPTED_TOPICS": "Moje zaakceptowane tematy",
     "THESIS": "Moje prace",
     "SEND_DECLARATION": "Wypełnij deklaracje",
-    "TO_REVIEW": "Wyślij do recenzji"
+    "TO_REVIEW": "Wyślij do recenzji",
+    "ACTION": "Akcje"
   },
   "CONFIRMATION": {
     "MESSAGE": "Jesteś pewien że chcesz kontynuować?",

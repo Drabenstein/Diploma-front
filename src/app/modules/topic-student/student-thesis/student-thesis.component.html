@@ -70,12 +70,12 @@
       </div>
     </p-card>
     <br />
-    <p-card header="{{ 'THESIS.ACTIONS' | translate }}">
+    <p-card header="{{ 'THESIS.ACTION' | translate }}">
       <h2>
         <div *ngIf="myThesis.status === 'InProgress'">
           {{ "ENUM.IN_PROGRESS" | translate }}
         </div>
-        <div *ngIf="myThesis.status !== 'ReadyToReview'">
+        <div *ngIf="myThesis.status === 'ReadyToReview'">
           {{ "ENUM.READY_TO_REVIEW" | translate }}
         </div>
         <div *ngIf="myThesis.status === 'Reviewed'">

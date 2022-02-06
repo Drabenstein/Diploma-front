@@ -130,7 +130,8 @@
     "MY_ACCEPTED_TOPICS": "My accepted topics",
     "THESIS": "My theses",
     "SEND_DECLARATION": "Declaration",
-    "TO_REVIEW": "Send to review"
+    "TO_REVIEW": "Send to review",
+    "ACTION": "Actions",
   },
   "CONFIRMATION": {
     "MESSAGE": "Are you sure that you want to proceed?",

@@ -99,7 +99,7 @@
             <div *ngIf="thesis.status === 'InProgress'">
               {{ "ENUM.IN_PROGRESS" | translate }}
             </div>
-            <div *ngIf="thesis.status !== 'ReadyToReview'">
+            <div *ngIf="thesis.status === 'ReadyToReview'">
               {{ "ENUM.READY_TO_REVIEW" | translate }}
             </div>
             <div *ngIf="thesis.status === 'Reviewed'">
