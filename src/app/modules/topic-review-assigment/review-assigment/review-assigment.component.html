@@ -55,11 +55,10 @@
             <td>{{ thesis.name }}</td>
             <td>{{ thesis.englishName }}</td>
             <td>
-              {{ thesis.supervisorAcademicDegree }}
               {{ thesis.supervisorFullName }}
             </td>
             <td>
-              {{ thesis.reviewerAcademicDegree }} {{ thesis.reviewerFullName }}
+              {{ thesis.reviewerFullName }}
             </td>
             <td>{{ thesis.supervisorDepartment }}</td>
             <td>
@@ -70,6 +69,7 @@
                 optionValue="id"
                 [filter]="true"
                 filterBy="name"
+                appendTo="body"
               >
               </p-dropdown>
             </td>

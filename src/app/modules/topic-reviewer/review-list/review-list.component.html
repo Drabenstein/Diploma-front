@@ -53,7 +53,17 @@
             <td>{{ topic.englishTitle }}</td>
             <td>{{ topic.supervisor }}</td>
             <td>{{ topic.realizer }}</td>
-            <td>{{ topic.status }}</td>
+            <td>
+              <div *ngIf="topic.status === 'InProgress'">
+                {{ "ENUM.IN_PROGRESS" | translate }}
+              </div>
+              <div *ngIf="topic.status === 'ReadyToReview'">
+                {{ "ENUM.READY_TO_REVIEW" | translate }}
+              </div>
+              <div *ngIf="topic.status === 'Reviewed'">
+                {{ "ENUM.REVIEWED" | translate }}
+              </div>
+            </td>
             <td>{{ topic.department }}</td>
             <td style="white-space:nowrap;">
               <button

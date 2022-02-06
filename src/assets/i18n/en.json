@@ -150,7 +150,7 @@
     "YES": "Yes",
     "NO": "No",
     "IN_PROGRESS": "W trakcie realizacji",
-    "READY_TO_REVIEW": "Gotowa do recenzji",
-    "REVIEWED": "Zrecenzowana"
+    "READY_TO_REVIEW": "Ready to review",
+    "REVIEWED": "Reviewed"
   }
 }

@@ -54,10 +54,10 @@
             <td>{{ topic.studentName }}</td>
             <td>{{ topic.reviewerName }}</td>
             <td>
-              <div *ngIf="topic.status === 'Wolny'">
+              <div *ngIf="topic.status === 'True'">
                 {{ "ENUM.YES" | translate }}
               </div>
-              <div *ngIf="topic.status !== 'Wolny'">
+              <div *ngIf="topic.status !== 'True'">
                 {{ "ENUM.NO" | translate }}
               </div>
             </td>
