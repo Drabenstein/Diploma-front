@@ -1,0 +1,19 @@
+.two-columns {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.card {
+  width: 50%;
+  margin: 10px;
+}
+
+.bottom-card {
+  margin-top: 15px;
+}
+
+textarea {
+  resize: none;
+  max-width: 100%;
+}

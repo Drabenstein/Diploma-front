@@ -1,0 +1,66 @@
+<p-card header="{{ 'REVIEW.THESIS' | translate }} {{ thesis.topicName }}">
+  <p-panel header="{{ 'REVIEW.PURPOSE' | translate }}" [toggleable]="true">
+    <div>
+      <div>
+        {{ purpose }}
+      </div>
+      <br />
+      <br />
+      <span>{{ "REVIEW.IS_DONE" | translate }}</span> <br />
+      {{ purposeNumber }}
+    </div>
+  </p-panel>
+  <p-panel header="{{ 'REVIEW.STRUCTURE' | translate }}" [toggleable]="true">
+    <div>
+      <div>
+        {{ structure }}
+      </div>
+      <br />
+      <br />
+      <span>{{ "REVIEW.IS_DONE" | translate }}</span> <br />
+      {{ structureNumber }}
+    </div>
+  </p-panel>
+  <p-panel header="{{ 'REVIEW.DESIGN' | translate }}" [toggleable]="true">
+    <div>
+      <div>
+        {{ design }}
+      </div>
+      <br />
+      <br />
+      <span>{{ "REVIEW.IS_DONE" | translate }}</span> <br />
+      {{ designNumber }}
+    </div>
+  </p-panel>
+  <p-panel header="{{ 'REVIEW.SOURCES' | translate }}" [toggleable]="true">
+    <div>
+      <div>
+        {{ sources }}
+      </div>
+      <br />
+      <br />
+      <span>{{ "REVIEW.IS_DONE" | translate }}</span> <br />
+      {{ sourcesNumber }}
+    </div>
+  </p-panel>
+  <p-panel header="{{ 'REVIEW.ASSESMENTS' | translate }}" [toggleable]="true">
+    <div>
+      <br />
+      <h3>{{ assesment }}</h3>
+    </div>
+  </p-panel>
+  <br />
+  <br />
+  <div class="bottom-buttons">
+    <button
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-times"
+      iconPos="left"
+      label="{{ 'TOPIC_PROPOSAL.BUTTON_CANCEL' | translate }}"
+      class="p-button-outlined"
+      (click)="onCancel()"
+    ></button>
+  </div>
+</p-card>

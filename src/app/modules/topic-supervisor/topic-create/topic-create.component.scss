@@ -1,0 +1,40 @@
+.top-fields {
+  display: flex;
+  margin-left: 50px;
+}
+
+:host ::ng-deep .p-dropdown {
+  display: flex;
+  min-width: 10rem;
+  width: 18rem;
+  margin-right: 50px;
+}
+
+:host ::ng-deep .p-inputNumber {
+  display: flex;
+  min-width: 10rem;
+  width: 18rem;
+}
+
+:host ::ng-deep .p-inputNumber {
+  display: flex;
+  min-width: 10rem;
+  width: 18rem;
+}
+
+textarea {
+  resize: none;
+  max-width: 90%;
+}
+
+:host ::ng-deep .p-button{
+  margin-right: 50px;
+  width: 150px;
+}
+
+.bottom-buttons {
+  display: flex;
+  margin-left: auto;
+  margin-right: 10vw;
+  width: 400px;
+}

@@ -1,0 +1,41 @@
+.top-fields {
+  justify-content: space-between;
+  display: flex;
+  margin-left: 100px;
+  margin-right: 200px;
+}
+
+:host ::ng-deep .p-dropdown {
+  display: flex;
+  min-width: 10rem;
+  width: 18rem;
+  margin-right: 50px;
+}
+
+:host ::ng-deep .p-inputNumber {
+  display: flex;
+  min-width: 10rem;
+  width: 18rem;
+}
+
+:host ::ng-deep .p-inputNumber {
+  display: flex;
+  min-width: 10rem;
+  width: 18rem;
+}
+
+:host ::ng-deep .p-multiselect {
+  min-width: 15rem;
+  width: 18rem;
+}
+
+:host ::ng-deep .p-button{
+  width: 200px;
+}
+
+.bottom-buttons {
+  display: flex;
+  margin-left: auto;
+  margin-right: 10vw;
+  width: 200px;
+}

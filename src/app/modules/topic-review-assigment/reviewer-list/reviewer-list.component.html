@@ -1,0 +1,91 @@
+<br />
+<br />
+<form [formGroup]="formGroup">
+  <div class="top-fields">
+    <div>
+      <span class="p-float-label">
+        <p-inputNumber
+          formControlName="minReviews"
+          [(ngModel)]="minReviews"
+          [min]="0"
+        ></p-inputNumber>
+        <label for="minReviews">{{
+          "USER_DETAILS.MAX_REVIEWS" | translate
+        }}</label>
+      </span>
+    </div>
+    <div>
+      <span class="p-float-label">
+        <p-inputNumber
+          formControlName="maxReviews"
+          [(ngModel)]="maxReviews"
+          [min]="0"
+        ></p-inputNumber>
+        <label for="maxReviews">{{
+          "USER_DETAILS.MAX_REVIEWS" | translate
+        }}</label>
+      </span>
+    </div>
+    <div>
+      <span class="p-float-label">
+        <p-multiSelect
+          formControlName="areas"
+          [options]="areas"
+          [(ngModel)]="selectedAreas"
+          display="chip"
+          optionLabel="name"
+          optionValue="id"
+        ></p-multiSelect>
+        <label for="areas">{{
+          "USER_DETAILS.AREAS_OF_INTEREST" | translate
+        }}</label>
+      </span>
+    </div>
+    <p-button
+      icon="pi pi-search"
+      iconPos="left"
+      label="{{ 'USER_DETAILS.BUTTON_SEARCH' | translate }}"
+      (click)="searchForReviewers()"
+    ></p-button>
+    <div></div>
+    <div></div>
+  </div>
+  <br />
+</form>
+<h2>{{ "USER_DETAILS.WORKERS" | translate }}</h2>
+<div *ngFor="let worker of workers">
+  {{ worker.title }} {{ worker.employee }} <br />
+  {{ worker.department }} <br />
+  <div *ngIf="worker.position === 'AssistantProfessor'">
+    {{ "ENUM.ASSISTANT_PROFESSOR" | translate }}
+  </div>
+  <div *ngIf="worker.position === 'SeniorLecturer'">
+    {{ "ENUM.SENIOR_LECTURER" | translate }}
+  </div>
+  <div *ngIf="worker.position === 'Lecturer'">
+    {{ "ENUM.LECTURER" | translate }}
+  </div>
+  <div *ngIf="worker.position === 'Assistant'">
+    {{ "ENUM.ASSISTANT" | translate }}
+  </div>
+  <br />
+  {{ "USER_DETAILS.ACTUAL_REVIEWS" | translate }} {{ worker.reviewsNumber }}
+  {{ "USER_DETAILS.AREAS" | translate }}:
+  <div *ngFor="let area of worker.areasOfInterestIds">
+    {{ getAreaName(area) }}
+  </div>
+</div>
+<br />
+<br />
+<div class="bottom-buttons">
+  <button
+    pButton
+    pRipple
+    type="button"
+    icon="pi pi-times"
+    iconPos="left"
+    label="{{ 'TOPIC_PROPOSAL.BUTTON_CANCEL' | translate }}"
+    class="p-button-outlined"
+    (click)="onCancel()"
+  ></button>
+</div>

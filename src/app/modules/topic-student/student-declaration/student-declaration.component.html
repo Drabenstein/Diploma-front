@@ -1,0 +1,91 @@
+<p-toast></p-toast>
+<p-card header="{{ 'DECLARATION.HEADDER' | translate }}">
+  <form [formGroup]="formGroup">
+    <p-panel
+      header="{{ 'DECLARATION.STUDENT_DATA' | translate }}"
+      [toggleable]="true"
+    >
+      {{ declarationData.studentName }}
+    </p-panel>
+    <p-panel header="{{ 'DECLARATION.TOPIC' | translate }}" [toggleable]="true">
+      {{ declarationData.name }} <br />
+      {{ declarationData.englishName }}
+    </p-panel>
+    <p-panel
+      header="{{ 'DECLARATION.LANGUAGE' | translate }}"
+      [toggleable]="true"
+    >
+      <div>
+        <br />
+        <span class="p-float-label">
+          <p-dropdown
+            formControlName="language"
+            [options]="languages"
+            [(ngModel)]="declaration.language"
+            optionLabel="name"
+            optionValue="name"
+          >
+          </p-dropdown>
+          <label for="language">{{
+            "DECLARATION.LANGUAGE_DROPDOWN" | translate
+          }}</label>
+        </span>
+      </div>
+    </p-panel>
+    <p-panel
+      header="{{ 'DECLARATION.SUPERVISOR' | translate }}"
+      [toggleable]="true"
+    >
+      {{ declarationData.supervisorName }}
+    </p-panel>
+    <p-panel
+      header="{{ 'DECLARATION.PURPOSE' | translate }}"
+      [toggleable]="true"
+    >
+      <div>
+        <textarea
+          formControlName="purpose"
+          [(ngModel)]="declaration.objectiveOfWork"
+          pInputTextarea
+          rows="5"
+          cols="150"
+        ></textarea>
+      </div>
+    </p-panel>
+    <p-panel
+      header="{{ 'DECLARATION.DESCRIPTIN' | translate }}"
+      [toggleable]="true"
+    >
+      <div>
+        <textarea
+          formControlName="description"
+          [(ngModel)]="declaration.operatingRange"
+          pInputTextarea
+          rows="5"
+          cols="150"
+        ></textarea>
+      </div>
+    </p-panel>
+    <br />
+    <br />
+    <p-confirmPopup></p-confirmPopup>
+    <div class="bottom-buttons">
+      <p-button
+        icon="pi pi-check"
+        iconPos="left"
+        label="{{ 'DECLARATION.BUTTON_CONFIRM' | translate }}"
+        (click)="onSend($event)"
+      ></p-button>
+      <button
+        pButton
+        pRipple
+        type="button"
+        icon="pi pi-times"
+        iconPos="left"
+        label="{{ 'DECLARATION.BUTTON_CANCEL' | translate }}"
+        class="p-button-outlined"
+        (click)="onCancel()"
+      ></button>
+    </div>
+  </form>
+</p-card>

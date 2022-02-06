@@ -1,0 +1,2718 @@
+openapi: 3.0.1
+info:
+  title: swagger
+  version: v1
+paths:
+  /api/applications/initial-by-field:
+    get:
+      tags:
+        - Applications
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApplicationDtoFieldOfStudyInitialTableDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApplicationDtoFieldOfStudyInitialTableDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApplicationDtoFieldOfStudyInitialTableDto'
+  /api/applications:
+    get:
+      tags:
+        - Applications
+      parameters:
+        - name: fieldOfStudyId
+          in: query
+          schema:
+            type: integer
+            format: int64
+        - name: yearOfDefence
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ApplicationDtoPagedResultDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationDtoPagedResultDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationDtoPagedResultDto'
+        '409':
+          description: Conflict
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  '/api/applications/{applicationId}/accept':
+    post:
+      tags:
+        - Applications
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '409':
+          description: Conflict
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  '/api/applications/{applicationId}/reject':
+    post:
+      tags:
+        - Applications
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '409':
+          description: Conflict
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  '/api/applications/{applicationId}/confirm':
+    post:
+      tags:
+        - Applications
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '409':
+          description: Conflict
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  '/api/applications/{applicationId}/cancel':
+    post:
+      tags:
+        - Applications
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '409':
+          description: Conflict
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  '/api/applications/{applicationId}':
+    get:
+      tags:
+        - Applications
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ApplicationDetailsDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationDetailsDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationDetailsDto'
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /api/areasOfInterest/getAreasOfInterest:
+    get:
+      tags:
+        - AreasOfInterest
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AreaOfInterestDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AreaOfInterestDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AreaOfInterestDto'
+  /api/aws/translate:
+    get:
+      tags:
+        - AWS
+      parameters:
+        - name: text
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+            text/json:
+              schema:
+                type: string
+  /api/aws/downloadThesis:
+    get:
+      tags:
+        - AWS
+      parameters:
+        - name: thesisId
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+  /api/aws/uploadThesis:
+    post:
+      tags:
+        - AWS
+      parameters:
+        - name: thesisId
+          in: query
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+            encoding:
+              file:
+                style: form
+      responses:
+        '200':
+          description: Success
+  /api/aws/deleteThesis:
+    delete:
+      tags:
+        - AWS
+      parameters:
+        - name: thesisId
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+  /api/declarations:
+    post:
+      tags:
+        - Declarations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendDeclarationDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SendDeclarationDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SendDeclarationDto'
+      responses:
+        '200':
+          description: Success
+    get:
+      tags:
+        - Declarations
+      parameters:
+        - name: ThesisId
+          in: query
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DeclarationDataDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeclarationDataDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DeclarationDataDto'
+  /api/fieldsOfStudy:
+    get:
+      tags:
+        - FieldsOfStudy
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FieldOfStudyForApplicationDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FieldOfStudyForApplicationDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FieldOfStudyForApplicationDto'
+  /api/reviewers/getReviewersWithInterests:
+    get:
+      tags:
+        - Reviewers
+      parameters:
+        - name: AreaOfInterestIds
+          in: query
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+        - name: minNoReviews
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: maxNoReviews
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 50
+        - name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReviewerWithInterestsDtoPagedResultDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewerWithInterestsDtoPagedResultDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReviewerWithInterestsDtoPagedResultDto'
+  /api/reviewers/getMyReviews:
+    get:
+      tags:
+        - Reviewers
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReviewersThesisDtoFieldOfStudyInitialTableDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReviewersThesisDtoFieldOfStudyInitialTableDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReviewersThesisDtoFieldOfStudyInitialTableDto'
+  /api/reviewers/getMyReviewsPage:
+    get:
+      tags:
+        - Reviewers
+      parameters:
+        - name: fieldOfStudyId
+          in: query
+          schema:
+            type: integer
+            format: int64
+        - name: yearOfDefence
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReviewersThesisDtoPagedResultDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewersThesisDtoPagedResultDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReviewersThesisDtoPagedResultDto'
+  /api/reviewers/getDataForReview:
+    get:
+      tags:
+        - Reviewers
+      parameters:
+        - name: ThesisId
+          in: query
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReviewDataDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewDataDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReviewDataDto'
+  /api/reviewers/postReview:
+    post:
+      tags:
+        - Reviewers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubmitReviewDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SubmitReviewDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SubmitReviewDto'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /api/theses/get-thesis-id:
+    get:
+      tags:
+        - Theses
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: integer
+                format: int64
+            application/json:
+              schema:
+                type: integer
+                format: int64
+            text/json:
+              schema:
+                type: integer
+                format: int64
+  /api/theses/my-thesis:
+    get:
+      tags:
+        - Theses
+      parameters:
+        - name: ThesisId
+          in: query
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/MyThesisDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MyThesisDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MyThesisDto'
+  /api/theses/supervised-by-field:
+    get:
+      tags:
+        - Theses
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SupervisedThesisDtoFieldOfStudyInitialTableDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SupervisedThesisDtoFieldOfStudyInitialTableDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SupervisedThesisDtoFieldOfStudyInitialTableDto'
+  /api/theses/supervised:
+    get:
+      tags:
+        - Theses
+      parameters:
+        - name: fieldOfStudyId
+          in: query
+          schema:
+            type: integer
+            format: int64
+        - name: yearOfDefence
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/SupervisedThesisDtoPagedResultDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupervisedThesisDtoPagedResultDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/SupervisedThesisDtoPagedResultDto'
+  /api/theses/reviewer-assignment-initial:
+    get:
+      tags:
+        - Theses
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ThesisForReviewerAssignmentDtoFieldOfStudyInitialTableDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ThesisForReviewerAssignmentDtoFieldOfStudyInitialTableDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ThesisForReviewerAssignmentDtoFieldOfStudyInitialTableDto'
+  /api/theses/reviewer-assignment:
+    get:
+      tags:
+        - Theses
+      parameters:
+        - name: fieldOfStudyId
+          in: query
+          schema:
+            type: integer
+            format: int64
+        - name: yearOfDefence
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ThesisForReviewerAssignmentDtoPagedResultDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThesisForReviewerAssignmentDtoPagedResultDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ThesisForReviewerAssignmentDtoPagedResultDto'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /api/theses/reviewers/bulk:
+    post:
+      tags:
+        - Theses
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ReviewerChangeDto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ReviewerChangeDto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/ReviewerChangeDto'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '409':
+          description: Conflict
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /api/theses/students-theses:
+    get:
+      tags:
+        - Theses
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudentsThesisDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudentsThesisDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudentsThesisDto'
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /api/theses/declare-thesis-ready-for-review:
+    put:
+      tags:
+        - Theses
+      parameters:
+        - name: ThesisId
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+        '409':
+          description: Conflict
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /api/theses/students-review-display:
+    get:
+      tags:
+        - Theses
+      parameters:
+        - name: ReviewId
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StudentsReviewDataDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentsReviewDataDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StudentsReviewDataDto'
+        '409':
+          description: Conflict
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /api/topics:
+    get:
+      tags:
+        - Topics
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudentsTopicDtoFieldOfStudyInitialTableDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudentsTopicDtoFieldOfStudyInitialTableDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudentsTopicDtoFieldOfStudyInitialTableDto'
+    post:
+      tags:
+        - Topics
+      parameters:
+        - name: TutorId
+          in: query
+          schema:
+            type: integer
+            format: int64
+        - name: FieldOfStudyId
+          in: query
+          schema:
+            type: integer
+            format: int64
+        - name: MaxRealizationNumber
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: PolishName
+          in: query
+          schema:
+            type: string
+        - name: EnglishName
+          in: query
+          schema:
+            type: string
+        - name: Message
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+  /api/topics/topicsForTutor:
+    get:
+      tags:
+        - Topics
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TutorsTopicDtoFieldOfStudyInitialTableDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TutorsTopicDtoFieldOfStudyInitialTableDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TutorsTopicDtoFieldOfStudyInitialTableDto'
+  /api/topics/topicsPage:
+    get:
+      tags:
+        - Topics
+      parameters:
+        - name: fieldOfStudyId
+          in: query
+          schema:
+            type: integer
+            format: int64
+        - name: yearOfDefence
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StudentsTopicDtoPagedResultDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentsTopicDtoPagedResultDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StudentsTopicDtoPagedResultDto'
+  /api/topics/topicsForTutorPage:
+    get:
+      tags:
+        - Topics
+      parameters:
+        - name: fieldOfStudyId
+          in: query
+          schema:
+            type: integer
+            format: int64
+        - name: yearOfDefence
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TutorsTopicDtoPagedResultDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TutorsTopicDtoPagedResultDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TutorsTopicDtoPagedResultDto'
+  /api/topics/possibleTutors:
+    get:
+      tags:
+        - Topics
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TutorForApplicationDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TutorForApplicationDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TutorForApplicationDto'
+  /api/topics/possibleFieldsOfStudy:
+    get:
+      tags:
+        - Topics
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FieldOfStudyForApplicationDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FieldOfStudyForApplicationDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FieldOfStudyForApplicationDto'
+  /api/topics/applyForTopic:
+    post:
+      tags:
+        - Topics
+      parameters:
+        - name: TopicId
+          in: query
+          schema:
+            type: integer
+            format: int64
+        - name: Message
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+  /api/topics/createTopic:
+    post:
+      tags:
+        - Topics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTopicDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CreateTopicDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CreateTopicDto'
+      responses:
+        '200':
+          description: Success
+  /api/topics/myAcceptedTopics:
+    get:
+      tags:
+        - Topics
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApprovedTopicDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApprovedTopicDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApprovedTopicDto'
+  /api/topics/for-consideration-initial:
+    get:
+      tags:
+        - Topics
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TopicForConsiderationDtoFieldOfStudyInitialTableDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TopicForConsiderationDtoFieldOfStudyInitialTableDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TopicForConsiderationDtoFieldOfStudyInitialTableDto'
+  /api/topics/for-consideration:
+    get:
+      tags:
+        - Topics
+      parameters:
+        - name: fieldOfStudyId
+          in: query
+          schema:
+            type: integer
+            format: int64
+        - name: yearOfDefence
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TopicForConsiderationDtoPagedResultDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopicForConsiderationDtoPagedResultDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TopicForConsiderationDtoPagedResultDto'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /api/topics/bulk-accept:
+    post:
+      tags:
+        - Topics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: integer
+                format: int64
+          text/json:
+            schema:
+              type: array
+              items:
+                type: integer
+                format: int64
+          application/*+json:
+            schema:
+              type: array
+              items:
+                type: integer
+                format: int64
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '409':
+          description: Conflict
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /api/topics/bulk-reject:
+    post:
+      tags:
+        - Topics
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: integer
+                format: int64
+          text/json:
+            schema:
+              type: array
+              items:
+                type: integer
+                format: int64
+          application/*+json:
+            schema:
+              type: array
+              items:
+                type: integer
+                format: int64
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '409':
+          description: Conflict
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /api/topics/students-approved-topics:
+    get:
+      tags:
+        - Topics
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudentsApprovedTopicDtoFieldOfStudyInitialTableDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudentsApprovedTopicDtoFieldOfStudyInitialTableDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudentsApprovedTopicDtoFieldOfStudyInitialTableDto'
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /api/topics/students-approved-topics-by-year-and-field:
+    get:
+      tags:
+        - Topics
+      parameters:
+        - name: fieldOfStudyId
+          in: query
+          schema:
+            type: integer
+            format: int64
+        - name: yearOfDefence
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StudentsApprovedTopicDtoPagedResultDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentsApprovedTopicDtoPagedResultDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StudentsApprovedTopicDtoPagedResultDto'
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /api/users/fetchData:
+    post:
+      tags:
+        - Users
+      responses:
+        '200':
+          description: Success
+  /api/users/myData/student:
+    get:
+      tags:
+        - Users
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudentDataDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudentDataDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudentDataDto'
+  /api/users/myData/tutor:
+    get:
+      tags:
+        - Users
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/TutorDataDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TutorDataDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TutorDataDto'
+  /api/users/myData/updateAreasOfInterest:
+    post:
+      tags:
+        - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: integer
+                format: int64
+          text/json:
+            schema:
+              type: array
+              items:
+                type: integer
+                format: int64
+          application/*+json:
+            schema:
+              type: array
+              items:
+                type: integer
+                format: int64
+      responses:
+        '200':
+          description: Success
+  /api/users/changePassword:
+    put:
+      tags:
+        - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordRequest'
+      responses:
+        '200':
+          description: Success
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '502':
+          description: Server Error
+components:
+  schemas:
+    ApplicationDetailsDto:
+      type: object
+      properties:
+        studentFullName:
+          type: string
+          nullable: true
+        studentIndex:
+          type: integer
+          format: int32
+        fieldOfStudyName:
+          type: string
+          nullable: true
+        fieldOfStudyDegree:
+          type: integer
+          format: int32
+        fieldOfStudyStudyForm:
+          type: string
+          nullable: true
+        yearOfDefence:
+          type: string
+          nullable: true
+        topicMaxRealizationNumber:
+          type: integer
+          format: int32
+        topicCurrentRealizations:
+          type: integer
+          format: int32
+        topicName:
+          type: string
+          nullable: true
+        topicEnglishName:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ApplicationDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        englishName:
+          type: string
+          nullable: true
+        studentFullName:
+          type: string
+          nullable: true
+        isTopicProposal:
+          type: boolean
+      additionalProperties: false
+    ApplicationDtoFieldOfStudyInitialTableDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        degree:
+          type: integer
+          format: int32
+        studyForm:
+          type: string
+          nullable: true
+        lectureLanguage:
+          type: string
+          nullable: true
+        defenceYear:
+          type: string
+          nullable: true
+        data:
+          $ref: '#/components/schemas/ApplicationDtoPagedResultDto'
+      additionalProperties: false
+    ApplicationDtoPagedResultDto:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          format: int32
+        totalItems:
+          type: integer
+          format: int32
+        hasNextPage:
+          type: boolean
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApplicationDto'
+          nullable: true
+      additionalProperties: false
+    ApprovedTopicDto:
+      type: object
+      properties:
+        topicId:
+          type: integer
+          format: int64
+        applicationId:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        englishName:
+          type: string
+          nullable: true
+        supervisor:
+          type: string
+          nullable: true
+        applicationStatus:
+          type: string
+          nullable: true
+      additionalProperties: false
+    AreaOfInterestDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ChangePasswordRequest:
+      type: object
+      properties:
+        password:
+          type: string
+          nullable: true
+      additionalProperties: false
+    CreateTopicDto:
+      type: object
+      properties:
+        fieldOfStudyId:
+          type: integer
+          format: int64
+        yearOfDefence:
+          type: integer
+          format: int32
+        maxNoRealizations:
+          type: integer
+          format: int32
+        polishName:
+          type: string
+          nullable: true
+        englishName:
+          type: string
+          nullable: true
+      additionalProperties: false
+    DeclarationDataDto:
+      type: object
+      properties:
+        thesisId:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        englishName:
+          type: string
+          nullable: true
+        fieldOfStudyData:
+          type: string
+          nullable: true
+        studentName:
+          type: string
+          nullable: true
+        supervisorName:
+          type: string
+          nullable: true
+      additionalProperties: false
+    FieldOfStudyForApplicationDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+      additionalProperties: false
+    FilledReviewModuleDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        type:
+          type: string
+          nullable: true
+        value:
+          type: string
+          nullable: true
+      additionalProperties: false
+    MyThesisDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        topicName:
+          type: string
+          nullable: true
+        topicEnglishName:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        language:
+          type: string
+          nullable: true
+        hasConsentToChangeLanguage:
+          type: boolean
+          nullable: true
+        supervisorFullName:
+          type: string
+          nullable: true
+        yearOfDefence:
+          type: string
+          nullable: true
+        fieldOfStudy:
+          type: string
+          nullable: true
+        hasDeclaration:
+          type: boolean
+        reviews:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReviewForMyThesisDto'
+          nullable: true
+      additionalProperties: false
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        status:
+          type: integer
+          format: int32
+          nullable: true
+        detail:
+          type: string
+          nullable: true
+        instance:
+          type: string
+          nullable: true
+      additionalProperties: { }
+    ReviewDataDto:
+      type: object
+      properties:
+        reviewId:
+          type: integer
+          format: int64
+        thesisId:
+          type: integer
+          format: int64
+        realizer:
+          type: string
+          nullable: true
+        supervisor:
+          type: string
+          nullable: true
+        topic:
+          type: string
+          nullable: true
+        modules:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReviewModuleDto'
+          nullable: true
+      additionalProperties: false
+    ReviewerChangeDto:
+      type: object
+      properties:
+        thesisId:
+          type: integer
+          format: int64
+        reviewerId:
+          type: integer
+          format: int64
+      additionalProperties: false
+    ReviewersThesisDto:
+      type: object
+      properties:
+        thesisId:
+          type: integer
+          format: int64
+        title:
+          type: string
+          nullable: true
+        englishTitle:
+          type: string
+          nullable: true
+        supervisor:
+          type: string
+          nullable: true
+        realizer:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        department:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ReviewersThesisDtoFieldOfStudyInitialTableDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        degree:
+          type: integer
+          format: int32
+        studyForm:
+          type: string
+          nullable: true
+        lectureLanguage:
+          type: string
+          nullable: true
+        defenceYear:
+          type: string
+          nullable: true
+        data:
+          $ref: '#/components/schemas/ReviewersThesisDtoPagedResultDto'
+      additionalProperties: false
+    ReviewersThesisDtoPagedResultDto:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          format: int32
+        totalItems:
+          type: integer
+          format: int32
+        hasNextPage:
+          type: boolean
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReviewersThesisDto'
+          nullable: true
+      additionalProperties: false
+    ReviewerWithInterestsDto:
+      type: object
+      properties:
+        title:
+          type: string
+          nullable: true
+        employee:
+          type: string
+          nullable: true
+        department:
+          type: string
+          nullable: true
+        position:
+          type: string
+          nullable: true
+        reviewsNumber:
+          type: integer
+          format: int32
+        areasOfInterestIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+          nullable: true
+      additionalProperties: false
+    ReviewerWithInterestsDtoPagedResultDto:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          format: int32
+        totalItems:
+          type: integer
+          format: int32
+        hasNextPage:
+          type: boolean
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReviewerWithInterestsDto'
+          nullable: true
+      additionalProperties: false
+    ReviewForMyThesisDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        grade:
+          type: string
+          nullable: true
+        timestamp:
+          type: string
+          format: date-time
+          nullable: true
+        reviewer:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ReviewModuleDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        type:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ReviewModuleWithValueDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        type:
+          type: string
+          nullable: true
+        value:
+          type: string
+          nullable: true
+      additionalProperties: false
+    SendDeclarationDto:
+      type: object
+      properties:
+        thesisId:
+          type: integer
+          format: int32
+        objectiveOfWork:
+          type: string
+          nullable: true
+        operatingRange:
+          type: string
+          nullable: true
+        language:
+          type: string
+          nullable: true
+        hasConsentToChangeLanguage:
+          type: boolean
+        declarationDateTime:
+          type: string
+          format: date-time
+      additionalProperties: false
+    StudentDataDto:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        index:
+          type: string
+          nullable: true
+        fieldOfStudy:
+          type: string
+          nullable: true
+        specialization:
+          type: string
+          nullable: true
+        degree:
+          type: string
+          nullable: true
+        semester:
+          type: string
+          nullable: true
+        studyForm:
+          type: string
+          nullable: true
+      additionalProperties: false
+    StudentsApprovedTopicDto:
+      type: object
+      properties:
+        topicId:
+          type: integer
+          format: int32
+        applicationId:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        englishName:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        supervisorAcademicDegree:
+          type: string
+          nullable: true
+        supervisorFullName:
+          type: string
+          nullable: true
+        supervisorDepartment:
+          type: string
+          nullable: true
+      additionalProperties: false
+    StudentsApprovedTopicDtoFieldOfStudyInitialTableDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        degree:
+          type: integer
+          format: int32
+        studyForm:
+          type: string
+          nullable: true
+        lectureLanguage:
+          type: string
+          nullable: true
+        defenceYear:
+          type: string
+          nullable: true
+        data:
+          $ref: '#/components/schemas/StudentsApprovedTopicDtoPagedResultDto'
+      additionalProperties: false
+    StudentsApprovedTopicDtoPagedResultDto:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          format: int32
+        totalItems:
+          type: integer
+          format: int32
+        hasNextPage:
+          type: boolean
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/StudentsApprovedTopicDto'
+          nullable: true
+      additionalProperties: false
+    StudentsReviewDataDto:
+      type: object
+      properties:
+        reviewId:
+          type: integer
+          format: int64
+        reviewer:
+          type: string
+          nullable: true
+        topicName:
+          type: string
+          nullable: true
+        englishTopicName:
+          type: string
+          nullable: true
+        modules:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReviewModuleWithValueDto'
+          nullable: true
+      additionalProperties: false
+    StudentsThesisDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        topicName:
+          type: string
+          nullable: true
+        topicEnglishName:
+          type: string
+          nullable: true
+        supervisor:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+      additionalProperties: false
+    StudentsTopicDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        topicName:
+          type: string
+          nullable: true
+        englishTopicName:
+          type: string
+          nullable: true
+        tutorName:
+          type: string
+          nullable: true
+        reviewerName:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        department:
+          type: string
+          nullable: true
+      additionalProperties: false
+    StudentsTopicDtoFieldOfStudyInitialTableDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        degree:
+          type: integer
+          format: int32
+        studyForm:
+          type: string
+          nullable: true
+        lectureLanguage:
+          type: string
+          nullable: true
+        defenceYear:
+          type: string
+          nullable: true
+        data:
+          $ref: '#/components/schemas/StudentsTopicDtoPagedResultDto'
+      additionalProperties: false
+    StudentsTopicDtoPagedResultDto:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          format: int32
+        totalItems:
+          type: integer
+          format: int32
+        hasNextPage:
+          type: boolean
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/StudentsTopicDto'
+          nullable: true
+      additionalProperties: false
+    SubmitReviewDto:
+      type: object
+      properties:
+        reviewId:
+          type: integer
+          format: int32
+        reviewModules:
+          type: array
+          items:
+            $ref: '#/components/schemas/FilledReviewModuleDto'
+          nullable: true
+        grade:
+          type: string
+          nullable: true
+      additionalProperties: false
+    SupervisedThesisDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        englishName:
+          type: string
+          nullable: true
+        supervisorAcademicDegree:
+          type: string
+          nullable: true
+        supervisorFullName:
+          type: string
+          nullable: true
+        reviewerAcademicDegree:
+          type: string
+          nullable: true
+        reviewerFullName:
+          type: string
+          nullable: true
+        studentFullName:
+          type: string
+          nullable: true
+      additionalProperties: false
+    SupervisedThesisDtoFieldOfStudyInitialTableDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        degree:
+          type: integer
+          format: int32
+        studyForm:
+          type: string
+          nullable: true
+        lectureLanguage:
+          type: string
+          nullable: true
+        defenceYear:
+          type: string
+          nullable: true
+        data:
+          $ref: '#/components/schemas/SupervisedThesisDtoPagedResultDto'
+      additionalProperties: false
+    SupervisedThesisDtoPagedResultDto:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          format: int32
+        totalItems:
+          type: integer
+          format: int32
+        hasNextPage:
+          type: boolean
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupervisedThesisDto'
+          nullable: true
+      additionalProperties: false
+    ThesisForReviewerAssignmentDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        englishName:
+          type: string
+          nullable: true
+        supervisorAcademicDegree:
+          type: string
+          nullable: true
+        supervisorFullName:
+          type: string
+          nullable: true
+        supervisorDepartment:
+          type: string
+          nullable: true
+        reviewerAcademicDegree:
+          type: string
+          nullable: true
+        reviewerFullName:
+          type: string
+          nullable: true
+        reviewerId:
+          type: integer
+          format: int64
+          nullable: true
+      additionalProperties: false
+    ThesisForReviewerAssignmentDtoFieldOfStudyInitialTableDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        degree:
+          type: integer
+          format: int32
+        studyForm:
+          type: string
+          nullable: true
+        lectureLanguage:
+          type: string
+          nullable: true
+        defenceYear:
+          type: string
+          nullable: true
+        data:
+          $ref: '#/components/schemas/ThesisForReviewerAssignmentDtoPagedResultDto'
+      additionalProperties: false
+    ThesisForReviewerAssignmentDtoPagedResultDto:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          format: int32
+        totalItems:
+          type: integer
+          format: int32
+        hasNextPage:
+          type: boolean
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThesisForReviewerAssignmentDto'
+          nullable: true
+      additionalProperties: false
+    TopicForConsiderationDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        englishName:
+          type: string
+          nullable: true
+        maxRealizationNumber:
+          type: integer
+          format: int32
+        supervisorAcademicDegree:
+          type: string
+          nullable: true
+        supervisorFullName:
+          type: string
+          nullable: true
+        supervisorDepartment:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TopicForConsiderationDtoFieldOfStudyInitialTableDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        degree:
+          type: integer
+          format: int32
+        studyForm:
+          type: string
+          nullable: true
+        lectureLanguage:
+          type: string
+          nullable: true
+        defenceYear:
+          type: string
+          nullable: true
+        data:
+          $ref: '#/components/schemas/TopicForConsiderationDtoPagedResultDto'
+      additionalProperties: false
+    TopicForConsiderationDtoPagedResultDto:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          format: int32
+        totalItems:
+          type: integer
+          format: int32
+        hasNextPage:
+          type: boolean
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TopicForConsiderationDto'
+          nullable: true
+      additionalProperties: false
+    TutorDataDto:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        department:
+          type: string
+          nullable: true
+        position:
+          type: string
+          nullable: true
+        hasConsentToExtendPensum:
+          type: boolean
+        areasOfInterestIds:
+          type: array
+          items:
+            type: integer
+            format: int64
+          nullable: true
+      additionalProperties: false
+    TutorForApplicationDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        firstName:
+          type: string
+          nullable: true
+        lastName:
+          type: string
+          nullable: true
+        academicDegree:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TutorsTopicDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        topicName:
+          type: string
+          nullable: true
+        englishTopicName:
+          type: string
+          nullable: true
+        studentName:
+          type: string
+          nullable: true
+        reviewerName:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        department:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TutorsTopicDtoFieldOfStudyInitialTableDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        degree:
+          type: integer
+          format: int32
+        studyForm:
+          type: string
+          nullable: true
+        lectureLanguage:
+          type: string
+          nullable: true
+        defenceYear:
+          type: string
+          nullable: true
+        data:
+          $ref: '#/components/schemas/TutorsTopicDtoPagedResultDto'
+      additionalProperties: false
+    TutorsTopicDtoPagedResultDto:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          format: int32
+        totalItems:
+          type: integer
+          format: int32
+        hasNextPage:
+          type: boolean
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TutorsTopicDto'
+          nullable: true
+      additionalProperties: false

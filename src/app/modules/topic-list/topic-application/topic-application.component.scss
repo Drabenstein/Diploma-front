@@ -1,0 +1,16 @@
+textarea {
+  resize: none;
+  max-width: 90%;
+}
+
+:host ::ng-deep .p-button{
+  margin-right: 50px;
+  width: 150px;
+}
+
+.bottom-buttons {
+  display: flex;
+  margin-left: auto;
+  margin-right: 10vw;
+  width: 400px;
+}

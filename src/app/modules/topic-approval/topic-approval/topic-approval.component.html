@@ -1,0 +1,85 @@
+<p-toast></p-toast>
+<br />
+<div *ngFor="let fieldOfStudy of fieldsOfStudy">
+  <br />
+  <p-panel
+    header="{{ fieldOfStudy.name }}, {{ fieldOfStudy.degree }}, {{
+      fieldOfStudy.defenceYear
+    }}"
+    [toggleable]="true"
+  >
+    <div class="card">
+      <p-table
+        [value]="fieldOfStudy.data!.results!"
+        [paginator]="true"
+        responsiveLayout="scroll"
+        [lazy]="true"
+        (onLazyLoad)="loadTopics($event, fieldOfStudy.id!)"
+        [totalRecords]="fieldOfStudy.data!.totalItems!"
+        [loading]="loading[fieldOfStudy.id!]"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [rows]="10"
+        dataKey="id"
+        [(selection)]="topicApprovalSelectionList[fieldOfStudy.id!]"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th>
+              {{ "TOPIC_LIST.TOPIC_NAME_PL" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.TOPIC_NAME_EN" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.SUPERVISOR" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.MAX_REALIZATIONS" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.CATHERDA" | translate }}
+            </th>
+            <th style="width: 5rem">
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-topic>
+          <tr>
+            <td>{{ topic.name }}</td>
+            <td>{{ topic.englishName }}</td>
+            <td>
+              {{ topic.supervisorFullName }}
+            </td>
+            <td>{{ topic.maxRealizationNumber }}</td>
+            <td>{{ topic.supervisorDepartment }}</td>
+            <td>
+              <p-tableCheckbox
+                [value]="topic"
+              ></p-tableCheckbox>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <br />
+    <div class="bottom-buttons">
+      <p-confirmPopup></p-confirmPopup>
+      <p-button
+        icon="pi pi-check"
+        iconPos="left"
+        label="{{ 'TOPIC_LIST.BUTTON_CONFIRM' | translate }}"
+        (click)="onTopicsApprove($event, fieldOfStudy.id!)"
+      ></p-button>
+      <button
+        pButton
+        pRipple
+        type="button"
+        icon="pi pi-times"
+        iconPos="left"
+        label="{{ 'TOPIC_LIST.BUTTON_DENY' | translate }}"
+        class="p-button-danger"
+        (click)="onTopicsDeny($event, fieldOfStudy.id!)"
+      ></button>
+    </div>
+  </p-panel>
+</div>

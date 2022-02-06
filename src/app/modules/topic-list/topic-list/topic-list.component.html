@@ -1,0 +1,90 @@
+<br />
+<p-button
+  label="{{ 'TOPIC_LIST.ADD_TOPIC' | translate }}"
+  icon="pi pi-add"
+  styleClass="p-mr-2 p-button-raised"
+  (click)="onProposeTopic()"
+></p-button>
+<br />
+<div *ngFor="let fieldOfStudy of fieldsOfStudy">
+  <br />
+  <p-panel
+    header="{{ fieldOfStudy.name }}, {{ fieldOfStudy.degree }}, {{
+      fieldOfStudy.defenceYear
+    }}"
+    [toggleable]="true"
+  >
+    <div class="card">
+      <p-table
+        [value]="fieldOfStudy.data!.results!"
+        [paginator]="true"
+        responsiveLayout="scroll"
+        [lazy]="true"
+        (onLazyLoad)="loadTopics($event, fieldOfStudy.id!)"
+        [totalRecords]="fieldOfStudy.data!.totalItems!"
+        [loading]="loading[fieldOfStudy.id!]"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [rows]="10"
+        dataKey="id"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th>
+              {{ "TOPIC_LIST.TOPIC_NAME_PL" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.TOPIC_NAME_EN" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.SUPERVISOR" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.REVIEWER" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.IS_FREE" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.CATHERDA" | translate }}
+            </th>
+            <th style="width: 5rem">
+              {{ "TOPIC_LIST.ACTION" | translate }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-topic>
+          <tr>
+            <td>{{ topic.topicName }}</td>
+            <td>{{ topic.englishTopicName }}</td>
+            <td>{{ topic.tutorName }}</td>
+            <td>{{ topic.reviewerName }}</td>
+            <td>
+              <div *ngIf="topic.status === 'Wolny'">
+                {{ "ENUM.YES" | translate }}
+              </div>
+              <div *ngIf="topic.status !== 'Wolny'">
+                {{ "ENUM.NO" | translate }}
+              </div>
+            </td>
+            <td>{{ topic.department }}</td>
+            <td style="text-align: center">
+              <button
+                pButton
+                type="button"
+                icon="pi pi-cog"
+                (click)="
+                  onAddApplication(
+                    topic.id,
+                    topic.topicName,
+                    topic.englishTopicName,
+                    topic.tutorName
+                  )
+                "
+              ></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </p-panel>
+</div>

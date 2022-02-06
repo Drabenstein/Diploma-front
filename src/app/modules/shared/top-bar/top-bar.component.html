@@ -1,0 +1,38 @@
+<div class="top-label">
+  <h1 class="top-name">{{ "TOP_BAR.NAME" | translate }}</h1>
+  <div class="top-label">
+    <div class="top-margin">
+      <p-button
+        label="PL/EN"
+        badge="{{ 'TOP_BAR.CURRENT_LANG' | translate }}"
+        styleClass="p-mr-2 p-button-raised p-button-rounded top-margin"
+        (click)="onSwitchLanguage()"
+      ></p-button>
+    </div>
+    <p-tieredMenu #menu [model]="sideItems" [popup]="true"></p-tieredMenu>
+    <div *ngIf="authService.isAuthenticated$ | async">
+      <button
+      #btn
+      type="button"
+      pButton
+      label="{{ name }}"
+      icon="pi pi-user"
+      class="p-button-raised p-button-rounded top-margin"
+      (click)="menu.toggle($event)"
+    ></button>
+    </div>
+    <div *ngIf="(authService.isAuthenticated$ | async) === false">
+      <button
+      #btn
+      type="button"
+      pButton
+      label="{{ 'TOP_BAR.LOGIN' | translate }}"
+      icon="pi pi-user"
+      class="p-button-raised p-button-rounded top-margin"
+      (click)="login()"
+    ></button>
+    </div>
+  </div>
+</div>
+
+<p-menubar [model]="items" class="toolbar"> </p-menubar>

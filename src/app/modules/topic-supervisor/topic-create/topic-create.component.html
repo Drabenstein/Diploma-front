@@ -1,0 +1,100 @@
+<p-toast></p-toast>
+<h2>{{ "TOPIC_PROPOSAL.HEADDER" | translate }}</h2>
+<br />
+<form [formGroup]="formGroup">
+  <div class="top-fields">
+    <div>
+      <span class="p-float-label">
+        <p-dropdown
+          formControlName="fieldsOfStudy"
+          [options]="fieldsOfStudy"
+          [(ngModel)]="createTopicDto.fieldOfStudyId"
+          [filter]="true"
+          filterBy="name"
+          optionLabel="name"
+          optionValue="id"
+        ></p-dropdown>
+        <label for="fieldsOfStudy">{{
+          "TOPIC_PROPOSAL.FIELD_OF_STUDY" | translate
+        }}</label>
+      </span>
+    </div>
+    <div>
+      <span class="p-float-label">
+        <p-dropdown
+          formControlName="years"
+          [options]="years"
+          [(ngModel)]="createTopicDto.yearOfDefence"
+          optionLabel="name"
+          [filter]="true"
+          filterBy="name"
+          optionValue="name"
+        >
+        </p-dropdown>
+        <label for="year">{{
+          "TOPIC_PROPOSAL.YEAR_OF_DEFENCE" | translate
+        }}</label>
+      </span>
+    </div>
+    <div>
+      <span class="p-float-label">
+        <p-inputNumber
+          formControlName="maxRealiztions"
+          [(ngModel)]="createTopicDto.maxNoRealizations"
+          [min]="1"
+          [max]="4"
+        ></p-inputNumber>
+        <label for="maxRealiztions">{{
+          "TOPIC_PROPOSAL.MAX_REALIZATIONS" | translate
+        }}</label>
+      </span>
+    </div>
+  </div>
+  <br />
+  <p-card>
+    <div>
+      <h2>{{ "TOPIC_PROPOSAL.TOPIC_NAME_PL" | translate }}</h2>
+      <p-divider></p-divider>
+      <textarea
+        [(ngModel)]="createTopicDto.polishName"
+        formControlName="topicNamePl"
+        pInputTextarea
+        rows="2"
+        cols="150"
+      ></textarea>
+    </div>
+    <br /><br />
+    <div>
+      <h2>{{ "TOPIC_PROPOSAL.TOPIC_NAME_EN" | translate }}</h2>
+      <p-divider></p-divider>
+      <textarea
+        [(ngModel)]="createTopicDto.englishName"
+        formControlName="topicNameEn"
+        pInputTextarea
+        rows="2"
+        cols="150"
+      ></textarea>
+    </div>
+    <br />
+    <br />
+    <p-confirmPopup></p-confirmPopup>
+    <div class="bottom-buttons">
+      <p-button
+        icon="pi pi-check"
+        iconPos="left"
+        label="{{ 'TOPIC_PROPOSAL.BUTTON_ADD' | translate }}"
+        (click)="onSubmit($event)"
+      ></p-button>
+      <button
+        pButton
+        pRipple
+        type="button"
+        icon="pi pi-times"
+        iconPos="left"
+        label="{{ 'TOPIC_PROPOSAL.BUTTON_CANCEL' | translate }}"
+        class="p-button-outlined"
+        (click)="onCancel()"
+      ></button>
+    </div>
+  </p-card>
+</form>

@@ -1,0 +1,73 @@
+<p-toast></p-toast>
+<div *ngIf="isProposal">
+  <h2>{{ "TOPIC_APPLICATION.HEADDER_PROPOSE" | translate }}</h2>
+</div>
+<div *ngIf="!isProposal">
+  <h2>{{ "TOPIC_APPLICATION.HEADDER_REALIZATION" | translate }}</h2>
+</div>
+<br />
+<b> {{ application.studentFullName }} {{ application.studentIndex }} </b><br />
+<span>{{ application.fieldOfStudyName }}</span>
+<span
+  ><br />{{ application.fieldOfStudyDegree }}<br />
+  {{ application.fieldOfStudyStudyForm }}</span
+>
+<span>{{ application.yearOfDefence }}</span>
+<br />
+<br />
+{{ "TOPIC_APPLICATION.MAX_REALIZATIONS" | translate }}
+{{ application.topicMaxRealizationNumber }}
+<div *ngIf="true">
+  {{ "TOPIC_APPLICATION.CURRENT_REALIZATIONS" | translate }}:
+  {{ application.topicCurrentRealizations }}
+</div>
+<br />
+<p-card>
+  <div>
+    <h2>{{ "TOPIC_APPLICATION.TOPIC_NAME_PL" | translate }}</h2>
+    <p-divider></p-divider>
+    {{ application.topicName }}
+  </div>
+  <br /><br />
+  <div>
+    <h2>{{ "TOPIC_APPLICATION.TOPIC_NAME_EN" | translate }}</h2>
+    <p-divider></p-divider>
+    {{ application.topicEnglishName }}
+  </div>
+  <br /><br />
+  <div>
+    <h2>{{ "TOPIC_APPLICATION.MESSAGE" | translate }}</h2>
+    <p-divider></p-divider>
+    {{ application.message }}
+  </div>
+  <br />
+</p-card>
+<br />
+<p-confirmPopup></p-confirmPopup>
+<div class="bottom-buttons">
+  <p-button
+    icon="pi pi-check"
+    iconPos="left"
+    label="{{ 'TOPIC_APPLICATION.BUTTON_APPLY' | translate }}"
+    (click)="onApply($event)"
+  ></p-button>
+  <button
+    pButton
+    icon="pi pi-times"
+    pRipple
+    iconPos="left"
+    label="{{ 'TOPIC_APPLICATION.BUTTON_DENY' | translate }}"
+    class="p-button-danger"
+    (click)="onDeny($event)"
+  ></button>
+  <button
+    pButton
+    pRipple
+    type="button"
+    icon="pi pi-arrow-left"
+    iconPos="left"
+    label="{{ 'TOPIC_APPLICATION.BUTTON_CANCEL' | translate }}"
+    class="p-button-outlined"
+    (click)="onCancel()"
+  ></button>
+</div>

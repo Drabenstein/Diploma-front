@@ -1,0 +1,52 @@
+<p-toast></p-toast>
+<br />
+<br />
+<p-card>
+  <div>
+    <h2>{{ "TOPIC_APPLICATION.TOPIC_NAME_PL" | translate }}</h2>
+    {{ namePolish }}
+  </div>
+  <br />
+  <div>
+    <h2>{{ "TOPIC_PROPOSAL.TOPIC_NAME_EN" | translate }}</h2>
+    {{ nameEnglish }}
+  </div>
+  <br />
+  <div>
+    <h2>{{ "TOPIC_PROPOSAL.SUPERVISOR" | translate }}</h2>
+    {{ supervisor }}
+  </div>
+</p-card>
+
+<p-card>
+  <div>
+    <h2>{{ "TOPIC_PROPOSAL.MESSAGE" | translate }}</h2>
+    <p-divider></p-divider>
+    <textarea
+      [(ngModel)]="message"
+      pInputTextarea
+      rows="5"
+      cols="150"
+    ></textarea>
+  </div>
+  <br />
+  <br />
+  <p-divider></p-divider>
+  <p-confirmPopup></p-confirmPopup>
+  <div class="bottom-buttons">
+    <p-button
+    icon="pi pi-check" iconPos="left"
+      label="{{ 'TOPIC_APPLICATION.BUTTON_CONFIRM' | translate }}"
+      (click)="onApplicationSend($event)"
+    ></p-button>
+    <button
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-times" iconPos="left"
+      label="{{ 'TOPIC_APPLICATION.BUTTON_CANCEL' | translate }}"
+      class="p-button-outlined"
+      (click)="onCancel()"
+    ></button>
+  </div>
+</p-card>

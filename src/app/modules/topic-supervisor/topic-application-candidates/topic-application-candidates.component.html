@@ -1,0 +1,79 @@
+<br />
+<div *ngFor="let fieldOfStudy of fieldsOfStudy">
+  <br />
+  <p-panel
+    header="{{ fieldOfStudy.name }}, {{ fieldOfStudy.degree }}, {{
+      fieldOfStudy.defenceYear
+    }}"
+    [toggleable]="true"
+  >
+    <div class="card">
+      <p-table
+        [value]="fieldOfStudy.data!.results!"
+        [paginator]="true"
+        responsiveLayout="scroll"
+        [lazy]="true"
+        (onLazyLoad)="loadCandidates($event, fieldOfStudy.id!)"
+        [totalRecords]="fieldOfStudy.data!.totalItems!"
+        [loading]="loading[fieldOfStudy.id!]"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [rows]="10"
+        dataKey="id"
+      >
+        <ng-template pTemplate="header" [toggleable]="true">
+          <tr>
+            <th>
+              {{ "TOPIC_LIST.TOPIC_NAME_PL" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.TOPIC_NAME_EN" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.STUDENT" | translate }}
+            </th>
+            <th>
+              {{ "TOPIC_LIST.REVIEWER" | translate }}
+            </th>
+            <th style="width: 5rem">
+              {{ "TOPIC_LIST.ACTION" | translate }}
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-application>
+          <tr>
+            <td>{{ application.name }}</td>
+            <td>{{ application.englishName }}</td>
+            <td>{{ application.studentFullName }}</td>
+            <td>
+              <div *ngIf="application.isTopicProposal">
+                {{ "TOPIC_APPLICATION.HEADDER_PROPOSE" | translate }}
+              </div>
+              <div *ngIf="!application.isTopicProposal">
+                {{ "TOPIC_APPLICATION.HEADDER_REALIZATION" | translate }}
+              </div>
+            </td>
+            <td style="text-align: center">
+              <button
+                pButton
+                type="button"
+                icon="pi pi-cog"
+                (click)="openApplicationDetails(application.id, application.isTopicProposal)"
+              ></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </p-panel>
+</div>
+<br />
+<button
+  pButton
+  pRipple
+  type="button"
+  icon="pi pi-times"
+  iconPos="left"
+  label="{{ 'TOPIC_LIST.BACK' | translate }}"
+  class="p-button-outlined"
+  (click)="onCancel()"
+></button>

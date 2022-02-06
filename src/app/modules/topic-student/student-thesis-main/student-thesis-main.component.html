@@ -1,0 +1,122 @@
+<p-toast></p-toast>
+<div class="two-columns">
+  <div class="card">
+    <p-card header="{{ 'THESIS.MY_ACCEPTED_TOPICS' | translate }}">
+      <div *ngFor="let fieldOfStudy of fieldsOfStudy">
+        <br />
+        <p-panel
+          header="{{ fieldOfStudy.name }}, {{ fieldOfStudy.degree }}, {{
+            fieldOfStudy.defenceYear
+          }}"
+          [toggleable]="true"
+        >
+          <div>
+            <p-table
+              [value]="fieldOfStudy.data!.results!"
+              [paginator]="true"
+              responsiveLayout="scroll"
+              [lazy]="true"
+              (onLazyLoad)="loadTopics($event, fieldOfStudy.id!)"
+              [totalRecords]="fieldOfStudy.data!.totalItems!"
+              [loading]="loading[fieldOfStudy.id!]"
+              [rowsPerPageOptions]="[10, 25, 50]"
+              [rows]="10"
+              dataKey="id"
+            >
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>
+                    {{ "TOPIC_LIST.TOPIC_NAME_PL" | translate }}
+                  </th>
+                  <th>
+                    {{ "TOPIC_LIST.TOPIC_NAME_EN" | translate }}
+                  </th>
+                  <th>
+                    {{ "TOPIC_LIST.SUPERVISOR" | translate }}
+                  </th>
+                  <th style="width: 5rem">
+                    {{ "TOPIC_LIST.ACTION" | translate }}
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-topic>
+                <tr>
+                  <td>{{ topic.name }}</td>
+                  <td>{{ topic.englishName }}</td>
+                  <td>{{ topic.supervisorFullName }}</td>
+                  <td style="text-align: center">
+                    <p-confirmPopup></p-confirmPopup>
+                    <button
+                      pButton
+                      type="button"
+                      icon="pi pi-cog"
+                      (click)="onConfirmTopic($event, topic.applicationId)"
+                    ></button>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </p-panel>
+      </div>
+    </p-card>
+  </div>
+  <div class="card">
+    <p-card header="{{ 'THESIS.THESIS' | translate }}">
+      <p-table
+      [value]="theses"
+      [paginator]="true"
+      responsiveLayout="scroll"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [rows]="10"
+      dataKey="id"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>
+            {{ "TOPIC_LIST.TOPIC_NAME_PL" | translate }}
+          </th>
+          <th>
+            {{ "TOPIC_LIST.TOPIC_NAME_EN" | translate }}
+          </th>
+          <th>
+            {{ "TOPIC_LIST.SUPERVISOR" | translate }}
+          </th>
+          <th>
+            {{ "TOPIC_LIST.STATUS" | translate }}
+          </th>
+          <th style="width: 5rem">
+            {{ "TOPIC_LIST.ACTION" | translate }}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-thesis>
+        <tr>
+          <td>{{ thesis.topicName }}</td>
+          <td>{{ thesis.topicEnglishName }}</td>
+          <td>{{ thesis.supervisor }}</td>
+          <td>
+            <div *ngIf="thesis.status === 'InProgress'">
+              {{ "ENUM.IN_PROGRESS" | translate }}
+            </div>
+            <div *ngIf="thesis.status === 'ReadyToReview'">
+              {{ "ENUM.READY_TO_REVIEW" | translate }}
+            </div>
+            <div *ngIf="thesis.status === 'Reviewed'">
+              {{ "ENUM.REVIEWED" | translate }}
+            </div>
+          </td>
+          <td style="text-align: center">
+            <button
+              pButton
+              type="button"
+              icon="pi pi-cog"
+              (click)="onOpenThesis(thesis.id)"
+            ></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    </p-card>
+  </div>
+</div>
